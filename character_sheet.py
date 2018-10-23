@@ -20,7 +20,7 @@ def repopulate():
             print('No name')
             continue
             
-        #group = soup.select('td[id="member_group"]')[0].text
+
         group =  soup.find("div",{"class":"site_profile"})['id']
         print(group)
         if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members'):
@@ -32,8 +32,6 @@ def repopulate():
         age = soup.select('[id="age"]')[0].text
         series = soup.select('[id="series"]')[0].text
         pronouns = soup.select('[id="pronouns"]')[0].text
-        #app = soup.select('[id="application"]')[0].text
-        #plot = soup.select('[id="plotter"]')[0].text
         app = soup.find("a",{"id":"application"})['href']
         plot = soup.find("a",{"id":"plotter"})['href']
         ooc = soup.select('[id="ooc_name"]')[0].text
