@@ -22,7 +22,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if(message.content.startswith('>help')):
-        await message.channel.send("Available commands:\n```hello\nrepopulate\nchar <charname>\nforward```")
+        await message.channel.send("Available commands:\n```hello\nrepopulate\nchar <charname>\niam <rolename>\niamnot <rolename>\nforward```")
     # Test echo command
     if message.content.startswith('>hello'):
         msg = 'Hello {0.author.mention}'.format(message)
@@ -65,18 +65,33 @@ async def on_message(message):
         await message.channel.send('forward')
 
     # Role assignment
-    elif(message.content.startswith('>iam')):
+    elif(message.content.startswith('>iam') and not message.content.startswith('>iamnot')):
         if(message.content == '>iam'):
             await message.channel.send('I need to know what role you want, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
         else:
             print(message.guild.roles)
-            desiredRole = message.content.split("iam ",1)[1].lower()
+            desiredRole = message.content.split(">iam ",1)[1].lower()
             if(desiredRole in ROLES.keys()):
                 if(message.guild.get_role(ROLES[desiredRole]) in message.author.roles):
                     await message.channel.send('You already have role\n```{}```'.format(desiredRole))
                 else:
                     await message.author.add_roles(message.guild.get_role(ROLES[desiredRole]))
                     await message.channel.send("Role `{}` assigned!".format(desiredRole))
+            else:
+                await message.channel.send("Role `{}` not found.".format(desiredRole))
+
+    elif(message.content.startswith('>iamnot')):
+        if(message.content == '>iamnot'):
+            await message.channel.send('I need to know what role you aren\'t, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
+        else:
+            print(message.guild.roles)
+            desiredRole = message.content.split(">iamnot ",1)[1].lower()
+            if(desiredRole in ROLES.keys()):
+                if(message.guild.get_role(ROLES[desiredRole]) in message.author.roles):
+                    await message.author.remove_roles(message.guild.get_role(ROLES[desiredRole]))
+                    await message.channel.send('Removed role\n```{}```'.format(desiredRole))
+                else:
+                    await message.channel.send("You do not have role\n```{}```".format(desiredRole))
             else:
                 await message.channel.send("Role `{}` not found.".format(desiredRole))
 
