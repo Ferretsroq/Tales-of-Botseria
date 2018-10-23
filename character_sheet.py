@@ -2,36 +2,43 @@ import requests, bs4, string, json, discord
 
 def repopulate():
 
-    charlist = {}
+    charList = {}
 
     req = requests.get('https://heavensfall.jcink.net/index.php')
     soups = bs4.BeautifulSoup(req.text, "lxml")
     newest = int(soups.find(id="newest_member").find('a').get('href').split("showuser=",1)[1])
-
+    print('newest: {}'.format(newest))
     for x in range(0, newest):
-
+        print('x: {}'.format(x))
         res = requests.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1))
         soup = bs4.BeautifulSoup(res.text, "lxml")
 
         try:
-            name = soup.select('div[id="profilename"]')[0].text.lower()
+            name = soup.select('[id="profilename"]')[0].text.lower()
+            print(name)
         except:
+            print('No name')
             continue
             
-        group = soup.select('td[id="member_group"]')[0].text
+        #group = soup.select('td[id="member_group"]')[0].text
+        group =  soup.find("div",{"class":"site_profile"})['id']
+        print(group)
         if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members'):
+            print('bad group')
             continue
             
-        image = soup.select('td[id="100x100_image"]')[0].text
-        deity = soup.select('td[id="deity"]')[0].text
-        age = soup.select('td[id="age"]')[0].text
-        series = soup.select('td[id="series"]')[0].text
-        pronouns = soup.select('td[id="pronouns"]')[0].text
-        app = soup.select('td[id="application"]')[0].text
-        plot = soup.select('td[id="plotter"]')[0].text
-        ooc = soup.select('td[id="ooc_name"]')[0].text
+        image = soup.select('[id="100x100_image"]')[0].text
+        deity = soup.select('[id="deity"]')[0].text
+        age = soup.select('[id="age"]')[0].text
+        series = soup.select('[id="series"]')[0].text
+        pronouns = soup.select('[id="pronouns"]')[0].text
+        #app = soup.select('[id="application"]')[0].text
+        #plot = soup.select('[id="plotter"]')[0].text
+        app = soup.find("a",{"id":"application"})['href']
+        plot = soup.find("a",{"id":"plotter"})['href']
+        ooc = soup.select('[id="ooc_name"]')[0].text
         
-        charlist[name] = {
+        charList[name] = {
                 'group': group,
                 'image': image,
                 'deity': deity,
@@ -42,17 +49,22 @@ def repopulate():
                 'plot': plot,
                 'ooc': ooc
             }
+        for key in charList[name].keys():
+            if(charList[name][key] == ''):
+                charList[name][key] = ' '
 
     with open('data.json', 'w') as outfile:
-        json.dump(charlist, outfile)
+        json.dump(charList, outfile)
 
 def MakeEmbed(name, characterData):
+    print('MakeEmbed!')
     embed=discord.Embed(title=name, color=ChooseColor(characterData['deity']))
     embed.add_field(name='Series:', value=characterData['series'], inline=True)
     embed.add_field(name='Deity:', value=characterData['deity'], inline=True)
     embed.add_field(name='App Link:', value=characterData['app'], inline=False)
     embed.add_field(name='Plot Link:', value=characterData['plot'], inline=False)
     embed.set_footer(text="Played by {}".format(characterData['ooc']))
+    print('Returning Embed!')
     return embed
 
 def ChooseColor(deity):
