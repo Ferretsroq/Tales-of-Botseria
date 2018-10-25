@@ -1,5 +1,6 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
+import Googlify
 
 TOKEN = open('token.token').read()
 ROLES = {
@@ -22,7 +23,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if(message.content.startswith('>help')):
-        await message.channel.send("Available commands:\n```hello\nrepopulate\nchar <charname>\niam <rolename>\niamnot <rolename>\nforward```")
+        await message.channel.send("Available commands:\n```hello\nrepopulate\nchar <charname>\niam <rolename>\niamnot <rolename>\nforward\ngooglify```")
     # Test echo command
     if message.content.startswith('>hello'):
         msg = 'Hello {0.author.mention}'.format(message)
@@ -45,9 +46,7 @@ async def on_message(message):
                 data = json.load(json_data)
             if(name.lower() in data.keys()):
                 characterInfo =  data[name.lower()]
-                print(characterInfo)
                 output = character_sheet.MakeEmbed(name.title(), characterInfo)
-                print(output)
                 await message.channel.send(embed=output)
             else:
                 output = 'Invalid character!\n```{}```'.format(name.lower())
@@ -69,7 +68,6 @@ async def on_message(message):
         if(message.content == '>iam'):
             await message.channel.send('I need to know what role you want, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
         else:
-            print(message.guild.roles)
             desiredRole = message.content.split(">iam ",1)[1].lower()
             if(desiredRole in ROLES.keys()):
                 if(message.guild.get_role(ROLES[desiredRole]) in message.author.roles):
@@ -84,7 +82,6 @@ async def on_message(message):
         if(message.content == '>iamnot'):
             await message.channel.send('I need to know what role you aren\'t, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
         else:
-            print(message.guild.roles)
             desiredRole = message.content.split(">iamnot ",1)[1].lower()
             if(desiredRole in ROLES.keys()):
                 if(message.guild.get_role(ROLES[desiredRole]) in message.author.roles):
@@ -95,6 +92,10 @@ async def on_message(message):
             else:
                 await message.channel.send("Role `{}` not found.".format(desiredRole))
 
+    # Eyes
+    elif(message.content.startswith('>googlify')):
+        Googlify.Googlify(Googlify.ImageFromURL(message.author.avatar_url)).save('tempGoogly.png')
+        await message.channel.send(file=discord.File('tempGoogly.png'))
 
 
 @client.event
@@ -105,5 +106,5 @@ async def on_ready():
     print('------')
 
 client.run(TOKEN)
-client.logout()
-client.close()
+await client.logout()
+await client.close()
