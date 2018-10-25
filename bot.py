@@ -106,5 +106,5 @@ async def on_ready():
     print('------')
 
 client.run(TOKEN)
-await client.logout()
-await client.close()
+client.logout()
+client.close()
