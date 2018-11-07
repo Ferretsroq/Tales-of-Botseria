@@ -59,7 +59,7 @@ def repopulate():
 def MakeEmbed(name, characterData):
     print('MakeEmbed!')
     embed=discord.Embed(title=name, color=ChooseColor(characterData['deity']))
-    embed.set_image(url=characterData['image'])
+    embed.set_thumbnail(url=characterData['image'])
     embed.add_field(name='Series:', value=characterData['series'], inline=True)
     embed.add_field(name='Deity:', value=characterData['deity'], inline=True)
     embed.add_field(name='App Link:', value=characterData['app'], inline=False)
@@ -69,17 +69,19 @@ def MakeEmbed(name, characterData):
     return embed
 
 def ChooseColor(deity):
-    if(deity.lower() == 'solara'):
+    if(deity.lower() == 'admin'):
         return 0xe52161
-    elif(deity.lower() == 'tiamat'):
+    if(deity.lower() == 'solara'):
         return 0xe44c3f
+    elif(deity.lower() == 'tiamat'):
+        return 0x276791
     elif(deity.lower() == 'mistral'):
         return 0x2d8951
     elif(deity.lower() == 'prosperpina'):
         return 0xa4563c
     elif(deity.lower() == 'skirnir'):
         return 0xc27c0e
-    elif(deity.lower() == 'lucifel'):
+    elif(deity.lower() == 'lucifiel'):
         return 0x9b59b6
     else:
         return 0x000000
