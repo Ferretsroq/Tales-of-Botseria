@@ -12,7 +12,7 @@ def repopulate():
         print('x: {}'.format(x))
         res = requests.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1))
         soup = bs4.BeautifulSoup(res.text, "lxml")
-
+        print('Fetching url {}'.format('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)))
         try:
             name = soup.select('[id="profilename"]')[0].text.lower()
             print(name)
@@ -27,7 +27,9 @@ def repopulate():
             print('bad group')
             continue
             
-        image = soup.select('[id="100x100_image"]')[0].text
+        #image = soup.select('[id="100x100_image"]')[0].text
+        print('Populating {}'.format(name))
+        image = soup.find('object', attrs={'id' : '100x100_image'})['data']
         deity = soup.select('[id="deity"]')[0].text
         age = soup.select('[id="age"]')[0].text
         series = soup.select('[id="series"]')[0].text
@@ -57,6 +59,7 @@ def repopulate():
 def MakeEmbed(name, characterData):
     print('MakeEmbed!')
     embed=discord.Embed(title=name, color=ChooseColor(characterData['deity']))
+    embed.set_image(url=characterData['image'])
     embed.add_field(name='Series:', value=characterData['series'], inline=True)
     embed.add_field(name='Deity:', value=characterData['deity'], inline=True)
     embed.add_field(name='App Link:', value=characterData['app'], inline=False)
