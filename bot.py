@@ -1,6 +1,7 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
 import Googlify, RockPaperScissors
+import random
 
 TOKEN = open('token.token').read()
 ROLES = {
@@ -14,7 +15,7 @@ ROLES = {
         "closed": 503994494690131969,
         "hiatus": 503994516148191242
         }
-#rockPaperScissorsGame = RockPaperScissors.Game()
+FACTIONS = ["SOLARA", "TIAMAT", "MISTRAL", "PROSERPINA", "SKIRNIR", "LUCIFIEL"]
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -97,6 +98,13 @@ class MyClient(discord.Client):
                         await message.channel.send("You do not have role\n```{}```".format(desiredRole))
                 else:
                     await message.channel.send("Role `{}` not found.".format(desiredRole))
+        elif(message.content.startswith('>faction')):
+            faction = random.choice(FACTIONS)
+            text = ['Uplander! Uplander, make lookings! Swooshy spellycastings is sayings....um....is sayings {} is good choosymakes!'.format(faction),
+                        'According to the position of the stars, the placement of your bedroom, and the ripeness of this pickle - {} is the best deity for you!'.format(faction),
+                        'The fates have chosen, oh indecisive one - {} has found you worthy to fight in their name!'.format(faction)]
+            await message.channel.send(random.choice(text))
+            #await message.channel.send('The fates have chosen, oh indecisive one - {} is the deity that you may call as your home!'.format(faction))
 
         # Eyes
         elif(message.content.startswith('>googlify')):
