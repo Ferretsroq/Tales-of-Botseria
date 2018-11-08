@@ -26,11 +26,13 @@ def repopulate():
         if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members'):
             print('bad group')
             continue
+        else:
+            deity = group
             
         #image = soup.select('[id="100x100_image"]')[0].text
         print('Populating {}'.format(name))
         image = soup.find('object', attrs={'id' : '100x100_image'})['data']
-        deity = soup.select('[id="deity"]')[0].text
+        #deity = soup.select('[id="deity"]')[0].text
         age = soup.select('[id="age"]')[0].text
         series = soup.select('[id="series"]')[0].text
         pronouns = soup.select('[id="pronouns"]')[0].text

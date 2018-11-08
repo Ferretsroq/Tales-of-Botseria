@@ -10,8 +10,8 @@ ROLES = {
         "proserpina": 503993351876378644,
         "skirnir": 503993370302218241,
         "lucifiel": 503993386588700672,
-        "want more threads": 503994473655697408,
-        "am cool thanks": 503994494690131969,
+        "open": 503994473655697408,
+        "closed": 503994494690131969,
         "hiatus": 503994516148191242
         }
 #rockPaperScissorsGame = RockPaperScissors.Game()
