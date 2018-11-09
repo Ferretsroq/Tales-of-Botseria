@@ -408,47 +408,41 @@
 			 	}
 			},
 "Magnetic Shield": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Crystal Buckler", "Wooden Amulet"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"A": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out.",
+					"B": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out.",
+					"C": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out."
 			 	}
 			},
 "Memory Lenses": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Plain Spectacles", "Contact Lenses"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"A": "Allows the wearer to mentally record everything they see for a few minutes and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly.",
+					"B": "Allows the wearer to mentally record everything they see for a minute and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly.",
+					"C": "Allows the wearer to mentally record everything they see for a few seconds and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly."
 			 	}
 			},
 "Metal Death": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Magic Wand", "Capsule", "Spray Bottle"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Produces a stream of foam that covers an extremely large (miles) area, transforming any metal rank EX or lower that it touches into a substance as brittle as thin glass. ",
+					"S": "Produces a stream of foam that covers a large area (across a field), transforming any metal rank S or lower that it touches into a substance as brittle as thin glass. ",
+					"A": "Produces a stream of foam that covers a medium area (across a room), transforming any metal rank A or lower that it touches into a substance as brittle as thin glass. ",
+					"B": "Produces a stream of foam that covers a small area (arms' reach), transforming any metal rank B or lower that it touches into a substance as brittle as thin glass. ",
+					"C": "Produces a stream of foam that covers a small area (arms' reach) transforming any metal rank C or lower that it touches into a substance as brittle as thin glass. "
 			 	}
 			},
 "Personal Environment Field": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Cloak", "Amulet", "Mittens"],
 				"Ranks": 
 				{
 					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. The aura protects against sudden flashes of temperature change (such as from a heat ray).",
+					"A": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. It does not protect against sudden flashes of temperature change (such as from a heat ray).",
 			 	}
 			},
 "Phase Changer": {
