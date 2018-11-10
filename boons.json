@@ -1,766 +1,752 @@
 {
-	"name": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-
-"Adhesion": {
-				"Form Factor": ["Facemask", "Gloves With Suction Cups", "Amulet"],
-				"Ranks": 
-				{
-					"EX": "Allows for automatic, near-instantaneous climbing of any surface, even horizontal ones.",
-					"S": "Allows for automatic accelerated climbing of any surface, even horizontal ones.",
-					"A": "Allows for automatic climbing of any surface, even horizontal ones.",
-					"B": "Allows for easier climbing of any surface, even horizontal ones.",
-					"C": "Allows for easier climbing of any mundane surface, even horizontal ones."
-			 	}
-			},
-"Antivenom": {
-				"Form Factor": ["Necklace", "Ring (Emerald)", "Sigil Imprinted on Tongue"],
-				"Ranks": 
-				{
-					"EX": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
-					"S": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
-					"A": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
-					"B": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
-					"C": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system."
-			 	}
-			},
-"Attractor": {
-				"Form Factor": ["Gloves", "Necklace Made of Hooks", "Ring (Simple)"],
-				"Ranks": 
-				{
-					"EX": "One item within line of sight is teleported immediately to you.",
-					"S": "One unanchored item your size or smaller within line of sight is teleported immediately to you.",
-					"A": "One unanchored item your size or smaller within line of sight is drawn immediately to you. This takes a few moments. The item has no momentum when it arrives.",
-					"B": "One unanchored item your size or smaller within line of sight is drawn immediately to you. This takes a few moments. The item arrives at full speed to your hands.",
-					"C": "One unanchored item your size or smaller within line of sight is drawn immediately to you. This takes a few moments. The item arrives at full speed to your hands."
-			 	}
-			},
-"Banishing Enchantment": {
-				"Form Factor": ["Enchantment on Weapon"],
-				"Ranks": 
-				{
-					"S": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a safe direction of your choice.",
-					"A": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a random (safe) direction.",
-					"B": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a random (safe) direction.",
-					"C": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a random (safe) direction."
-			 	}
-			},
-"Blinking Enchantment": {
-				"Form Factor": ["Enchantment on Armor"],
-				"Ranks": 
-				{
-					"S": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a safe direction of your choice.",
-					"A": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a random (safe) direction.",
-					"B": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a random (safe) direction.",
-					"C": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a random (safe) direction."
-			 	}
-			},
-"Catholicon": {
-				"Form Factor": ["White Crystal", "Amulet (Blue)", "Foul-Smelling Concoction"],
-				"Ranks": 
-				{
-					"EX": "Cures any disease of the boon's rank or lower.",
-					"S": "Cures any disease of the boon's rank or lower.",
-					"A": "Cures any disease of the boon's rank or lower.",
-					"B": "Cures any disease of the boon's rank or lower.",
-					"C": "Cures any disease of the boon's rank or lower."
-			 	}
-			},
-"Catseye": {
-				"Form Factor": ["Goggles", "Spectacles", "Temporary Forehead Tattoo"],
-				"Ranks": 
-				{
-					"A": "Grants the ability to see in the dark, and the ability to see invisible entities.",
-					"B": "Grants the ability to see in the dark.",
-					"C": "Grants the ability to see in the dark."
-			 	}
-			},
-"Beacon of Safety": {
-				"Form Factor": ["Mystic Rune"],
-				"Ranks": 
-				{
-					"EX": "Mark a structure. When this boon is activated, a spatial warp returns the user and all targets within line of sight (that the user wishes) to a location next to the structure, no matter how far away from the structure the user is.",
-					"S": "Mark a structure. When this boon is activated, a spatial warp returns the user and all targets within arm's reach (that the user wishes) to a location next to the structure, no matter how far away from the structure the user is.",
-					"A": "Mark a structure. When this boon is activated, a spatial warp returns the user to a location next to the structure, no matter how far away from the structure the user is.",
-					"B": "Mark a structure. When this boon is activated, a spatial warp returns the user and all targets within arm's reach to a location next to the structure, so long as the structure is within line of sight.",
-			 	}
-			},
-"Deific Knowledge": {
-				"Form Factor": ["Temporary Tattoo", "Holy Symbol"],
-				"Ranks": 
-				{
-					"EX": "This boon grants you one honest conversation with your deity, receiving answers to the best of its ability to your questions.",
-					"S": "This boon grants you three questions to ask your deity and receive an honest answer.",
-					"A": "This boon grants you one question to ask your deity and receive an honest answer.",
-			 	}
-			},
-"Deception Filter": {
-				"Form Factor": ["Badge", "Headband"],
-				"Ranks": 
-				{
-					"A": "Wearer cannot knowingly tell a lie while the badge is worn, and irregularly blurts out a hidden truth.",
-					"B": "Wearer cannot knowingly tell a lie while the badge is worn.",
-					"C": "If the wearer lies, the item glows bright red."
-			 	}
-			},
-"Density Enchantment": {
-				"Form Factor": ["Enchantment on Weapon"],
-				"Ranks": 
-				{
-					"A": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the weapon suddenly increases dramatically in weight, causing the blow to inflict additional damage.",
-					"B": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the weapon suddenly increases dramatically in weight, causing the blow to inflict additional damage.",
-					"C": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the weapon suddenly increases dramatically in weight, causing the blow to inflict additional damage."
-			 	}
-			},
-"Detonation (Desiccating)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Bursts in an extremely large (miles) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
-					"S": "Bursts in a large (across a field) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
-					"A": "Bursts in a medium (across a room) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
-					"B": "Bursts in a small (arms' reach) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
-					"C": "Bursts in a small (arms' reach) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized."
-			 	}
-			},
-"Detonation (Flash)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Bursts in an extremely large (miles) radius, blinding all within range.",
-					"S": "Bursts in a large (across a field) radius, blinding all within range.",
-					"A": "Bursts in a medium (across a room) radius, blinding all within range.",
-					"B": "Bursts in a small (arms' reach) radius, blinding all within range.",
-					"C": "Bursts in a small (arms' reach) radius, blinding all within range."
-			 	}
-			},
-"Detonation (Gravity)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Bursts in an extremely large (miles) radius, increasing gravity tremendously. All in the area are crushed to the ground for a short time and cannot take physical actions.",
-					"S": "Bursts in a large (across a field) radius, increasing gravity tremendously. All in the area are crushed to the ground for a short time and cannot take physical actions.",
-					"A": "Bursts in a medium (across a room) radius, increasing gravity tremendously. All in the area are crushed to the ground for a short time and cannot take physical actions.",
-					"B": "Bursts in a small (arms' reach) radius, increasing gravity. All in the area are immobilized for a short time due to the additional weight.",
-					"C": "Bursts in a small (arms' reach) radius, increasing gravity. All in the area are slowed for a short time due to the additional weight."
-			 	}
-			},
-"Detonation (Matter Disruption)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Explodes in an extremely large (miles) radius, releasing chaotic magic that rearranges matter in random ways.",
-					"S": "Explodes in a large (across a field) radius, releasing chaotic magic that rearranges matter in random ways.",
-					"A": "Explodes in a medium (across a room) radius, releasing chaotic magic that rearranges matter in random ways.",
-					"B": "Explodes in a small (arms' reach) radius, releasing chaotic magic that rearranges matter in random ways.",
-					"C": "Explodes in a small (arms' reach) radius, releasing chaotic magic that rearranges matter in random ways."
-			 	}
-			},
-"Detonation (Pressure)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Explodes in an extremely large (miles) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
-					"S": "Explodes in a large (across a field) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
-					"A": "Explodes in a medium (across a room) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
-					"B": "Explodes in a small (arms' reach) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
-					"C": "Explodes in a small (arms' reach) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy."
-			 	}
-			},
-"Detonation (Singularity)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Explodes and creates a momentary singularity that tears at the fabric of the universe. Inflicts damage to all within a large range (across a field), drawing them (or their remains) together into the singularity (if possible).",
-					"S": "Explodes and creates a momentary singularity that tears at the fabric of the universe. Inflicts damage to all within a medium range (across a room), drawing them (or their remains) together into the singularity (if possible).",
-			 	}
-			},
-"Detonation (Sonic)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Explodes with a terrifying sound, deafening all in an extremely large (miles) radius.",
-					"S": "Explodes with a terrifying sound, deafening all in a large (across a field) radius.",
-					"A": "Explodes with a terrifying sound, deafening all in a medium (across a room) radius.",
-					"B": "Explodes with a terrifying sound, deafening all in a small (arms' reach) radius.",
-					"C": "Explodes with a terrifying sound, deafening all in a small (arms' reach) radius."
-			 	}
-			},
-"Detonation (Web)": {
-				"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
-				"Ranks": 
-				{
-					"EX": "Explodes in an extremely large (miles) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
-					"S": "Explodes in a large (across a field) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
-					"A": "Explodes in a medium (across a room) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
-					"B": "Explodes in a small (arms' reach) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
-					"C": "Explodes in a small (arms' reach) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo."
-			 	}
-			},
-"Disrupting Enchantment": {
-				"Form Factor": ["Enchantment on Weapon"],
-				"Ranks": 
-				{
-					"S": "Enchants a weapon. When the weapon strikes a solid creature of object, the chaotic magic disrupts the atomic structure of the target and everything near them.",
-					"A": "Enchants a weapon. When the weapon strikes a solid creature of object, the chaotic magic disrupts the atomic structure of the target.",
-					"B": "Enchants a weapon. When the weapon strikes a solid creature of object, the chaotic magic disrupts the atomic structure of the target a little.",
-			 	}
-			},
-"Eagleseye": {
-				"Form Factor": ["Your Own Eyes Look More Birdlike", "Ornate Spyglass", "Bejeweled Spectacles"],
-				"Ranks": 
-				{
-					"EX": "Grants the ability to see anywhere on your current plane, regardless of line of sight. Only blockable by EX anti-scrying magic.",
-					"S": "Grants the ability to see up to miles away, ignoring line of sight blockage and magical effects. Only blockable by S and EX anti-scrying magic.",
-					"A": "Grants the ability to see up to miles away, ignoring line of sight blockage.",
-					"B": "Grants the ability to see ten times as far as normal, ignoring line of sight blockage.",
-					"C": "Grants the ability to see ten times as far as normal."
-			 	}
-			},
-"Farspeaker": {
-				"Form Factor": ["Golden Megaphone", "Mystic Rune Imprinted on Your Tongue"],
-				"Ranks": 
-				{
-					"EX": "The user can be heard at any location on the same plane. They can also hear sounds made in return.",
-					"S": "The user can be heard at any distant location that they can see, even if something physically blocks the intervening space. They can also hear sounds made in return.",
-					"A": "The user can be heard at any distant location that they can see, as long as nothing physically blocks the intervening space. They can also hear sounds made in return.",
-					"B": "The user can be heard at any distant location that they can see, as long as nothing physically blocks the intervening space. They can not hear any sounds made in return.",
-					"C": "The user can be heard by any one person that they can see, as long as nothing physically blocks the intervening space. They can not hear sounds made in return."
-			 	}
-			},
-"Fireproofing": {
-				"Form Factor": ["Sparkly Spray Bottle", "Magic Rune"],
-				"Ranks": 
-				{
-					"A": "Activating this boon on an object renders it fireproof, even against magical fire rank A or lower.",
-					"B": "Activating this boon on an object renders it fireproof, even against magical fire rank B or lower.",
-					"C": "Activating this boon on an object renders it fireproof, even against magical fire rank C or lower."
-			 	}
-			},
-"Force Cube Projector": {
-				"Form Factor": ["Ring", "Bracelet", "Six-Sided Die"],
-				"Ranks": 
-				{
-					"EX": "Creates an immobile cube composed of six planes of solid force, the size of a castle. The cube conforms to the space available.",
-					"S": "Creates an immobile cube composed of six planes of solid force, the size of a small house. The cube conforms to the space available.",
-					"A": "Creates an immobile cube composed of six planes of solid force, the size of a small room. The cube conforms to the space available.",
-					"B": "Creates an immobile cube composed of six planes of solid force, the size of a small closet. The cube conforms to the space available.",
-					"C": "Creates an immobile cube composed of six planes of solid force, the size of a person's fist. The cube conforms to the space available."
-			 	}
-			},
-"Force Field Enchantment": {
-				"Form Factor": ["Enchantment on Armor"],
-				"Ranks": 
-				{
-					"S": "Enchants armor. The enchanted armor has a force field around it, increasing protection.",
-					"A": "Enchants armor. The enchanted armor has a force field around it, increasing protection.",
-					"B": "Enchants armor. The enchanted armor has a force field around it, increasing protection.",
-					"C": "Enchants armor. The enchanted armor has a force field around it, increasing protection."
-			 	}
-			},
-"Force Wall": {
-				"Form Factor": ["Ring", "Amulet (Topaz)", "Enchanted Brick Trowel"],
-				"Ranks": 
-				{
-					"S": "Creates an immobile wall of solid force. The wall conforms to the space available.",
-					"A": "Creates an immobile wall of solid force. The wall conforms to the space available.",
-					"B": "Creates an immobile wall of solid force. The wall conforms to the space available.",
-					"C": "Creates an immobile wall of solid force. The wall conforms to the space available."
-			 	}
-			},
-"Friction-Reducing Gel": {
-				"Form Factor": ["Tube of Gel"],
-				"Ranks": 
-				{
-					"EX": "This gel makes things completely frictionless.",
-					"S": "This gel makes things extremely slippery. Movement in the affected area is almost impossible, and objects coated in the gel are impossible to hold.",
-					"A": "This gel makes things extremely slippery. Movement in the affected area is extremely difficult, and objects coated in the gel are difficult to hold.",
-					"B": "This gel makes things slippery. Movement in the affected area is  difficult, and objects coated in the gel are difficult to hold.",
-			 	}
-			},
-"Frigid Wall": {
-				"Form Factor": ["Gloves", "Your Hair Has Icicles Hanging Off", "An Ice Cube That Does Not Melt"],
-				"Ranks": 
-				{
-					"EX": "Creates a wall of supercooled air that freezes anything that passes through it. The wall can be moved and expands to the space available.",
-					"S": "Creates a wall of supercooled air that freezes anything that passes through it. The wall conforms to the space available.",
-					"A": "Creates a wall of supercooled air that freezes anything that passes through it. The wall conforms to the space available.",
-			 	}
-			},
-"Gravity Changer": {
-				"Form Factor": ["Metal Disk With Your Deity's Symbol", "Ornate Bagpipes", "Magic Wand", "Magic Staff"],
-				"Ranks": 
-				{
-					"EX": "Changes the direction of gravity within an extremely large (miles) area. The gravitic warp could be continuous across the affected area, or it could bend and curve, changing directions within the area. Once gravity is warped, it cannot be changed until the effect expires.",
-					"S": "Changes the direction of gravity within a large (across a field) area. The gravitic warp could be continuous across the affected area, or it could bend and curve, changing directions within the area. Once gravity is warped, it cannot be changed until the effect expires.",
-					"A": "Changes the direction of gravity within a medium (across a room) area.",
-					"B": "Changes the direction of gravity within a small (arms' reach) area.",
-					"C": "Changes the direction of gravity within a small (arms' reach) area."
-			 	}
-			},
-"Gravity Nullifier": {
-				"Form Factor": ["Holy Symbol", "Magic Rune (Boot With Wings)", "Bubble Wand"],
-				"Ranks": 
-				{
-					"EX": "The user and any allies within line of sight can float into the air, moving in any direction.",
-					"S": "The user can float into the air, moving in any direction.",
-					"A": "The user can float into the air, moving vertically (but not horizontally without some other action, such as pushing along the ceiling).",
-					"B": "A nonliving object up to the size of a human can float in the air to any height, and is weightless.",
-					"C": "A nonliving object can hover just above the ground, and is weightless."
-			 	}
-			},
-"Heat Enchantment": {
-				"Form Factor": ["Enchantment on Weapon"],
-				"Ranks": 
-				{
-					"EX": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a wave of flame blasting far beyond the target.",
-					"S": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of flame, inflicting additional damage to the target and nearby foes.",
-					"A": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of heat, inflicting additional damage.",
-					"B": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of heat, inflicting additional damage.",
-					"C": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of heat, inflicting additional damage."
-			 	}
-			},
-"Illusion": {
-				"Form Factor": ["Theatre Mask With Arcand Symbols", "Magic Rune", "Magic Wand"],
-				"Ranks": 
-				{
-					"EX": "Projects an illusion into an area. The illusion includes all five senses and can be controlled by you.",
-					"S": "Projects an illusion into an area. The illusion includes sight, sound, taste, and smell, but not touch. The illusion can be controlled by you.",
-					"A": "Projects an illusion into an area. The illusion includes sight, sound, and smell. The illusion can be controlled by you.",
-					"B": "Projects an illusion into an area. The illusion includes sight and sound. The illusion can perform basic actions specified by you when you create it, but is not directly controllable.",
-					"C": "Projects an illusion into an area. The illusion includes only sight. The illusion can perform basic actions specified by you when you create it, but is not directly controllable."
-			 	}
-			},
-"Immobilizer": {
-				"Form Factor": ["Magic Wand", "Unnaturally White Marshmallow"],
-				"Ranks": 
-				{
-					"EX": "When activated, projects a mass of rapidly expanding and hardening foam that stretches for miles. The targets are held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder.",
-					"S": "When activated, projects a mass of rapidly expanding and hardening foam that stretches across a field. The targets are held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder.",
-					"A": "When activated, projects a mass of rapidly expanding and hardening foam that stretches across a room. The target is held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder.",
-					"B": "When activated, projects a mass of rapidly expanding and hardening foam at one target. The target is held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder.",
-			 	}
-			},
-"Inferno Wall": {
-				"Form Factor": ["Amulet (Ruby)", "Magic Scroll", "Single Matchstick"],
-				"Ranks": 
-				{
-					"EX": "Creates a wall of solid flame that burns anything that touches it. You can choose for allies to pass safely through the wall. The wall can be moved, and expands to the space available.",
-					"S": "Creates a wall of solid flame that burns anything that touches it. You can choose for allies to pass safely through the wall. The wall conforms to the space available.",
-					"A": "Creates a wall of extreme heat that burns anything that passes through it. The wall conforms to the space available.",
-			 	}
-			},
-"Infiltrator": {
-				"Form Factor": ["Magic Orb", "Blowgun With (Expanding) Pellet"],
-				"Ranks": 
-				{
-					"A": "Tiny capsule launches and moves at great speed, mapping and scanning an unknown area. It identifies basic layout, creatures, and major energy sources. Its movement is blocked by any physical or energy barrier.ect",
-					"B": "Small capsule launches and moves at great speed, mapping and scanning an unknown area. It identifies basic layout, creatures, and major energy sources. Its movement is blocked by any physical or energy barrier.",
-					"C": "Large capsule launches and moves at great speed, mapping and scanning an unknown area. It identifies basic layout, creatures, and major energy sources. Its movement is blocked by any physical or energy barrier."
-			 	}
-			},
-"Invisibility Enchantment": {
-				"Form Factor": ["Enchantment on Armor"],
-				"Ranks": 
-				{
-					"A": "Enchants armor. The enchanted armor is invisible, making the wearer appear to be armored or clothed however they wish.",
-					"B": "Enchants armor. The enchanted armor is invisible, making the wearer appear to be unarmored.",
-					"C": "Enchants armor. The enchanted armor is invisible, making the wearer appear to be unarmored, but shimmering with magic."
-			 	}
-			},
-"Lightning Wall": {
-				"Form Factor": ["Magic Wand", "Magic Scroll", "Ring"],
-				"Ranks": 
-				{
-					"EX": "Creates a wall of electric bolts that shocks anything that passes through it. You can choose for allies to pass safely through the wall. The wall can be moved, and expands to the space available.",
-					"S": "Creates a wall of electric bolts that shocks anything that passes through it. You can choose for allies to pass safely through the wall. The wall conforms to the space available.",
-					"A": "Creates a wall of electric bolts that shocks anything that passes through it. The wall conforms to the space available.",
-			 	}
-			},
-"Living Solvent": {
-				"Form Factor": ["Glass Vial of Slime"],
-				"Ranks": 
-				{
-					"EX": "Once released, this organic slime dissolves any material it comes into contact with, including magical items rank EX. The slime is never rendered inert.",
-					"S": "Once released, this organic slime dissolves material it comes into contact with of rank S or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert.",
-					"A": "Once released, this organic slime dissolves material it comes into contact with of rank A or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert.",
-					"B": "Once released, this organic slime dissolves material it comes into contact with of rank B or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert.",
-					"C": "Once released, this organic slime dissolves material it comes into contact with of rank C or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert."
-			 	}
-			},
-"Magnetic Master": {
-				"Form Factor": ["Metal Gauntlets", "Metal Cap With Mystical Engravings", "Ring (Iron)"],
-				"Ranks": 
-				{
-					"EX": "Establishes a connection with any number of metal objects within line of sight, regardless of size. After this connection is established, the user can move or manipulate the objects anywhere within line of sight.",
-					"S": "Establishes a connection with one metal object within line of sight, regardless of size. After this connection is established, the user can move or manipulate the object anywhere within line of sight.",
-					"A": "Establishes a connection with one metal object within line of sight that a human could hold in one hand. After this connection is established, the user can move or manipulate the object anywhere within line of sight. For example, the user could wield a weapon or drag a helm affixed to a foe's head to and fro.",
-					"B": "Establishes a connection with one metal object within arms' reach that a human could hold in one hand. After this connection is established, the user can move or manipulate the object anywhere within arms' reach. For example, the user could wield a weapon or drag a helm affixed to a foe's head to and fro.",
-			 	}
-			},
-"Magnetic Shield": {
-				"Form Factor": ["Crystal Buckler", "Wooden Amulet"],
-				"Ranks": 
-				{
-					"A": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out.",
-					"B": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out.",
-					"C": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out."
-			 	}
-			},
-"Memory Lenses": {
-				"Form Factor": ["Plain Spectacles", "Contact Lenses"],
-				"Ranks": 
-				{
-					"A": "Allows the wearer to mentally record everything they see for a few minutes and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly.",
-					"B": "Allows the wearer to mentally record everything they see for a minute and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly.",
-					"C": "Allows the wearer to mentally record everything they see for a few seconds and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly."
-			 	}
-			},
-"Metal Death": {
-				"Form Factor": ["Magic Wand", "Capsule", "Spray Bottle"],
-				"Ranks": 
-				{
-					"EX": "Produces a stream of foam that covers an extremely large (miles) area, transforming any metal rank EX or lower that it touches into a substance as brittle as thin glass. ",
-					"S": "Produces a stream of foam that covers a large area (across a field), transforming any metal rank S or lower that it touches into a substance as brittle as thin glass. ",
-					"A": "Produces a stream of foam that covers a medium area (across a room), transforming any metal rank A or lower that it touches into a substance as brittle as thin glass. ",
-					"B": "Produces a stream of foam that covers a small area (arms' reach), transforming any metal rank B or lower that it touches into a substance as brittle as thin glass. ",
-					"C": "Produces a stream of foam that covers a small area (arms' reach) transforming any metal rank C or lower that it touches into a substance as brittle as thin glass. "
-			 	}
-			},
-"Personal Environment Field": {
-				"Form Factor": ["Cloak", "Amulet", "Mittens"],
-				"Ranks": 
-				{
-					"S": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. The aura protects against sudden flashes of temperature change (such as from a heat ray of rank S or lower).",
-					"A": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. It does not protect against sudden flashes of temperature change (such as from a heat ray).",
-			 	}
-			},
-"Phase Changer": {
-				"Form Factor": ["Scarf", "Whistle", "Magic Wand"],
-				"Ranks": 
-				{
-					"EX": "Puts the user and nearby allies out of phase. During this time, the user and allies can pass through solid objects as though they were entirely insubstantial, like a ghost. They may choose to be invisible. They cannot make physical attacks or be physically attacked.",
-					"S": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. The user may choose to be invisible. They cannot make physical attacks or be physically attacked.",
-					"A": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked.",
-					"B": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked.",
-					"C": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked."
-			 	}
-			},
-"Phase Disruptor": {
-				"Form Factor": ["Magic Rune", "Magic Wand", "Paint to Put on Object"],
-				"Ranks": 
-				{
-					"S": "Puts a physical structure (or similarly-sized object) out of phase. While the structure is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
-					"A": "Puts a portion of a physical structure (like a wall or floor) out of phase. While the area is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
-					"B": "Puts a portion of a physical structure (like part of a wall or floor) out of phase. While the area is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
-					"C": "Puts a small physical object (like a vase or chair) out of phase. While the object is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light."
-			 	}
-			},
-"Phasing Gloves": {
-				"Form Factor": ["Plain Gloves", "Gauntlets", "Fancy Gloves"],
-				"Ranks": 
-				{
-					"S": "These gloves can selectively phase through solid objects rank S or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
-					"A": "These gloves can selectively phase through solid objects rank A or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
-					"B": "These gloves can selectively phase through solid objects rank B or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
-					"C": "These gloves can selectively phase through solid objects rank C or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves."
-			 	}
-			},
-"Psychic Communique": {
-				"Form Factor": ["Diamond That Floats Around Your Head", "Magic Scroll", "Crystal Ball"],
-				"Ranks": 
-				{
-					"EX": "Allows the user to carry out a one-time, two-way telepathic conversation, with an unlimited range (on any plane), to anyone they know.",
-					"S": "Allows the user to project a one-time, one-way telepathic message of up to twenty words, with an unlimited range (on any plane), to anyone they know.",
-					"A": "Allows the user to project a one-time, one-way telepathic message of up to twenty words, with an unlimited range (on the same plane), to anyone they know.",
-					"B": "Allows the user to project a one-time, one-way telepathic message of up to ten words, with an unlimited range (on the same plane), to anyone they know.",
-					"C": "Allows the user to project a one-time, one-way telepathic message one word, with an unlimited range (on the same plane), to anyone they know."
-			 	}
-			},
-"Psychic Defense Amulet": {
-				"Form Factor": ["Amulet (Amethyst)", "Amulet (Iron) With Skull Engraving"],
-				"Ranks": 
-				{
-					"S": "Each time the wearer of the amulet is affected by an attack (rank S or lower) that attempts to sway their actions or beliefs or that attacks their mind, they are unaffected and can act normally.",
-					"A": "Each time the wearer of the amulet is affected by an attack (rank A or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank A.",
-					"B": "Each time the wearer of the amulet is affected by an attack (rank B or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank B.",
-					"C": "Each time the wearer of the amulet is affected by an attack (rank C or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank C."
-			 	}
-			},
-"Numbing Ray": {
-				"Form Factor": ["Magic Wand"],
-				"Ranks": 
-				{
-					"EX": "Allows the user to project a ray of energy that numbs the bodies of all targets in sight, immobilizing them.",
-					"S": "Allows the user to project a ray of energy that numbs the target's entire body, immobilizing them.",
-					"A": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless.",
-					"B": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless.",
-					"C": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless."
-			 	}
-			},
-"Reality Spike": {
-				"Form Factor": ["Rail Spike", "Anchor", "Smooth Cylinder"],
-				"Ranks": 
-				{
-					"EX": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank EX attempts to dislodge.",
-					"S": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank S attempts to dislodge.",
-					"A": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank A attempts to dislodge.",
-					"B": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank B attempts to dislodge.",
-					"C": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank C attempts to dislodge."
-			 	}
-			},
-"Rejuvenator": {
-				"Form Factor": ["Magic Potion (Red)", "Magic Wand"],
-				"Ranks": 
-				{
-					"EX": "Heals the user from damage they have sustained, including revival from very recent death.",
-					"S": "Heals the user from mortal damage they have sustained.",
-					"A": "Heals the user from damage they have sustained.",
-					"B": "Heals the user from damage they have sustained.",
-					"C": "Heals the user from minor damage they have sustained."
-			 	}
-			},
-"Scrying Crystal Ball": {
-				"Form Factor": ["Crystal Ball With Scrying Rune"],
-				"Ranks": 
-				{
-					"EX": "The rune can be physically placed somewhere. The rune is invisible and only detectable by EX rank powers. The rune can be moved by the user, by teleporting somewhere in the user's line of sight, no matter where the rune was previously. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, even if they are on different planes.",
-					"S": "The rune can be physically placed somewhere. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, even if they are on different planes.",
-					"A": "The rune can be physically placed somewhere. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, as long as they are on the same plane.",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Retaliation Enchantment": {
-				"Form Factor": ["Enchantment on Armor"],
-				"Ranks": 
-				{
-					"S": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
-					"A": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
-					"B": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
-					"C": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker."
-			 	}
-			},
-"Retriever": {
-				"Form Factor": ["Magic Rune", "Quill With Ink"],
-				"Ranks": 
-				{
-					"S": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, regardless of distance, even if they are on different planes.",
-					"A": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, regardless of distance, as long as they are on the same plane.",
-					"B": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, so long as the object is in line of sight.",
-			 	}
-			},
-"Shock Enchantment": {
-				"Form Factor": ["Enchantment on Weapon"],
-				"Ranks": 
-				{
-					"EX": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a lightning storm that rains thunderbolts on enemies.",
-					"S": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target and enemies near the target.",
-					"A": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target.",
-					"B": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target.",
-					"C": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target."
-			 	}
-			},
-"Shocker": {
-				"Form Factor": ["Thundercloud Following Above Your Head", "Magic Scroll", "Humming Orb"],
-				"Ranks": 
-				{
-					"EX": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in an extremely large (miles) area around the user.",
-					"S": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a large (across a field) area around the user.",
-					"A": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a medium (across a room) area around the user.",
-					"B": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a small (arms' reach) area around the user.",
-					"C": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a small (arms' reach) area around the user."
-			 	}
-			},
-"Skill Boost": {
-				"Form Factor": ["Ingestible Pill", "Magic Potion"],
-				"Ranks": 
-				{
-					"EX": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to EX rank.",
-					"S": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to S rank.",
-					"A": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to A rank.",
-					"B": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to B rank.",
-					"C": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to C rank."
-			 	}
-			},
-"Sleep Inducer": {
-				"Form Factor": ["Thin Glove", "Magic Wand", "Poison (Liquid)"],
-				"Ranks": 
-				{
-					"S": "Touch puts the victim to sleep until awoken by magical means.",
-					"A": "Touch puts the victim to sleep until awoken by a violent action.",
-					"B": "Touch puts the victim to sleep until awoken by a violent action or an extremely loud noise.",
-					"C": "Touch puts the victim to sleep until awoken by a violent action or an extremely loud noise."
-			 	}
-			},
-"Sonic Hole": {
-				"Form Factor": ["Black Orb", "Amulet (Ruby)"],
-				"Ranks": 
-				{
-					"EX": "Draws all sound in an extremely large (miles) area into the item. Within the affected area, no sound can be heard.",
-					"S": "Draws all sound in a large (across a field) area into the item. Within the affected area, no sound can be heard.",
-					"A": "Draws all sound in a medium (across a room) area into the item. Within the affected area, no sound can be heard.",
-					"B": "Draws all sound in a small (arms' reach) area into the item. Within the affected area, no sound can be heard.",
-					"C": "Draws all sound in a small (arms' reach) area into the item. Within the affected area, no sound can be heard."
-			 	}
-			},
-"Spatial Warp": {
-				"Form Factor": ["Softly Glowing Spectacles", "Spool of Golden Yarn"],
-				"Ranks": 
-				{
-					"EX": "When used with another ability (or boon) that affects any number of targets, you may target any target(s) on the same plane.",
-					"S": "When used with another ability (or boon) that affects a single target, you may target any target within line of sight.",
-			 	}
-			},
-"Speed Boost": {
-				"Form Factor": ["Ingestible Pill", "Armband", "Boots"],
-				"Ranks": 
-				{
-					"S": "The user can temporarily move inhumanly fast.",
-					"A": "The user can temporarily move inhumanly fast.",
-					"B": "The user can temporarily move inhumanly fast.",
-					"C": "The user can temporarily move inhumanly fast."
-			 	}
-			},
-"Strength Boost": {
-				"Form Factor": ["Ingestible Pill", "Armband", "Boots"],
-				"Ranks": 
-				{
-					"S": "The user is temporarily inhumanly strong.",
-					"A": "The user is temporarily inhumanly strong.",
-					"B": "The user is temporarily inhumanly strong.",
-					"C": "The user is temporarily inhumanly strong."
-			 	}
-			},
-"Peace Field": {
-				"Form Factor": ["Magic Rune", "Small Figurine of Your Deity"],
-				"Ranks": 
-				{
-					"EX": "After being activated, creates an invisible field that fills an extremely large (miles) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
-					"S": "After being activated, creates an invisible field that fills a large (across a field) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
-					"A": "After being activated, creates an invisible field that fills a medium (across a room) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
-					"B": "After being activated, creates an invisible field that fills a small (arms' reach) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
-					"C": "After being activated, creates an invisible field that fills a small (arms' reach) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field."
-			 	}
-			},
-"Teleport": {
-				"Form Factor": ["Magic Rune", "Ring", "Necklace"],
-				"Ranks": 
-				{
-					"EX": "User teleports to a location they have previously visited on the same plane. They arrive safely with their possessions and anything within arms' reach they wish to take with them.",
-					"S": "User teleports to a location they can see. They arrive safely with their possessions but cannot take anything else with them.",
-					"A": "User teleports a medium (across a room) distance to a location they can see. They arrive safely with their possessions but cannot take anything else with them.",
-			 	}
-			},
-"Temporal Viewer": {
-				"Form Factor": ["Magic Wand", "Contact Lenses"],
-				"Ranks": 
-				{
-					"EX": "Displays moving images and sound, depicting events that occurred at any location on the same plane, at any point in history. The user specifies the time period shown by the viewer.",
-					"S": "Displays moving images and sound, depicting events that occurred at the current location up to ten years prior. The user specifies the time period shown by the viewer.",
-					"A": "Displays moving images and sound, depicting events that occurred at the current location up to one year prior. The user specifies the time period shown by the viewer.",
-					"B": "Displays moving images and sound, depicting events that occurred at the current location up to one month prior. The user specifies the time period shown by the viewer.",
-					"C": "Displays moving images and sound, depicting events that occurred at the current location up to one day prior. The user specifies the time period shown by the viewer."
-			 	}
-			},
-"Time Dilation Enchantment (Defensive)": {
-				"Form Factor": ["Enchantment on Armor"],
-				"Ranks": 
-				{
-					"A": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat.",
-					"B": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat.",
-					"C": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat."
-			 	}
-			},
-"Time Dilation Enchantment (Offensive)": {
-				"Form Factor": ["Enchantment on Weapon"],
-				"Ranks": 
-				{
-					"A": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks.",
-					"B": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks.",
-					"C": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks."
-			 	}
-			},
-"Tracer": {
-				"Form Factor": ["Magic Rune", "Magic Wand"],
-				"Ranks": 
-				{
-					"S": "Fires a microscopic tracer that clings to any surface within line of sight. The user can scry the exact location of the tracer, and the path taken to get there, as long as it is in the same plane.",
-					"A": "Fires a microscopic tracer that clings to any surface within line of sight. The user can scry the distance and direction to the tracer, as long as it is in the same plane.",
-					"B": "Applies a tracer to any surface you can touch. The user can scry the distance and direction to the tracer, as long as it is in the same plane.",
-					"C": "Applies a tracer to any surface you can touch. The user can scry the  direction to the tracer, but not the distance, as long as it is in the same plane.",
-			 	}
-			},
-"Trail Blazer": {
-				"Form Factor": ["Boots With Wings"],
-				"Ranks": 
-				{
-					"EX": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer and any targets within line of sight that the wearer chooses can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
-					"S": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer (and up to one other person that can be carried along) can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
-					"A": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
-			 	}
-			},
-"See Invisibility": {
-				"Form Factor": ["Goggles", "Contact Lenses", "Your Eyes Are Paler Than Normal"],
-				"Ranks": 
-				{
-					"EX": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank EX or lower.",
-					"S": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank S or lower.",
-					"A": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank A or lower.",
-					"B": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank B or lower.",
-					"C": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank C or lower."
-			 	}
-			},
-"Travel Bubble": {
-				"Form Factor": ["Magenta Bubble Wand"],
-				"Ranks": 
-				{
-					"EX": "The user and any additional targets that can fit into a large (across a field) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground safely. The sphere can teleport anywhere within line of sight instantly.",
-					"S": "The user and any additional targets that can fit into a short (arms' reach) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as the fastest human sprinting.",
-					"A": "The user and any additional targets that can fit into a short (arms' reach) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as a normal human walking.",
-					"B": "The user is encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as a normal human walking.",
-			 	}
-			},
-"Visage Changer": {
-				"Form Factor": ["Ring", "Amulet (Amethyst)", "Magic Wand"],
-				"Ranks": 
-				{
-					"EX": "Changes the appearance of any number of creatures you can see.",
-					"S": "Changes the appearance of one creature.",
-					"A": "Changes the appearance of one (willing) creature.",
-					"B": "Changes the appearance of one (willing) human-sized creature.",
-					"C": "Changes the appearance of one (willing) dog-sized creature."
-			 	}
-			},
-"Water Breather": {
-				"Form Factor": ["Clamshell Bra", "Snorkel", "Magic Rune"],
-				"Ranks": 
-				{
-					"EX": "Allows the user full mastery of the oceans - they can swim effortlessly at any depths and underwater conditions, telepathically communicate and command sea life, and have all senses adapted for the sea.",
-					"S": "Allows an air breather to breathe underwater, swim like a fish, survive at high depths, and communicate with fish.",
-					"A": "Allows an air breather to breathe underwater and swim like a fish at high depths.",
-					"B": "Allows an air breather to breathe underwater and swim like a fish.",
-					"C": "Allows an air breather to breathe underwater."
-			 	}
-			},
-"X-Ray Viewer": {
-				"Form Factor": ["Dark Spectacles", "Magnifying Glass", "Powder to Sprinkle on an Object"],
-				"Ranks": 
-				{
-					"EX": "Your vision is enhanced to see anywhere on the same plane, seeing through however many layers of solid objects you wish.",
-					"S": "See through however many layers of solid objects you wish.",
-					"A": "See through a solid object.",
-					"B": "See through a solid object to a depth of a few feet.",
-					"C": "See through a solid object to a depth of a few inches."
-			 	}
-			}
+	"Adhesion": {
+					"Form Factor": ["Facemask", "Gloves With Suction Cups", "Amulet"],
+					"Ranks": 
+					{
+						"EX": "Allows for automatic, near-instantaneous climbing of any surface, even horizontal ones.",
+						"S": "Allows for automatic accelerated climbing of any surface, even horizontal ones.",
+						"A": "Allows for automatic climbing of any surface, even horizontal ones.",
+						"B": "Allows for easier climbing of any surface, even horizontal ones.",
+						"C": "Allows for easier climbing of any mundane surface, even horizontal ones."
+				 	}
+				},
+	"Antivenom": {
+					"Form Factor": ["Necklace", "Ring (Emerald)", "Sigil Imprinted on Tongue"],
+					"Ranks": 
+					{
+						"EX": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
+						"S": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
+						"A": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
+						"B": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system.",
+						"C": "Renders user immune to poisons of the same rank or lower and ends any such ongoing effects, if any, already in the user's system."
+				 	}
+				},
+	"Attractor": {
+					"Form Factor": ["Gloves", "Necklace Made of Hooks", "Ring (Simple)"],
+					"Ranks": 
+					{
+						"EX": "One item within line of sight is teleported immediately to you.",
+						"S": "One unanchored item your size or smaller within line of sight is teleported immediately to you.",
+						"A": "One unanchored item your size or smaller within line of sight is drawn immediately to you. This takes a few moments. The item has no momentum when it arrives.",
+						"B": "One unanchored item your size or smaller within line of sight is drawn immediately to you. This takes a few moments. The item arrives at full speed to your hands.",
+						"C": "One unanchored item your size or smaller within line of sight is drawn immediately to you. This takes a few moments. The item arrives at full speed to your hands."
+				 	}
+				},
+	"Banishing Enchantment": {
+					"Form Factor": ["Enchantment on Weapon"],
+					"Ranks": 
+					{
+						"S": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a safe direction of your choice.",
+						"A": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a random (safe) direction.",
+						"B": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a random (safe) direction.",
+						"C": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the target is teleported a short distance in a random (safe) direction."
+				 	}
+				},
+	"Blinking Enchantment": {
+					"Form Factor": ["Enchantment on Armor"],
+					"Ranks": 
+					{
+						"S": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a safe direction of your choice.",
+						"A": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a random (safe) direction.",
+						"B": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a random (safe) direction.",
+						"C": "Enchants armor or clothing. When the enchanted item is struck hard in battle, the wearer teleports a short distance in a random (safe) direction."
+				 	}
+				},
+	"Catholicon": {
+					"Form Factor": ["White Crystal", "Amulet (Blue)", "Foul-Smelling Concoction"],
+					"Ranks": 
+					{
+						"EX": "Cures any disease of the boon's rank or lower.",
+						"S": "Cures any disease of the boon's rank or lower.",
+						"A": "Cures any disease of the boon's rank or lower.",
+						"B": "Cures any disease of the boon's rank or lower.",
+						"C": "Cures any disease of the boon's rank or lower."
+				 	}
+				},
+	"Catseye": {
+					"Form Factor": ["Goggles", "Spectacles", "Temporary Forehead Tattoo"],
+					"Ranks": 
+					{
+						"A": "Grants the ability to see in the dark, and the ability to see invisible entities.",
+						"B": "Grants the ability to see in the dark.",
+						"C": "Grants the ability to see in the dark."
+				 	}
+				},
+	"Beacon of Safety": {
+					"Form Factor": ["Mystic Rune"],
+					"Ranks": 
+					{
+						"EX": "Mark a structure. When this boon is activated, a spatial warp returns the user and all targets within line of sight (that the user wishes) to a location next to the structure, no matter how far away from the structure the user is.",
+						"S": "Mark a structure. When this boon is activated, a spatial warp returns the user and all targets within arm's reach (that the user wishes) to a location next to the structure, no matter how far away from the structure the user is.",
+						"A": "Mark a structure. When this boon is activated, a spatial warp returns the user to a location next to the structure, no matter how far away from the structure the user is.",
+						"B": "Mark a structure. When this boon is activated, a spatial warp returns the user and all targets within arm's reach to a location next to the structure, so long as the structure is within line of sight."
+				 	}
+				},
+	"Deific Knowledge": {
+					"Form Factor": ["Temporary Tattoo", "Holy Symbol"],
+					"Ranks": 
+					{
+						"EX": "This boon grants you one honest conversation with your deity, receiving answers to the best of its ability to your questions.",
+						"S": "This boon grants you three questions to ask your deity and receive an honest answer.",
+						"A": "This boon grants you one question to ask your deity and receive an honest answer."
+				 	}
+				},
+	"Deception Filter": {
+					"Form Factor": ["Badge", "Headband"],
+					"Ranks": 
+					{
+						"A": "Wearer cannot knowingly tell a lie while the badge is worn, and irregularly blurts out a hidden truth.",
+						"B": "Wearer cannot knowingly tell a lie while the badge is worn.",
+						"C": "If the wearer lies, the item glows bright red."
+				 	}
+				},
+	"Density Enchantment": {
+					"Form Factor": ["Enchantment on Weapon"],
+					"Ranks": 
+					{
+						"A": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the weapon suddenly increases dramatically in weight, causing the blow to inflict additional damage.",
+						"B": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the weapon suddenly increases dramatically in weight, causing the blow to inflict additional damage.",
+						"C": "Enchants a weapon. When the enchanted weapon strikes a solid creature or object, the weapon suddenly increases dramatically in weight, causing the blow to inflict additional damage."
+				 	}
+				},
+	"Detonation (Desiccating)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Bursts in an extremely large (miles) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
+						"S": "Bursts in a large (across a field) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
+						"A": "Bursts in a medium (across a room) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
+						"B": "Bursts in a small (arms' reach) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized.",
+						"C": "Bursts in a small (arms' reach) radius, draining moisture from everything within it. Living creatures take damage as water leaves their cells. Water in the area is vaporized."
+				 	}
+				},
+	"Detonation (Flash)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Bursts in an extremely large (miles) radius, blinding all within range.",
+						"S": "Bursts in a large (across a field) radius, blinding all within range.",
+						"A": "Bursts in a medium (across a room) radius, blinding all within range.",
+						"B": "Bursts in a small (arms' reach) radius, blinding all within range.",
+						"C": "Bursts in a small (arms' reach) radius, blinding all within range."
+				 	}
+				},
+	"Detonation (Gravity)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Bursts in an extremely large (miles) radius, increasing gravity tremendously. All in the area are crushed to the ground for a short time and cannot take physical actions.",
+						"S": "Bursts in a large (across a field) radius, increasing gravity tremendously. All in the area are crushed to the ground for a short time and cannot take physical actions.",
+						"A": "Bursts in a medium (across a room) radius, increasing gravity tremendously. All in the area are crushed to the ground for a short time and cannot take physical actions.",
+						"B": "Bursts in a small (arms' reach) radius, increasing gravity. All in the area are immobilized for a short time due to the additional weight.",
+						"C": "Bursts in a small (arms' reach) radius, increasing gravity. All in the area are slowed for a short time due to the additional weight."
+				 	}
+				},
+	"Detonation (Matter Disruption)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Explodes in an extremely large (miles) radius, releasing chaotic magic that rearranges matter in random ways.",
+						"S": "Explodes in a large (across a field) radius, releasing chaotic magic that rearranges matter in random ways.",
+						"A": "Explodes in a medium (across a room) radius, releasing chaotic magic that rearranges matter in random ways.",
+						"B": "Explodes in a small (arms' reach) radius, releasing chaotic magic that rearranges matter in random ways.",
+						"C": "Explodes in a small (arms' reach) radius, releasing chaotic magic that rearranges matter in random ways."
+				 	}
+				},
+	"Detonation (Pressure)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Explodes in an extremely large (miles) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
+						"S": "Explodes in a large (across a field) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
+						"A": "Explodes in a medium (across a room) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
+						"B": "Explodes in a small (arms' reach) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy.",
+						"C": "Explodes in a small (arms' reach) radius, inflicting impact damage. Also moves unattended objects out of the area if they aren't heavy."
+				 	}
+				},
+	"Detonation (Singularity)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Explodes and creates a momentary singularity that tears at the fabric of the universe. Inflicts damage to all within a large range (across a field), drawing them (or their remains) together into the singularity (if possible).",
+						"S": "Explodes and creates a momentary singularity that tears at the fabric of the universe. Inflicts damage to all within a medium range (across a room), drawing them (or their remains) together into the singularity (if possible)."
+				 	}
+				},
+	"Detonation (Sonic)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Explodes with a terrifying sound, deafening all in an extremely large (miles) radius.",
+						"S": "Explodes with a terrifying sound, deafening all in a large (across a field) radius.",
+						"A": "Explodes with a terrifying sound, deafening all in a medium (across a room) radius.",
+						"B": "Explodes with a terrifying sound, deafening all in a small (arms' reach) radius.",
+						"C": "Explodes with a terrifying sound, deafening all in a small (arms' reach) radius."
+				 	}
+				},
+	"Detonation (Web)": {
+					"Form Factor": ["Magic Scroll", "Magic Wand", "Throwable Sphere"],
+					"Ranks": 
+					{
+						"EX": "Explodes in an extremely large (miles) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
+						"S": "Explodes in a large (across a field) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
+						"A": "Explodes in a medium (across a room) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
+						"B": "Explodes in a small (arms' reach) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo.",
+						"C": "Explodes in a small (arms' reach) radius and creates sticky strands of goo. Creatures caught in the blast get stuck in the goo."
+				 	}
+				},
+	"Disrupting Enchantment": {
+					"Form Factor": ["Enchantment on Weapon"],
+					"Ranks": 
+					{
+						"S": "Enchants a weapon. When the weapon strikes a solid creature of object, the chaotic magic disrupts the atomic structure of the target and everything near them.",
+						"A": "Enchants a weapon. When the weapon strikes a solid creature of object, the chaotic magic disrupts the atomic structure of the target.",
+						"B": "Enchants a weapon. When the weapon strikes a solid creature of object, the chaotic magic disrupts the atomic structure of the target a little."
+				 	}
+				},
+	"Eagleseye": {
+					"Form Factor": ["Your Own Eyes Look More Birdlike", "Ornate Spyglass", "Bejeweled Spectacles"],
+					"Ranks": 
+					{
+						"EX": "Grants the ability to see anywhere on your current plane, regardless of line of sight. Only blockable by EX anti-scrying magic.",
+						"S": "Grants the ability to see up to miles away, ignoring line of sight blockage and magical effects. Only blockable by S and EX anti-scrying magic.",
+						"A": "Grants the ability to see up to miles away, ignoring line of sight blockage.",
+						"B": "Grants the ability to see ten times as far as normal, ignoring line of sight blockage.",
+						"C": "Grants the ability to see ten times as far as normal."
+				 	}
+				},
+	"Farspeaker": {
+					"Form Factor": ["Golden Megaphone", "Mystic Rune Imprinted on Your Tongue"],
+					"Ranks": 
+					{
+						"EX": "The user can be heard at any location on the same plane. They can also hear sounds made in return.",
+						"S": "The user can be heard at any distant location that they can see, even if something physically blocks the intervening space. They can also hear sounds made in return.",
+						"A": "The user can be heard at any distant location that they can see, as long as nothing physically blocks the intervening space. They can also hear sounds made in return.",
+						"B": "The user can be heard at any distant location that they can see, as long as nothing physically blocks the intervening space. They can not hear any sounds made in return.",
+						"C": "The user can be heard by any one person that they can see, as long as nothing physically blocks the intervening space. They can not hear sounds made in return."
+				 	}
+				},
+	"Fireproofing": {
+					"Form Factor": ["Sparkly Spray Bottle", "Magic Rune"],
+					"Ranks": 
+					{
+						"A": "Activating this boon on an object renders it fireproof, even against magical fire rank A or lower.",
+						"B": "Activating this boon on an object renders it fireproof, even against magical fire rank B or lower.",
+						"C": "Activating this boon on an object renders it fireproof, even against magical fire rank C or lower."
+				 	}
+				},
+	"Force Cube Projector": {
+					"Form Factor": ["Ring", "Bracelet", "Six-Sided Die"],
+					"Ranks": 
+					{
+						"EX": "Creates an immobile cube composed of six planes of solid force, the size of a castle. The cube conforms to the space available.",
+						"S": "Creates an immobile cube composed of six planes of solid force, the size of a small house. The cube conforms to the space available.",
+						"A": "Creates an immobile cube composed of six planes of solid force, the size of a small room. The cube conforms to the space available.",
+						"B": "Creates an immobile cube composed of six planes of solid force, the size of a small closet. The cube conforms to the space available.",
+						"C": "Creates an immobile cube composed of six planes of solid force, the size of a person's fist. The cube conforms to the space available."
+				 	}
+				},
+	"Force Field Enchantment": {
+					"Form Factor": ["Enchantment on Armor"],
+					"Ranks": 
+					{
+						"S": "Enchants armor. The enchanted armor has a force field around it, increasing protection.",
+						"A": "Enchants armor. The enchanted armor has a force field around it, increasing protection.",
+						"B": "Enchants armor. The enchanted armor has a force field around it, increasing protection.",
+						"C": "Enchants armor. The enchanted armor has a force field around it, increasing protection."
+				 	}
+				},
+	"Force Wall": {
+					"Form Factor": ["Ring", "Amulet (Topaz)", "Enchanted Brick Trowel"],
+					"Ranks": 
+					{
+						"S": "Creates an immobile wall of solid force. The wall conforms to the space available.",
+						"A": "Creates an immobile wall of solid force. The wall conforms to the space available.",
+						"B": "Creates an immobile wall of solid force. The wall conforms to the space available.",
+						"C": "Creates an immobile wall of solid force. The wall conforms to the space available."
+				 	}
+				},
+	"Friction-Reducing Gel": {
+					"Form Factor": ["Tube of Gel"],
+					"Ranks": 
+					{
+						"EX": "This gel makes things completely frictionless.",
+						"S": "This gel makes things extremely slippery. Movement in the affected area is almost impossible, and objects coated in the gel are impossible to hold.",
+						"A": "This gel makes things extremely slippery. Movement in the affected area is extremely difficult, and objects coated in the gel are difficult to hold.",
+						"B": "This gel makes things slippery. Movement in the affected area is  difficult, and objects coated in the gel are difficult to hold."
+				 	}
+				},
+	"Frigid Wall": {
+					"Form Factor": ["Gloves", "Your Hair Has Icicles Hanging Off", "An Ice Cube That Does Not Melt"],
+					"Ranks": 
+					{
+						"EX": "Creates a wall of supercooled air that freezes anything that passes through it. The wall can be moved and expands to the space available.",
+						"S": "Creates a wall of supercooled air that freezes anything that passes through it. The wall conforms to the space available.",
+						"A": "Creates a wall of supercooled air that freezes anything that passes through it. The wall conforms to the space available."
+				 	}
+				},
+	"Gravity Changer": {
+					"Form Factor": ["Metal Disk With Your Deity's Symbol", "Ornate Bagpipes", "Magic Wand", "Magic Staff"],
+					"Ranks": 
+					{
+						"EX": "Changes the direction of gravity within an extremely large (miles) area. The gravitic warp could be continuous across the affected area, or it could bend and curve, changing directions within the area. Once gravity is warped, it cannot be changed until the effect expires.",
+						"S": "Changes the direction of gravity within a large (across a field) area. The gravitic warp could be continuous across the affected area, or it could bend and curve, changing directions within the area. Once gravity is warped, it cannot be changed until the effect expires.",
+						"A": "Changes the direction of gravity within a medium (across a room) area.",
+						"B": "Changes the direction of gravity within a small (arms' reach) area.",
+						"C": "Changes the direction of gravity within a small (arms' reach) area."
+				 	}
+				},
+	"Gravity Nullifier": {
+					"Form Factor": ["Holy Symbol", "Magic Rune (Boot With Wings)", "Bubble Wand"],
+					"Ranks": 
+					{
+						"EX": "The user and any allies within line of sight can float into the air, moving in any direction.",
+						"S": "The user can float into the air, moving in any direction.",
+						"A": "The user can float into the air, moving vertically (but not horizontally without some other action, such as pushing along the ceiling).",
+						"B": "A nonliving object up to the size of a human can float in the air to any height, and is weightless.",
+						"C": "A nonliving object can hover just above the ground, and is weightless."
+				 	}
+				},
+	"Heat Enchantment": {
+					"Form Factor": ["Enchantment on Weapon"],
+					"Ranks": 
+					{
+						"EX": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a wave of flame blasting far beyond the target.",
+						"S": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of flame, inflicting additional damage to the target and nearby foes.",
+						"A": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of heat, inflicting additional damage.",
+						"B": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of heat, inflicting additional damage.",
+						"C": "Enchants a weapon. When this weapon strikes a solid creature or object, it generates a burst of heat, inflicting additional damage."
+				 	}
+				},
+	"Illusion": {
+					"Form Factor": ["Theatre Mask With Arcand Symbols", "Magic Rune", "Magic Wand"],
+					"Ranks": 
+					{
+						"EX": "Projects an illusion into an area. The illusion includes all five senses and can be controlled by you.",
+						"S": "Projects an illusion into an area. The illusion includes sight, sound, taste, and smell, but not touch. The illusion can be controlled by you.",
+						"A": "Projects an illusion into an area. The illusion includes sight, sound, and smell. The illusion can be controlled by you.",
+						"B": "Projects an illusion into an area. The illusion includes sight and sound. The illusion can perform basic actions specified by you when you create it, but is not directly controllable.",
+						"C": "Projects an illusion into an area. The illusion includes only sight. The illusion can perform basic actions specified by you when you create it, but is not directly controllable."
+				 	}
+				},
+	"Immobilizer": {
+					"Form Factor": ["Magic Wand", "Unnaturally White Marshmallow"],
+					"Ranks": 
+					{
+						"EX": "When activated, projects a mass of rapidly expanding and hardening foam that stretches for miles. The targets are held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder.",
+						"S": "When activated, projects a mass of rapidly expanding and hardening foam that stretches across a field. The targets are held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder.",
+						"A": "When activated, projects a mass of rapidly expanding and hardening foam that stretches across a room. The target is held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder.",
+						"B": "When activated, projects a mass of rapidly expanding and hardening foam at one target. The target is held immobile in the hardened mass of foam. When the effect ends, the foam turns to powder."
+				 	}
+				},
+	"Inferno Wall": {
+					"Form Factor": ["Amulet (Ruby)", "Magic Scroll", "Single Matchstick"],
+					"Ranks": 
+					{
+						"EX": "Creates a wall of solid flame that burns anything that touches it. You can choose for allies to pass safely through the wall. The wall can be moved, and expands to the space available.",
+						"S": "Creates a wall of solid flame that burns anything that touches it. You can choose for allies to pass safely through the wall. The wall conforms to the space available.",
+						"A": "Creates a wall of extreme heat that burns anything that passes through it. The wall conforms to the space available."
+				 	}
+				},
+	"Infiltrator": {
+					"Form Factor": ["Magic Orb", "Blowgun With (Expanding) Pellet"],
+					"Ranks": 
+					{
+						"A": "Tiny capsule launches and moves at great speed, mapping and scanning an unknown area. It identifies basic layout, creatures, and major energy sources. Its movement is blocked by any physical or energy barrier.ect",
+						"B": "Small capsule launches and moves at great speed, mapping and scanning an unknown area. It identifies basic layout, creatures, and major energy sources. Its movement is blocked by any physical or energy barrier.",
+						"C": "Large capsule launches and moves at great speed, mapping and scanning an unknown area. It identifies basic layout, creatures, and major energy sources. Its movement is blocked by any physical or energy barrier."
+				 	}
+				},
+	"Invisibility Enchantment": {
+					"Form Factor": ["Enchantment on Armor"],
+					"Ranks": 
+					{
+						"A": "Enchants armor. The enchanted armor is invisible, making the wearer appear to be armored or clothed however they wish.",
+						"B": "Enchants armor. The enchanted armor is invisible, making the wearer appear to be unarmored.",
+						"C": "Enchants armor. The enchanted armor is invisible, making the wearer appear to be unarmored, but shimmering with magic."
+				 	}
+				},
+	"Lightning Wall": {
+					"Form Factor": ["Magic Wand", "Magic Scroll", "Ring"],
+					"Ranks": 
+					{
+						"EX": "Creates a wall of electric bolts that shocks anything that passes through it. You can choose for allies to pass safely through the wall. The wall can be moved, and expands to the space available.",
+						"S": "Creates a wall of electric bolts that shocks anything that passes through it. You can choose for allies to pass safely through the wall. The wall conforms to the space available.",
+						"A": "Creates a wall of electric bolts that shocks anything that passes through it. The wall conforms to the space available."
+				 	}
+				},
+	"Living Solvent": {
+					"Form Factor": ["Glass Vial of Slime"],
+					"Ranks": 
+					{
+						"EX": "Once released, this organic slime dissolves any material it comes into contact with, including magical items rank EX. The slime is never rendered inert.",
+						"S": "Once released, this organic slime dissolves material it comes into contact with of rank S or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert.",
+						"A": "Once released, this organic slime dissolves material it comes into contact with of rank A or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert.",
+						"B": "Once released, this organic slime dissolves material it comes into contact with of rank B or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert.",
+						"C": "Once released, this organic slime dissolves material it comes into contact with of rank C or lower. Once the slime has been exposed to air, it begins to die and eventually becomes inert."
+				 	}
+				},
+	"Magnetic Master": {
+					"Form Factor": ["Metal Gauntlets", "Metal Cap With Mystical Engravings", "Ring (Iron)"],
+					"Ranks": 
+					{
+						"EX": "Establishes a connection with any number of metal objects within line of sight, regardless of size. After this connection is established, the user can move or manipulate the objects anywhere within line of sight.",
+						"S": "Establishes a connection with one metal object within line of sight, regardless of size. After this connection is established, the user can move or manipulate the object anywhere within line of sight.",
+						"A": "Establishes a connection with one metal object within line of sight that a human could hold in one hand. After this connection is established, the user can move or manipulate the object anywhere within line of sight. For example, the user could wield a weapon or drag a helm affixed to a foe's head to and fro.",
+						"B": "Establishes a connection with one metal object within arms' reach that a human could hold in one hand. After this connection is established, the user can move or manipulate the object anywhere within arms' reach. For example, the user could wield a weapon or drag a helm affixed to a foe's head to and fro."
+				 	}
+				},
+	"Magnetic Shield": {
+					"Form Factor": ["Crystal Buckler", "Wooden Amulet"],
+					"Ranks": 
+					{
+						"A": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out.",
+						"B": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out.",
+						"C": "When activated, metal objects cannot come within arm's reach of the user. Metal items already in the area when the device is activated are slowly pushed out."
+				 	}
+				},
+	"Memory Lenses": {
+					"Form Factor": ["Plain Spectacles", "Contact Lenses"],
+					"Ranks": 
+					{
+						"A": "Allows the wearer to mentally record everything they see for a few minutes and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly.",
+						"B": "Allows the wearer to mentally record everything they see for a minute and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly.",
+						"C": "Allows the wearer to mentally record everything they see for a few seconds and store the recording permanently in their long-term memory. The boon is useful for watching someone pick a specific lock, enter a complex code, or do something else that happens quickly."
+				 	}
+				},
+	"Metal Death": {
+					"Form Factor": ["Magic Wand", "Capsule", "Spray Bottle"],
+					"Ranks": 
+					{
+						"EX": "Produces a stream of foam that covers an extremely large (miles) area, transforming any metal rank EX or lower that it touches into a substance as brittle as thin glass. ",
+						"S": "Produces a stream of foam that covers a large area (across a field), transforming any metal rank S or lower that it touches into a substance as brittle as thin glass. ",
+						"A": "Produces a stream of foam that covers a medium area (across a room), transforming any metal rank A or lower that it touches into a substance as brittle as thin glass. ",
+						"B": "Produces a stream of foam that covers a small area (arms' reach), transforming any metal rank B or lower that it touches into a substance as brittle as thin glass. ",
+						"C": "Produces a stream of foam that covers a small area (arms' reach) transforming any metal rank C or lower that it touches into a substance as brittle as thin glass. "
+				 	}
+				},
+	"Personal Environment Field": {
+					"Form Factor": ["Cloak", "Amulet", "Mittens"],
+					"Ranks": 
+					{
+						"S": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. The aura protects against sudden flashes of temperature change (such as from a heat ray of rank S or lower).",
+						"A": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. It does not protect against sudden flashes of temperature change (such as from a heat ray)."
+				 	}
+				},
+	"Phase Changer": {
+					"Form Factor": ["Scarf", "Whistle", "Magic Wand"],
+					"Ranks": 
+					{
+						"EX": "Puts the user and nearby allies out of phase. During this time, the user and allies can pass through solid objects as though they were entirely insubstantial, like a ghost. They may choose to be invisible. They cannot make physical attacks or be physically attacked.",
+						"S": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. The user may choose to be invisible. They cannot make physical attacks or be physically attacked.",
+						"A": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked.",
+						"B": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked.",
+						"C": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked."
+				 	}
+				},
+	"Phase Disruptor": {
+					"Form Factor": ["Magic Rune", "Magic Wand", "Paint to Put on Object"],
+					"Ranks": 
+					{
+						"S": "Puts a physical structure (or similarly-sized object) out of phase. While the structure is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
+						"A": "Puts a portion of a physical structure (like a wall or floor) out of phase. While the area is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
+						"B": "Puts a portion of a physical structure (like part of a wall or floor) out of phase. While the area is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
+						"C": "Puts a small physical object (like a vase or chair) out of phase. While the object is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light."
+				 	}
+				},
+	"Phasing Gloves": {
+					"Form Factor": ["Plain Gloves", "Gauntlets", "Fancy Gloves"],
+					"Ranks": 
+					{
+						"S": "These gloves can selectively phase through solid objects rank S or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
+						"A": "These gloves can selectively phase through solid objects rank A or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
+						"B": "These gloves can selectively phase through solid objects rank B or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
+						"C": "These gloves can selectively phase through solid objects rank C or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves."
+				 	}
+				},
+	"Psychic Communique": {
+					"Form Factor": ["Diamond That Floats Around Your Head", "Magic Scroll", "Crystal Ball"],
+					"Ranks": 
+					{
+						"EX": "Allows the user to carry out a one-time, two-way telepathic conversation, with an unlimited range (on any plane), to anyone they know.",
+						"S": "Allows the user to project a one-time, one-way telepathic message of up to twenty words, with an unlimited range (on any plane), to anyone they know.",
+						"A": "Allows the user to project a one-time, one-way telepathic message of up to twenty words, with an unlimited range (on the same plane), to anyone they know.",
+						"B": "Allows the user to project a one-time, one-way telepathic message of up to ten words, with an unlimited range (on the same plane), to anyone they know.",
+						"C": "Allows the user to project a one-time, one-way telepathic message one word, with an unlimited range (on the same plane), to anyone they know."
+				 	}
+				},
+	"Psychic Defense Amulet": {
+					"Form Factor": ["Amulet (Amethyst)", "Amulet (Iron) With Skull Engraving"],
+					"Ranks": 
+					{
+						"S": "Each time the wearer of the amulet is affected by an attack (rank S or lower) that attempts to sway their actions or beliefs or that attacks their mind, they are unaffected and can act normally.",
+						"A": "Each time the wearer of the amulet is affected by an attack (rank A or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank A.",
+						"B": "Each time the wearer of the amulet is affected by an attack (rank B or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank B.",
+						"C": "Each time the wearer of the amulet is affected by an attack (rank C or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank C."
+				 	}
+				},
+	"Numbing Ray": {
+					"Form Factor": ["Magic Wand"],
+					"Ranks": 
+					{
+						"EX": "Allows the user to project a ray of energy that numbs the bodies of all targets in sight, immobilizing them.",
+						"S": "Allows the user to project a ray of energy that numbs the target's entire body, immobilizing them.",
+						"A": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless.",
+						"B": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless.",
+						"C": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless."
+				 	}
+				},
+	"Reality Spike": {
+					"Form Factor": ["Rail Spike", "Anchor", "Smooth Cylinder"],
+					"Ranks": 
+					{
+						"EX": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank EX attempts to dislodge.",
+						"S": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank S attempts to dislodge.",
+						"A": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank A attempts to dislodge.",
+						"B": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank B attempts to dislodge.",
+						"C": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank C attempts to dislodge."
+				 	}
+				},
+	"Rejuvenator": {
+					"Form Factor": ["Magic Potion (Red)", "Magic Wand"],
+					"Ranks": 
+					{
+						"EX": "Heals the user from damage they have sustained, including revival from very recent death.",
+						"S": "Heals the user from mortal damage they have sustained.",
+						"A": "Heals the user from damage they have sustained.",
+						"B": "Heals the user from damage they have sustained.",
+						"C": "Heals the user from minor damage they have sustained."
+				 	}
+				},
+	"Scrying Crystal Ball": {
+					"Form Factor": ["Crystal Ball With Scrying Rune"],
+					"Ranks": 
+					{
+						"EX": "The rune can be physically placed somewhere. The rune is invisible and only detectable by EX rank powers. The rune can be moved by the user, by teleporting somewhere in the user's line of sight, no matter where the rune was previously. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, even if they are on different planes.",
+						"S": "The rune can be physically placed somewhere. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, even if they are on different planes.",
+						"A": "The rune can be physically placed somewhere. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, as long as they are on the same plane."
+				 	}
+				},
+	"Retaliation Enchantment": {
+					"Form Factor": ["Enchantment on Armor"],
+					"Ranks": 
+					{
+						"S": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
+						"A": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
+						"B": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
+						"C": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker."
+				 	}
+				},
+	"Retriever": {
+					"Form Factor": ["Magic Rune", "Quill With Ink"],
+					"Ranks": 
+					{
+						"S": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, regardless of distance, even if they are on different planes.",
+						"A": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, regardless of distance, as long as they are on the same plane.",
+						"B": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, so long as the object is in line of sight."
+				 	}
+				},
+	"Shock Enchantment": {
+					"Form Factor": ["Enchantment on Weapon"],
+					"Ranks": 
+					{
+						"EX": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a lightning storm that rains thunderbolts on enemies.",
+						"S": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target and enemies near the target.",
+						"A": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target.",
+						"B": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target.",
+						"C": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target."
+				 	}
+				},
+	"Shocker": {
+					"Form Factor": ["Thundercloud Following Above Your Head", "Magic Scroll", "Humming Orb"],
+					"Ranks": 
+					{
+						"EX": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in an extremely large (miles) area around the user.",
+						"S": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a large (across a field) area around the user.",
+						"A": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a medium (across a room) area around the user.",
+						"B": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a small (arms' reach) area around the user.",
+						"C": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a small (arms' reach) area around the user."
+				 	}
+				},
+	"Skill Boost": {
+					"Form Factor": ["Ingestible Pill", "Magic Potion"],
+					"Ranks": 
+					{
+						"EX": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to EX rank.",
+						"S": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to S rank.",
+						"A": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to A rank.",
+						"B": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to B rank.",
+						"C": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to C rank."
+				 	}
+				},
+	"Sleep Inducer": {
+					"Form Factor": ["Thin Glove", "Magic Wand", "Poison (Liquid)"],
+					"Ranks": 
+					{
+						"S": "Touch puts the victim to sleep until awoken by magical means.",
+						"A": "Touch puts the victim to sleep until awoken by a violent action.",
+						"B": "Touch puts the victim to sleep until awoken by a violent action or an extremely loud noise.",
+						"C": "Touch puts the victim to sleep until awoken by a violent action or an extremely loud noise."
+				 	}
+				},
+	"Sonic Hole": {
+					"Form Factor": ["Black Orb", "Amulet (Ruby)"],
+					"Ranks": 
+					{
+						"EX": "Draws all sound in an extremely large (miles) area into the item. Within the affected area, no sound can be heard.",
+						"S": "Draws all sound in a large (across a field) area into the item. Within the affected area, no sound can be heard.",
+						"A": "Draws all sound in a medium (across a room) area into the item. Within the affected area, no sound can be heard.",
+						"B": "Draws all sound in a small (arms' reach) area into the item. Within the affected area, no sound can be heard.",
+						"C": "Draws all sound in a small (arms' reach) area into the item. Within the affected area, no sound can be heard."
+				 	}
+				},
+	"Spatial Warp": {
+					"Form Factor": ["Softly Glowing Spectacles", "Spool of Golden Yarn"],
+					"Ranks": 
+					{
+						"EX": "When used with another ability (or boon) that affects any number of targets, you may target any target(s) on the same plane.",
+						"S": "When used with another ability (or boon) that affects a single target, you may target any target within line of sight."
+				 	}
+				},
+	"Speed Boost": {
+					"Form Factor": ["Ingestible Pill", "Armband", "Boots"],
+					"Ranks": 
+					{
+						"S": "The user can temporarily move inhumanly fast.",
+						"A": "The user can temporarily move inhumanly fast.",
+						"B": "The user can temporarily move inhumanly fast.",
+						"C": "The user can temporarily move inhumanly fast."
+				 	}
+				},
+	"Strength Boost": {
+					"Form Factor": ["Ingestible Pill", "Armband", "Boots"],
+					"Ranks": 
+					{
+						"S": "The user is temporarily inhumanly strong.",
+						"A": "The user is temporarily inhumanly strong.",
+						"B": "The user is temporarily inhumanly strong.",
+						"C": "The user is temporarily inhumanly strong."
+				 	}
+				},
+	"Peace Field": {
+					"Form Factor": ["Magic Rune", "Small Figurine of Your Deity"],
+					"Ranks": 
+					{
+						"EX": "After being activated, creates an invisible field that fills an extremely large (miles) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+						"S": "After being activated, creates an invisible field that fills a large (across a field) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+						"A": "After being activated, creates an invisible field that fills a medium (across a room) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+						"B": "After being activated, creates an invisible field that fills a small (arms' reach) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+						"C": "After being activated, creates an invisible field that fills a small (arms' reach) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field."
+				 	}
+				},
+	"Teleport": {
+					"Form Factor": ["Magic Rune", "Ring", "Necklace"],
+					"Ranks": 
+					{
+						"EX": "User teleports to a location they have previously visited on the same plane. They arrive safely with their possessions and anything within arms' reach they wish to take with them.",
+						"S": "User teleports to a location they can see. They arrive safely with their possessions but cannot take anything else with them.",
+						"A": "User teleports a medium (across a room) distance to a location they can see. They arrive safely with their possessions but cannot take anything else with them."
+				 	}
+				},
+	"Temporal Viewer": {
+					"Form Factor": ["Magic Wand", "Contact Lenses"],
+					"Ranks": 
+					{
+						"EX": "Displays moving images and sound, depicting events that occurred at any location on the same plane, at any point in history. The user specifies the time period shown by the viewer.",
+						"S": "Displays moving images and sound, depicting events that occurred at the current location up to ten years prior. The user specifies the time period shown by the viewer.",
+						"A": "Displays moving images and sound, depicting events that occurred at the current location up to one year prior. The user specifies the time period shown by the viewer.",
+						"B": "Displays moving images and sound, depicting events that occurred at the current location up to one month prior. The user specifies the time period shown by the viewer.",
+						"C": "Displays moving images and sound, depicting events that occurred at the current location up to one day prior. The user specifies the time period shown by the viewer."
+				 	}
+				},
+	"Time Dilation Enchantment (Defensive)": {
+					"Form Factor": ["Enchantment on Armor"],
+					"Ranks": 
+					{
+						"A": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat.",
+						"B": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat.",
+						"C": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat."
+				 	}
+				},
+	"Time Dilation Enchantment (Offensive)": {
+					"Form Factor": ["Enchantment on Weapon"],
+					"Ranks": 
+					{
+						"A": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks.",
+						"B": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks.",
+						"C": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks."
+				 	}
+				},
+	"Tracer": {
+					"Form Factor": ["Magic Rune", "Magic Wand"],
+					"Ranks": 
+					{
+						"S": "Fires a microscopic tracer that clings to any surface within line of sight. The user can scry the exact location of the tracer, and the path taken to get there, as long as it is in the same plane.",
+						"A": "Fires a microscopic tracer that clings to any surface within line of sight. The user can scry the distance and direction to the tracer, as long as it is in the same plane.",
+						"B": "Applies a tracer to any surface you can touch. The user can scry the distance and direction to the tracer, as long as it is in the same plane.",
+						"C": "Applies a tracer to any surface you can touch. The user can scry the  direction to the tracer, but not the distance, as long as it is in the same plane."
+				 	}
+				},
+	"Trail Blazer": {
+					"Form Factor": ["Boots With Wings"],
+					"Ranks": 
+					{
+						"EX": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer and any targets within line of sight that the wearer chooses can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
+						"S": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer (and up to one other person that can be carried along) can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
+						"A": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols."
+				 	}
+				},
+	"See Invisibility": {
+					"Form Factor": ["Goggles", "Contact Lenses", "Your Eyes Are Paler Than Normal"],
+					"Ranks": 
+					{
+						"EX": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank EX or lower.",
+						"S": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank S or lower.",
+						"A": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank A or lower.",
+						"B": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank B or lower.",
+						"C": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank C or lower."
+				 	}
+				},
+	"Travel Bubble": {
+					"Form Factor": ["Magenta Bubble Wand"],
+					"Ranks": 
+					{
+						"EX": "The user and any additional targets that can fit into a large (across a field) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground safely. The sphere can teleport anywhere within line of sight instantly.",
+						"S": "The user and any additional targets that can fit into a short (arms' reach) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as the fastest human sprinting.",
+						"A": "The user and any additional targets that can fit into a short (arms' reach) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as a normal human walking.",
+						"B": "The user is encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as a normal human walking."
+				 	}
+				},
+	"Visage Changer": {
+					"Form Factor": ["Ring", "Amulet (Amethyst)", "Magic Wand"],
+					"Ranks": 
+					{
+						"EX": "Changes the appearance of any number of creatures you can see.",
+						"S": "Changes the appearance of one creature.",
+						"A": "Changes the appearance of one (willing) creature.",
+						"B": "Changes the appearance of one (willing) human-sized creature.",
+						"C": "Changes the appearance of one (willing) dog-sized creature."
+				 	}
+				},
+	"Water Breather": {
+					"Form Factor": ["Clamshell Bra", "Snorkel", "Magic Rune"],
+					"Ranks": 
+					{
+						"EX": "Allows the user full mastery of the oceans - they can swim effortlessly at any depths and underwater conditions, telepathically communicate and command sea life, and have all senses adapted for the sea.",
+						"S": "Allows an air breather to breathe underwater, swim like a fish, survive at high depths, and communicate with fish.",
+						"A": "Allows an air breather to breathe underwater and swim like a fish at high depths.",
+						"B": "Allows an air breather to breathe underwater and swim like a fish.",
+						"C": "Allows an air breather to breathe underwater."
+				 	}
+				},
+	"X-Ray Viewer": {
+					"Form Factor": ["Dark Spectacles", "Magnifying Glass", "Powder to Sprinkle on an Object"],
+					"Ranks": 
+					{
+						"EX": "Your vision is enhanced to see anywhere on the same plane, seeing through however many layers of solid objects you wish.",
+						"S": "See through however many layers of solid objects you wish.",
+						"A": "See through a solid object.",
+						"B": "See through a solid object to a depth of a few feet.",
+						"C": "See through a solid object to a depth of a few inches."
+				 	}
+				}
 }
