@@ -440,416 +440,327 @@
 				"Form Factor": ["Cloak", "Amulet", "Mittens"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. The aura protects against sudden flashes of temperature change (such as from a heat ray).",
+					"S": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. The aura protects against sudden flashes of temperature change (such as from a heat ray of rank S or lower).",
 					"A": "Creates an aura of temperature and atmosphere that will sustain a human safely. The aura extends around the user. It does not protect against sudden flashes of temperature change (such as from a heat ray).",
 			 	}
 			},
 "Phase Changer": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Scarf", "Whistle", "Magic Wand"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Puts the user and nearby allies out of phase. During this time, the user and allies can pass through solid objects as though they were entirely insubstantial, like a ghost. They may choose to be invisible. They cannot make physical attacks or be physically attacked.",
+					"S": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. The user may choose to be invisible. They cannot make physical attacks or be physically attacked.",
+					"A": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked.",
+					"B": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked.",
+					"C": "Puts the user out of phase. During this time, the user can pass through solid objects as though they were entirely insubstantial, like a ghost. They cannot make physical attacks or be physically attacked."
 			 	}
 			},
 "Phase Disruptor": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Magic Rune", "Magic Wand", "Paint to Put on Object"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "Puts a physical structure (or similarly-sized object) out of phase. While the structure is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
+					"A": "Puts a portion of a physical structure (like a wall or floor) out of phase. While the area is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
+					"B": "Puts a portion of a physical structure (like part of a wall or floor) out of phase. While the area is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light.",
+					"C": "Puts a small physical object (like a vase or chair) out of phase. While the object is out of phase, creatures and objects can pass freely through it as if it were not there, although one cannot see through it, and it blocks light."
 			 	}
 			},
 "Phasing Gloves": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Plain Gloves", "Gauntlets", "Fancy Gloves"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "These gloves can selectively phase through solid objects rank S or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
+					"A": "These gloves can selectively phase through solid objects rank A or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
+					"B": "These gloves can selectively phase through solid objects rank B or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves.",
+					"C": "These gloves can selectively phase through solid objects rank C or lower in a fashion that allows the wearer to see what they are touching. Someone wearing the gloves could also search behind walls and under floors using the gloves."
 			 	}
 			},
 "Psychic Communique": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Diamond That Floats Around Your Head", "Magic Scroll", "Crystal Ball"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Allows the user to carry out a one-time, two-way telepathic conversation, with an unlimited range (on any plane), to anyone they know.",
+					"S": "Allows the user to project a one-time, one-way telepathic message of up to twenty words, with an unlimited range (on any plane), to anyone they know.",
+					"A": "Allows the user to project a one-time, one-way telepathic message of up to twenty words, with an unlimited range (on the same plane), to anyone they know.",
+					"B": "Allows the user to project a one-time, one-way telepathic message of up to ten words, with an unlimited range (on the same plane), to anyone they know.",
+					"C": "Allows the user to project a one-time, one-way telepathic message one word, with an unlimited range (on the same plane), to anyone they know."
 			 	}
 			},
-"Psychic Defense Nodule": {
-				"Form Factor": ["list", "of", "strings"],
+"Psychic Defense Amulet": {
+				"Form Factor": ["Amulet (Amethyst)", "Amulet (Iron) With Skull Engraving"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "Each time the wearer of the amulet is affected by an attack (rank S or lower) that attempts to sway their actions or beliefs or that attacks their mind, they are unaffected and can act normally.",
+					"A": "Each time the wearer of the amulet is affected by an attack (rank A or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank A.",
+					"B": "Each time the wearer of the amulet is affected by an attack (rank B or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank B.",
+					"C": "Each time the wearer of the amulet is affected by an attack (rank C or lower) that attempts to sway their actions or beliefs or that attacks their mind, they instead go into stasis and remain unaffected. Attacks against a wearer in stasis are made as if the wearer were protected by a force field of rank C."
 			 	}
 			},
-"Ray Emitter (Numbing)": {
-				"Form Factor": ["list", "of", "strings"],
+"Numbing Ray": {
+				"Form Factor": ["Magic Wand"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Allows the user to project a ray of energy that numbs the bodies of all targets in sight, immobilizing them.",
+					"S": "Allows the user to project a ray of energy that numbs the target's entire body, immobilizing them.",
+					"A": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless.",
+					"B": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless.",
+					"C": "Allows the user to project a ray of energy that numbs one limb of the target, making it useless."
 			 	}
 			},
 "Reality Spike": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Rail Spike", "Anchor", "Smooth Cylinder"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank EX attempts to dislodge.",
+					"S": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank S attempts to dislodge.",
+					"A": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank A attempts to dislodge.",
+					"B": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank B attempts to dislodge.",
+					"C": "Once activated, the spike does not move - ever - even if activated in midair. Resists rank C attempts to dislodge."
 			 	}
 			},
 "Rejuvenator": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Magic Potion (Red)", "Magic Wand"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
+					"EX": "Heals the user from damage they have sustained, including revival from very recent death.",
+					"S": "Heals the user from mortal damage they have sustained.",
+					"A": "Heals the user from damage they have sustained.",
+					"B": "Heals the user from damage they have sustained.",
+					"C": "Heals the user from minor damage they have sustained."
+			 	}
+			},
+"Scrying Crystal Ball": {
+				"Form Factor": ["Crystal Ball With Scrying Rune"],
+				"Ranks": 
+				{
+					"EX": "The rune can be physically placed somewhere. The rune is invisible and only detectable by EX rank powers. The rune can be moved by the user, by teleporting somewhere in the user's line of sight, no matter where the rune was previously. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, even if they are on different planes.",
+					"S": "The rune can be physically placed somewhere. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, even if they are on different planes.",
+					"A": "The rune can be physically placed somewhere. The crystal ball shows everything going on in the vicinity of the rune, regardless of the distance between them, as long as they are on the same plane.",
 					"B": "Effect",
 					"C": "Effect"
 			 	}
 			},
-"Remote Viewer": {
-				"Form Factor": ["list", "of", "strings"],
+"Retaliation Enchantment": {
+				"Form Factor": ["Enchantment on Armor"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Retaliation Nodule": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
+					"A": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
+					"B": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker.",
+					"C": "Enchants armor. Anyone striking the armor triggers a small burst of electricity that inflicts damage on the attacker."
 			 	}
 			},
 "Retriever": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Magic Rune", "Quill With Ink"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, regardless of distance, even if they are on different planes.",
+					"A": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, regardless of distance, as long as they are on the same plane.",
+					"B": "The user can place a mark (or rune) on any object. Later, they may activate the boon to have that object teleport into their hands, so long as the object is in line of sight.",
 			 	}
 			},
-"Shock Nodule": {
-				"Form Factor": ["list", "of", "strings"],
+"Shock Enchantment": {
+				"Form Factor": ["Enchantment on Weapon"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a lightning storm that rains thunderbolts on enemies.",
+					"S": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target and enemies near the target.",
+					"A": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target.",
+					"B": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target.",
+					"C": "Enchants a weapon. Each time the weapon strikes a solid creature or object, it generates a burst of electricity, inflicting damage to the target."
 			 	}
 			},
 "Shocker": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Thundercloud Following Above Your Head", "Magic Scroll", "Humming Orb"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in an extremely large (miles) area around the user.",
+					"S": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a large (across a field) area around the user.",
+					"A": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a medium (across a room) area around the user.",
+					"B": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a small (arms' reach) area around the user.",
+					"C": "Delivers a powerful burst of electricity that shocks any creature touched, inflicting damage in a small (arms' reach) area around the user."
 			 	}
 			},
 "Skill Boost": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Ingestible Pill", "Magic Potion"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to EX rank.",
+					"S": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to S rank.",
+					"A": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to A rank.",
+					"B": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to B rank.",
+					"C": "Dramatically but temporarily alters the user's mind and body to boost physical performance at one specific task to C rank."
 			 	}
 			},
 "Sleep Inducer": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Thin Glove", "Magic Wand", "Poison (Liquid)"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "Touch puts the victim to sleep until awoken by magical means.",
+					"A": "Touch puts the victim to sleep until awoken by a violent action.",
+					"B": "Touch puts the victim to sleep until awoken by a violent action or an extremely loud noise.",
+					"C": "Touch puts the victim to sleep until awoken by a violent action or an extremely loud noise."
 			 	}
 			},
 "Sonic Hole": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Black Orb", "Amulet (Ruby)"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Sound Dampener": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Draws all sound in an extremely large (miles) area into the item. Within the affected area, no sound can be heard.",
+					"S": "Draws all sound in a large (across a field) area into the item. Within the affected area, no sound can be heard.",
+					"A": "Draws all sound in a medium (across a room) area into the item. Within the affected area, no sound can be heard.",
+					"B": "Draws all sound in a small (arms' reach) area into the item. Within the affected area, no sound can be heard.",
+					"C": "Draws all sound in a small (arms' reach) area into the item. Within the affected area, no sound can be heard."
 			 	}
 			},
 "Spatial Warp": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Softly Glowing Spectacles", "Spool of Golden Yarn"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "When used with another ability (or boon) that affects any number of targets, you may target any target(s) on the same plane.",
+					"S": "When used with another ability (or boon) that affects a single target, you may target any target within line of sight.",
 			 	}
 			},
 "Speed Boost": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Ingestible Pill", "Armband", "Boots"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "The user can temporarily move inhumanly fast.",
+					"A": "The user can temporarily move inhumanly fast.",
+					"B": "The user can temporarily move inhumanly fast.",
+					"C": "The user can temporarily move inhumanly fast."
 			 	}
 			},
 "Strength Boost": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Ingestible Pill", "Armband", "Boots"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "The user is temporarily inhumanly strong.",
+					"A": "The user is temporarily inhumanly strong.",
+					"B": "The user is temporarily inhumanly strong.",
+					"C": "The user is temporarily inhumanly strong."
 			 	}
 			},
-"Subdual Field": {
-				"Form Factor": ["list", "of", "strings"],
+"Peace Field": {
+				"Form Factor": ["Magic Rune", "Small Figurine of Your Deity"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "After being activated, creates an invisible field that fills an extremely large (miles) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+					"S": "After being activated, creates an invisible field that fills a large (across a field) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+					"A": "After being activated, creates an invisible field that fills a medium (across a room) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+					"B": "After being activated, creates an invisible field that fills a small (arms' reach) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field.",
+					"C": "After being activated, creates an invisible field that fills a small (arms' reach) area. The field affects the minds of thinking beings within the field, preventing them from taking hostile actions. The effect lasts as long as they remain in the field."
 			 	}
 			},
-"Telepathy Implant": {
-				"Form Factor": ["list", "of", "strings"],
+"Teleport": {
+				"Form Factor": ["Magic Rune", "Ring", "Necklace"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Teleporter (Bounder)": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Teleporter (Traveler)": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "User teleports to a location they have previously visited on the same plane. They arrive safely with their possessions and anything within arms' reach they wish to take with them.",
+					"S": "User teleports to a location they can see. They arrive safely with their possessions but cannot take anything else with them.",
+					"A": "User teleports a medium (across a room) distance to a location they can see. They arrive safely with their possessions but cannot take anything else with them.",
 			 	}
 			},
 "Temporal Viewer": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Magic Wand", "Contact Lenses"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Displays moving images and sound, depicting events that occurred at any location on the same plane, at any point in history. The user specifies the time period shown by the viewer.",
+					"S": "Displays moving images and sound, depicting events that occurred at the current location up to ten years prior. The user specifies the time period shown by the viewer.",
+					"A": "Displays moving images and sound, depicting events that occurred at the current location up to one year prior. The user specifies the time period shown by the viewer.",
+					"B": "Displays moving images and sound, depicting events that occurred at the current location up to one month prior. The user specifies the time period shown by the viewer.",
+					"C": "Displays moving images and sound, depicting events that occurred at the current location up to one day prior. The user specifies the time period shown by the viewer."
 			 	}
 			},
-"Time Dilation Nodule (Defensive)": {
-				"Form Factor": ["list", "of", "strings"],
+"Time Dilation Enchantment (Defensive)": {
+				"Form Factor": ["Enchantment on Armor"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"A": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat.",
+					"B": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat.",
+					"C": "Enchants armor. The wearer of the armor moves in seemingly random, rapid jumps, a few inches to one side or the other, when attacked. This makes them harder to hit in combat."
 			 	}
 			},
-"Time Dilation Nodule (Offensive)": {
-				"Form Factor": ["list", "of", "strings"],
+"Time Dilation Enchantment (Offensive)": {
+				"Form Factor": ["Enchantment on Weapon"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"A": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks.",
+					"B": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks.",
+					"C": "Enchants a weapon. The attacker moves at almost instantaneous speeds when they swing the weapon, easing their attacks."
 			 	}
 			},
 "Tracer": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Magic Rune", "Magic Wand"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"S": "Fires a microscopic tracer that clings to any surface within line of sight. The user can scry the exact location of the tracer, and the path taken to get there, as long as it is in the same plane.",
+					"A": "Fires a microscopic tracer that clings to any surface within line of sight. The user can scry the distance and direction to the tracer, as long as it is in the same plane.",
+					"B": "Applies a tracer to any surface you can touch. The user can scry the distance and direction to the tracer, as long as it is in the same plane.",
+					"C": "Applies a tracer to any surface you can touch. The user can scry the  direction to the tracer, but not the distance, as long as it is in the same plane.",
 			 	}
 			},
 "Trail Blazer": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Boots With Wings"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer and any targets within line of sight that the wearer chooses can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
+					"S": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer (and up to one other person that can be carried along) can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
+					"A": "Each time the boot touches down on solid ground, it marks the area with a magic symbol. At any time before the duration expires, the wearer can instantly teleport back to any of these symbols on the same plane. Using this teleportation destroys all symbols.",
 			 	}
 			},
-"Transdimensional Sense": {
-				"Form Factor": ["list", "of", "strings"],
+"See Invisibility": {
+				"Form Factor": ["Goggles", "Contact Lenses", "Your Eyes Are Paler Than Normal"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank EX or lower.",
+					"S": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank S or lower.",
+					"A": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank A or lower.",
+					"B": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank B or lower.",
+					"C": "The user can see out-of-phase and invisible creatures, objects, and sources of energy rank C or lower."
 			 	}
 			},
 "Travel Bubble": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Magenta Bubble Wand"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "The user and any additional targets that can fit into a large (across a field) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground safely. The sphere can teleport anywhere within line of sight instantly.",
+					"S": "The user and any additional targets that can fit into a short (arms' reach) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as the fastest human sprinting.",
+					"A": "The user and any additional targets that can fit into a short (arms' reach) space are encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as a normal human walking.",
+					"B": "The user is encapsulated in a spherical force field. The sphere hovers at all times and moves as the user wishes vertically or horizontally. If the sphere is destroyed or collapsed whatever it contains falls to the ground. The sphere moves as fast as a normal human walking.",
 			 	}
 			},
 "Visage Changer": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Ring", "Amulet (Amethyst)", "Magic Wand"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Visual Displacement Device": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Vocal Translator": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
-			 	}
-			},
-"Warmth Projector": {
-				"Form Factor": ["list", "of", "strings"],
-				"Ranks": 
-				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Changes the appearance of any number of creatures you can see.",
+					"S": "Changes the appearance of one creature.",
+					"A": "Changes the appearance of one (willing) creature.",
+					"B": "Changes the appearance of one (willing) human-sized creature.",
+					"C": "Changes the appearance of one (willing) dog-sized creature."
 			 	}
 			},
 "Water Breather": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Clamshell Bra", "Snorkel", "Magic Rune"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Allows the user full mastery of the oceans - they can swim effortlessly at any depths and underwater conditions, telepathically communicate and command sea life, and have all senses adapted for the sea.",
+					"S": "Allows an air breather to breathe underwater, swim like a fish, survive at high depths, and communicate with fish.",
+					"A": "Allows an air breather to breathe underwater and swim like a fish at high depths.",
+					"B": "Allows an air breather to breathe underwater and swim like a fish.",
+					"C": "Allows an air breather to breathe underwater."
 			 	}
 			},
 "X-Ray Viewer": {
-				"Form Factor": ["list", "of", "strings"],
+				"Form Factor": ["Dark Spectacles", "Magnifying Glass", "Powder to Sprinkle on an Object"],
 				"Ranks": 
 				{
-					"EX": "Effect",
-					"S": "Effect",
-					"A": "Effect",
-					"B": "Effect",
-					"C": "Effect"
+					"EX": "Your vision is enhanced to see anywhere on the same plane, seeing through however many layers of solid objects you wish.",
+					"S": "See through however many layers of solid objects you wish.",
+					"A": "See through a solid object.",
+					"B": "See through a solid object to a depth of a few feet.",
+					"C": "See through a solid object to a depth of a few inches."
 			 	}
 			}
 }
