@@ -1,7 +1,8 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
-import Googlify, RockPaperScissors
+import Googlify, RockPaperScissors, boons
 import random
+import re
 
 TOKEN = open('token.token').read()
 ROLES = {
@@ -15,6 +16,7 @@ ROLES = {
         "closed": 503994494690131969,
         "hiatus": 503994516148191242
         }
+STAFFROLE = 503948857298780160
 FACTIONS = ["SOLARA", "TIAMAT", "MISTRAL", "PROSERPINA", "SKIRNIR", "LUCIFIEL"]
 
 class MyClient(discord.Client):
@@ -30,7 +32,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate\nchar <charname>\niam <rolename>\niamnot <rolename>\nforward\ngooglify\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate\nchar <charname>\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -119,6 +121,22 @@ class MyClient(discord.Client):
                 await message.author.create_dm()
             self.rockPaperScissorsGame = RockPaperScissors.Game(message, message.author, message.mentions[0])
             await self.rockPaperScissorsGame.Send()
+
+        # Boons
+        elif(message.content.startswith('>boons') and message.guild.get_role(STAFFROLE) in message.author.roles):
+            if(len(message.content.split()) > 1):
+                pattern = '(?P<Number>\d+) (?P<EX>\d+) (?P<S>\d+)'
+                if(re.match(pattern, ' '.join(message.content.split()[1:]))):
+                    matchDict = re.match(pattern, ' '.join(message.content.split()[1:])).groupdict()
+                    batch = boons.BoonBatch(number=int(matchDict['Number']), minEX=int(matchDict['EX']), minS=int(matchDict['S']))
+                else:
+                    await message.channel.send("Usage: ```>boons <number> <min EX> <min S>``` Instead using default (10 boons, min 1 EX min 1 S)")
+                    batch = boons.BoonBatch(number=10, minEX=1, minS=1)
+            else:
+                batch = boons.BoonBatch(number=10, minEX=1, minS=1)
+            embeds = [boons.BoonEmbed(boon) for boon in batch]
+            for embed in embeds:
+                await message.channel.send(embed=embed)
 
     async def on_reaction_add(self, reaction, user):
         if(self.rockPaperScissorsGame.valid):
