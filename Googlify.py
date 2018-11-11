@@ -36,7 +36,18 @@ def Googlify(inputImage):
     return image
 
 def ImageFromURL(url):
-	# Discord profile pictures suck and come in as .webp by default, instead get a .png like a human being
-	response = requests.get(url.split('.webp')[0]+'.png')
-	img = Image.open(BytesIO(response.content))
-	return img
+    if(url == '' or url == ' '):
+        return Image.new('RGBA', (100,100), (255,0,0,0))
+    elif(url.endswith('.gif') or url.endswith('.gifv')):
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content))
+        return img.convert(mode='RGBA')
+    elif('.webp' in url):
+    	# Discord profile pictures suck and come in as .webp by default, instead get a .png like a human being
+    	response = requests.get(url.split('.webp')[0]+'.png')
+    	img = Image.open(BytesIO(response.content))
+    	return img
+    else:
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content))
+        return img.convert(mode='RGBA')

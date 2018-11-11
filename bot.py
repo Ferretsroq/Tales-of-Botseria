@@ -39,7 +39,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\ncharlist [deity]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\ncharlist [deity]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -47,7 +47,7 @@ class MyClient(discord.Client):
             
 
         # Repopulate the character list, saves to file
-        elif(message.content.startswith('>repopulate') and message.guild.get_role(STAFFROLE) in message.author.roles):
+        elif(message.content.startswith('>repopulate') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == 379374543237545985)):
             character_sheet.repopulate()
             await message.channel.send('Repopulated character list!')
 
@@ -140,8 +140,17 @@ class MyClient(discord.Client):
 
         # Eyes
         elif(message.content.startswith('>googlify')):
-            Googlify.Googlify(Googlify.ImageFromURL(message.author.avatar_url)).save('tempGoogly.png')
-            await message.channel.send(file=discord.File('tempGoogly.png'))
+            if(message.content == '>googlify'):
+                Googlify.Googlify(Googlify.ImageFromURL(message.author.avatar_url)).save('tempGoogly.png')
+                await message.channel.send(file=discord.File('tempGoogly.png'))
+            elif(len(message.content.split(' ',1)) > 1):
+                with open('data.json') as json_data:
+                    data = json.load(json_data)
+                if(message.content.split(' ',1)[1].lower() in data.keys()):
+                    Googlify.Googlify(Googlify.ImageFromURL(data[message.content.split(' ',1)[1].lower()]['image'])).save('tempGoogly.png')
+                    await message.channel.send(file=discord.File('tempGoogly.png'))
+                else:
+                    await message.channel.send("Character not found:```{}```".format(message.content.split(' ',1)[1].lower()))
 
         # Rock-Paper-Scissors
         elif(message.content.startswith('>rps') and len(message.mentions) > 0):
