@@ -79,7 +79,7 @@ def ChooseColor(deity):
         return 0x276791
     elif(deity.lower() == 'mistral'):
         return 0x2d8951
-    elif(deity.lower() == 'prosperpina'):
+    elif(deity.lower() == 'proserpina'):
         return 0xa4563c
     elif(deity.lower() == 'skirnir'):
         return 0xc27c0e
