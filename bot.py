@@ -1,6 +1,6 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
-import Googlify, RockPaperScissors, boons
+import Googlify, RockPaperScissors, boons, DeityMessage
 import random
 import re
 
@@ -26,13 +26,20 @@ class MyClient(discord.Client):
         print(client.user.id)
         print('------')
         self.rockPaperScissorsGame = RockPaperScissors.Game()
+        self.factionMessages = {'solara': None,
+                                'tiamat': None,
+                                'mistral': None,
+                                'proserpina': None,
+                                'skirnir': None,
+                                'lucifiel': None,
+                                'all': None}
 
     async def on_message(self, message):
         # we do not want the bot to reply to itself
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\ncharlist [deity]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -50,7 +57,18 @@ class MyClient(discord.Client):
             if(message.content == '>char'):
                 await message.channel.send('```>char must be followed by a valid character name, or include ooc=<ooc name>```')
             else:
-                if(message.content.startswith('>char ooc=')):
+                if(message.content.startswith('>charlist')):
+                    if(message.content == '>charlist'):
+                        self.factionMessages['all'] = DeityMessage.DeityMessage('all', message.author)
+                        await self.factionMessages['all'].Send(message.channel)
+                        await self.factionMessages['all'].Edit()
+                    if(len(message.content.split()) > 1):
+                        deity = message.content.split()[1]
+                        if(deity.lower() in self.factionMessages):
+                            self.factionMessages[deity.lower()] = DeityMessage.DeityMessage(deity.lower(), message.author)
+                            await self.factionMessages[deity.lower()].Send(message.channel)
+                            await self.factionMessages[deity.lower()].Edit()
+                elif(message.content.startswith('>char ooc=')):
                     oocName = message.content.split('=',1)[1].lower()
                     with open('data.json') as json_data:
                         data = json.load(json_data)
@@ -70,6 +88,8 @@ class MyClient(discord.Client):
                     else:
                         output = 'Invalid character!\n```{}```'.format(name.lower())
                         await message.channel.send(output)
+
+
 
         # Memes
         elif(message.content.startswith('>forward')):
@@ -154,6 +174,15 @@ class MyClient(discord.Client):
                 await self.rockPaperScissorsGame.UpdateChallengerResponse(reaction)
             elif(reaction.message.id == self.rockPaperScissorsGame.targetMessage.id and user == self.rockPaperScissorsGame.target):
                 await self.rockPaperScissorsGame.UpdateTargetResponse(reaction)
+        for deity in self.factionMessages:
+            if(self.factionMessages[deity] != None):
+                if(self.factionMessages[deity].message.id == reaction.message.id and self.factionMessages[deity].user == user):
+                    if(str(reaction) == str(DeityMessage.arrowLeft)):
+                        await self.factionMessages[deity].Back()
+                    elif(str(reaction) == str(DeityMessage.arrowRight)):
+                        await self.factionMessages[deity].Advance()
+                    elif(str(reaction) == str(DeityMessage.listEmoji)):
+                        await self.factionMessages[deity].ListNames()
 
 client = MyClient()
 client.run(TOKEN)

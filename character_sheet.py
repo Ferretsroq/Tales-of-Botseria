@@ -32,6 +32,8 @@ def repopulate():
         #image = soup.select('[id="100x100_image"]')[0].text
         print('Populating {}'.format(name))
         image = soup.find('object', attrs={'id' : '100x100_image'})['data']
+        if(image == '<i>No Information</i>'):
+            image = ''
         #deity = soup.select('[id="deity"]')[0].text
         age = soup.select('[id="age"]')[0].text
         series = soup.select('[id="series"]')[0].text
