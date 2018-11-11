@@ -32,7 +32,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate\nchar <charname>\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -40,7 +40,7 @@ class MyClient(discord.Client):
             
 
         # Repopulate the character list, saves to file
-        elif message.content.startswith('>repopulate'):
+        elif(message.content.startswith('>repopulate') and message.guild.get_role(STAFFROLE) in message.author.roles):
             character_sheet.repopulate()
             await message.channel.send('Repopulated character list!')
 
@@ -48,18 +48,28 @@ class MyClient(discord.Client):
         # Sends character info to discord embed
         elif message.content.startswith('>char'):
             if(message.content == '>char'):
-                await message.channel.send('```>char must be followed by a valid character name.```')
+                await message.channel.send('```>char must be followed by a valid character name, or include ooc=<ooc name>```')
             else:
-                name = message.content.split(">char ",1)[1]
-                with open('data.json') as json_data:
-                    data = json.load(json_data)
-                if(name.lower() in data.keys()):
-                    characterInfo =  data[name.lower()]
-                    output = character_sheet.MakeEmbed(name.title(), characterInfo)
-                    await message.channel.send(embed=output)
+                if(message.content.startswith('>char ooc=')):
+                    oocName = message.content.split('=',1)[1].lower()
+                    with open('data.json') as json_data:
+                        data = json.load(json_data)
+                    characters = [character for character in data if data[character]['ooc']==oocName]
+                    for character in characters:
+                        await message.channel.send(embed=character_sheet.MakeEmbed(character, data[character]))
+                    if(len(characters) == 0):
+                        await message.channel.send("No characters found for ooc name ```{}```".format(oocName))
                 else:
-                    output = 'Invalid character!\n```{}```'.format(name.lower())
-                    await message.channel.send(output)
+                    name = message.content.split(">char ",1)[1]
+                    with open('data.json') as json_data:
+                        data = json.load(json_data)
+                    if(name.lower() in data.keys()):
+                        characterInfo =  data[name.lower()]
+                        output = character_sheet.MakeEmbed(name.title(), characterInfo)
+                        await message.channel.send(embed=output)
+                    else:
+                        output = 'Invalid character!\n```{}```'.format(name.lower())
+                        await message.channel.send(output)
 
         # Memes
         elif(message.content.startswith('>forward')):
