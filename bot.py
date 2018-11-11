@@ -54,7 +54,7 @@ class MyClient(discord.Client):
                     oocName = message.content.split('=',1)[1].lower()
                     with open('data.json') as json_data:
                         data = json.load(json_data)
-                    characters = [character for character in data if data[character]['ooc']==oocName]
+                    characters = [character for character in data if data[character]['ooc'].lower()==oocName]
                     for character in characters:
                         await message.channel.send(embed=character_sheet.MakeEmbed(character, data[character]))
                     if(len(characters) == 0):
