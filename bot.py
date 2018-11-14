@@ -1,6 +1,6 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
-import Googlify, RockPaperScissors, boons, DeityMessage
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList
 import random
 import re
 
@@ -33,13 +33,14 @@ class MyClient(discord.Client):
                                 'skirnir': None,
                                 'lucifiel': None,
                                 'all': None}
+        self.canonMessages = {}
 
     async def on_message(self, message):
         # we do not want the bot to reply to itself
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\ncharlist [deity]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\ncanonlist\ncharlist [deity OR canon] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -54,20 +55,61 @@ class MyClient(discord.Client):
 
         # Sends character info to discord embed
         elif message.content.startswith('>char'):
+            # Error message for bad syntax
             if(message.content == '>char'):
                 await message.channel.send('```>char must be followed by a valid character name, or include ooc=<ooc name>```')
             else:
+                # List of characters
                 if(message.content.startswith('>charlist')):
+                    # List all characters on Heavensfall
                     if(message.content == '>charlist'):
                         self.factionMessages['all'] = DeityMessage.DeityMessage('all', message.author)
                         await self.factionMessages['all'].Send(message.channel)
-                        await self.factionMessages['all'].Edit()
-                    if(len(message.content.split()) > 1):
+                        #await self.factionMessages['all'].Edit()
+                        await self.factionMessages['all'].ListNames()
+                    # List all characters of one faction
+                    if(len(message.content.split()) == 2 and message.content.split()[1].lower() in self.factionMessages):
                         deity = message.content.split()[1]
                         if(deity.lower() in self.factionMessages):
                             self.factionMessages[deity.lower()] = DeityMessage.DeityMessage(deity.lower(), message.author)
                             await self.factionMessages[deity.lower()].Send(message.channel)
-                            await self.factionMessages[deity.lower()].Edit()
+                            #await self.factionMessages[deity.lower()].Edit()
+                            await self.factionMessages[deity.lower()].ListNames()
+                    # Update the character list to a number
+                    elif(len(message.content.split()) == 2 and message.content.split()[1].isdigit()):
+                        if(self.factionMessages['all'] != None):
+                            factionMessage = self.factionMessages['all']
+                            if(message.author == factionMessage.user):
+                                number = int(message.content.split()[1])
+                                if(number <= len(factionMessage.characterList) and number >= 1):
+                                    factionMessage.index = number-1
+                                    await factionMessage.Edit()
+                    elif(len(message.content.split()) == 3 and message.content.split()[1].lower() in self.factionMessages):
+                        if(message.content.split()[1].lower() in self.factionMessages):
+                            factionMessage = self.factionMessages[message.content.split()[1].lower()]
+                            if(message.author == factionMessage.user):
+                                if(message.content.split()[2].isdigit()):
+                                    number = int(message.content.split()[2])
+                                    if(number <= len(factionMessage.characterList) and number >= 1):
+                                        factionMessage.index = number-1
+                                        await factionMessage.Edit()
+                    # Canon character lists
+                    #elif(len(message.content.split()) == 2 and message.content.split()[1].lower() in CanonList.CanonList()):
+                    elif(len(message.content.split(maxsplit=1)) == 2 and message.content.split(maxsplit=1)[1].lower() in CanonList.CanonList()):
+                        canon = message.content.split(maxsplit=1)[1].lower()
+                        #if(canon not in self.canonMessages):
+                        self.canonMessages[canon] = CanonList.CanonMessage(canon, message.author)
+                        await self.canonMessages[canon].Send(message.channel)
+                            #await self.canonMessages[canon].Edit()
+                        await self.canonMessages[canon].ListNames()
+                    #elif(len(message.content.split()) == 3 and message.content.split()[1].lower() in self.canonMessages and message.content.split()[2].isdigit()):
+                    elif(len(message.content.split()) > 1 and ' '.join(message.content.split()[1:-1]).lower() in self.canonMessages and message.content.split()[-1].isdigit()):
+                        #canonMessage = self.canonMessages[message.content.split()[1].lower()]
+                        canonMessage = self.canonMessages[' '.join(message.content.split()[1:-1]).lower()]
+                        number = int(message.content.split()[-1])
+                        if(number <= len(canonMessage.characterList) and number >= 1):
+                            canonMessage.index = number-1
+                            await canonMessage.Edit()
                 elif(message.content.startswith('>char ooc=')):
                     oocName = message.content.split('=',1)[1].lower()
                     with open('data.json') as json_data:
@@ -89,7 +131,12 @@ class MyClient(discord.Client):
                         output = 'Invalid character!\n```{}```'.format(name.lower())
                         await message.channel.send(output)
 
+        # Moves charlist to a number in the list
 
+
+
+        elif(message.content == '>canonlist'):
+            await message.channel.send('Valid canons: ```{}``` >charlist [canon] to list characters for a canon'.format('\n'.join(CanonList.CanonList())))
 
         # Memes
         elif(message.content.startswith('>forward')):
@@ -192,6 +239,16 @@ class MyClient(discord.Client):
                         await self.factionMessages[deity].Advance()
                     elif(str(reaction) == str(DeityMessage.listEmoji)):
                         await self.factionMessages[deity].ListNames()
+        for canon in self.canonMessages:
+            if(self.canonMessages[canon] != None):
+                if(self.canonMessages[canon].message.id == reaction.message.id and self.canonMessages[canon].user == user):
+                    if(str(reaction) == str(CanonList.arrowLeft)):
+                        await self.canonMessages[canon].Back()
+                    elif(str(reaction) == str(CanonList.arrowRight)):
+                        await self.canonMessages[canon].Advance()
+                    elif(str(reaction) == str(CanonList.listEmoji)):
+                        await self.canonMessages[canon].ListNames()
+
 
 client = MyClient()
 client.run(TOKEN)

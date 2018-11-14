@@ -61,7 +61,7 @@ def repopulate():
         json.dump(charList, outfile)
 
 def MakeEmbed(name, characterData):
-    print('MakeEmbed!')
+    #print('MakeEmbed!')
     embed=discord.Embed(title=name, color=ChooseColor(characterData['deity']))
     embed.set_thumbnail(url=characterData['image'])
     embed.add_field(name='Series:', value=characterData['series'], inline=True)
@@ -69,7 +69,7 @@ def MakeEmbed(name, characterData):
     embed.add_field(name='App Link:', value=characterData['app'], inline=False)
     embed.add_field(name='Plot Link:', value=characterData['plot'], inline=False)
     embed.set_footer(text="Played by {}".format(characterData['ooc']))
-    print('Returning Embed!')
+    #print('Returning Embed!')
     return embed
 
 def ChooseColor(deity):
