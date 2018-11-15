@@ -41,7 +41,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\ntemplate\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\ntemplates\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
