@@ -1,6 +1,6 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
-import Googlify, RockPaperScissors, boons, DeityMessage, CanonList
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage
 import random
 import re
 
@@ -34,13 +34,14 @@ class MyClient(discord.Client):
                                 'lucifiel': None,
                                 'all': None}
         self.canonMessages = {}
+        self.oocMessages = {}
 
     async def on_message(self, message):
         # we do not want the bot to reply to itself
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nchar [charname] (or) [ooc=playername]\ncanonlist\ncharlist [deity OR canon] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\ntemplate\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -94,31 +95,29 @@ class MyClient(discord.Client):
                                         factionMessage.index = number-1
                                         await factionMessage.Edit()
                     # Canon character lists
-                    #elif(len(message.content.split()) == 2 and message.content.split()[1].lower() in CanonList.CanonList()):
                     elif(len(message.content.split(maxsplit=1)) == 2 and message.content.split(maxsplit=1)[1].lower() in CanonList.CanonList()):
                         canon = message.content.split(maxsplit=1)[1].lower()
-                        #if(canon not in self.canonMessages):
                         self.canonMessages[canon] = CanonList.CanonMessage(canon, message.author)
                         await self.canonMessages[canon].Send(message.channel)
-                            #await self.canonMessages[canon].Edit()
                         await self.canonMessages[canon].ListNames()
-                    #elif(len(message.content.split()) == 3 and message.content.split()[1].lower() in self.canonMessages and message.content.split()[2].isdigit()):
                     elif(len(message.content.split()) > 1 and ' '.join(message.content.split()[1:-1]).lower() in self.canonMessages and message.content.split()[-1].isdigit()):
-                        #canonMessage = self.canonMessages[message.content.split()[1].lower()]
                         canonMessage = self.canonMessages[' '.join(message.content.split()[1:-1]).lower()]
                         number = int(message.content.split()[-1])
                         if(number <= len(canonMessage.characterList) and number >= 1):
                             canonMessage.index = number-1
                             await canonMessage.Edit()
-                elif(message.content.startswith('>char ooc=')):
-                    oocName = message.content.split('=',1)[1].lower()
-                    with open('data.json') as json_data:
-                        data = json.load(json_data)
-                    characters = [character for character in data if data[character]['ooc'].lower()==oocName]
-                    for character in characters:
-                        await message.channel.send(embed=character_sheet.MakeEmbed(character, data[character]))
-                    if(len(characters) == 0):
-                        await message.channel.send("No characters found for ooc name ```{}```".format(oocName))
+                    # ooc character lists
+                    elif(len(message.content.split(maxsplit=1)) == 2 and message.content.split(maxsplit=1)[1].lower() in OocMessage.OocList()):
+                        oocName = message.content.split(maxsplit=1)[1].lower()
+                        self.oocMessages[oocName] = OocMessage.OocMessage(message.author, oocName)
+                        await self.oocMessages[oocName].Send(message.channel)
+                        await self.oocMessages[oocName].ListNames()
+                    elif(len(message.content.split()) > 1 and ' '.join(message.content.split()[1:-1]).lower() in self.oocMessages and message.content.split()[-1].isdigit()):
+                        oocMessage = self.oocMessages[' '.join(message.content.split()[1:-1]).lower()]
+                        number = int(message.content.split()[-1])
+                        if(number <= len(oocMessage.characterList) and number >= 1):
+                            oocMessage.index = number-1
+                            await oocMessage.Edit()
                 else:
                     name = message.content.split(">char ",1)[1]
                     with open('data.json') as json_data:
@@ -136,7 +135,8 @@ class MyClient(discord.Client):
 
 
         elif(message.content == '>canonlist'):
-            await message.channel.send('Valid canons: ```{}``` >charlist [canon] to list characters for a canon'.format('\n'.join(CanonList.CanonList())))
+            canonList = CanonList.CanonList()
+            await message.channel.send('Valid canons: ```{}``` >charlist [canon] to list characters for a canon'.format('\n'.join(['{:<30}: {} Characters'.format(element[0], element[1]) for element in CanonList.CanonList()])))
 
         # Memes
         elif(message.content.startswith('>forward')):
@@ -185,6 +185,8 @@ class MyClient(discord.Client):
             await message.channel.send(random.choice(text))
             #await message.channel.send('The fates have chosen, oh indecisive one - {} is the deity that you may call as your home!'.format(faction))
 
+        elif(message.content == '>templates'):
+            await message.channel.send('You can find Magician\'s templates here!\nhttp://heavensfall.jcink.net/index.php?showtopic=22')
         # Eyes
         elif(message.content.startswith('>googlify')):
             if(message.content == '>googlify'):
@@ -248,6 +250,15 @@ class MyClient(discord.Client):
                         await self.canonMessages[canon].Advance()
                     elif(str(reaction) == str(CanonList.listEmoji)):
                         await self.canonMessages[canon].ListNames()
+        for ooc in self.oocMessages:
+            if(self.oocMessages[ooc] != None):
+                if(self.oocMessages[ooc].message.id == reaction.message.id and self.oocMessages[ooc].user == user):
+                    if(str(reaction) == str(OocMessage.arrowLeft)):
+                        await self.oocMessages[ooc].Back()
+                    elif(str(reaction) == str(OocMessage.arrowRight)):
+                        await self.oocMessages[ooc].Advance()
+                    elif(str(reaction) == str(OocMessage.listEmoji)):
+                        await self.oocMessages[ooc].ListNames()
 
 
 client = MyClient()

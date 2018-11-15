@@ -1,48 +1,30 @@
 import discord
 import json
 import asyncio
-import character_sheet
 import requests, bs4
+import character_sheet
+import Googlify
 
 arrowLeft = chr(0x2B05)
 arrowRight = chr(0x27A1)
 listEmoji = chr(0x1f4dc)
 
-def CharCanon(canon):
-    url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
-    res = requests.get(url)
-    soup = bs4.BeautifulSoup(res.text, "lxml")
-    print('Fetching url {}'.format(url))
-    canons = soup.select('h2')
-    if(canon.lower() in [tag.getText().lower() for tag in canons]):
-        index = [tag.getText().lower() for tag in canons].index(canon.lower())
-        characters = [character.getText().lower() for character in canons[index].find_next('ul').find_all('li')]
-        return(characters)
-    else:
-        print('Canon {} not found.'.format(canon.lower()))
-        return []
+def OocList():
+	with open('data.json') as json_data:
+		data = json.load(json_data)
+	oocList = []
+	for character in data:
+		if(data[character]['ooc'].lower() not in oocList):
+			oocList.append(data[character]['ooc'].lower())
+	return oocList
 
-def CanonList():
-    url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
-    res = requests.get(url)
-    soup = bs4.BeautifulSoup(res.text, "lxml")
-    canons = [tag.getText().lower() for tag in soup.select('h2')]
-    headings = soup.select('h2')
-    counts = []
-    for index in range(len(headings)):
-    	count = len(headings[index].find_next('ul').find_all('li'))
-    	counts.append(count)
-
-    return list(zip(canons, counts))
-
-class CanonMessage:
-	def __init__(self, canon, user):
+class OocMessage:
+	def __init__(self, user, ooc):
 		with open('data.json') as json_data:
 			data = json.load(json_data)
-		self.canon = canon
+		self.ooc = ooc
 		self.user = user
-		validCharacters = CharCanon(canon)
-		self.characterList = [character for character in data if character.lower() in validCharacters]
+		self.characterList = [character for character in data if data[character]['ooc'].lower()==ooc.lower()]
 		self.index = 0
 		self.message = None
 		self.embed = discord.Embed()
@@ -61,13 +43,16 @@ class CanonMessage:
 		names[self.index] = '**{}**'.format(names[self.index])
 		#content = '\n'.join(['{}: {}'.format(x+1, self.characterList[x]) for x in range(len(self.characterList))])
 		content = '\n'.join(names)
-		await self.Edit(content)
-	async def Edit(self, content=''):
+		await self.Edit(content, googlify=True)
+	async def Edit(self, content='', googlify=False):
 		with open('data.json') as json_data:
 			data = json.load(json_data)
 		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]])
-		self.embed.title = "{} - {}/{}: ".format(self.canon, self.index+1, len(self.characterList)) + self.embed.title
+		self.embed.title = "{} - {}/{}: ".format(self.ooc, self.index+1, len(self.characterList)) + self.embed.title
 		self.embed.description = content
+		#if(googlify):
+	#		Googlify.Googlify(Googlify.ImageFromURL(data[self.characterList[self.index]]['image'])).save('tempGoogly.png')
+	#		self.embed.set_thumbnail(url='attachment://tempGoogly.png')
 		await self.message.edit(embed=self.embed)
 		await self.SetReactions()
 	async def Send(self, channel):

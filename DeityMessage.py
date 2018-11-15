@@ -3,6 +3,7 @@ import json
 import asyncio
 import requests, bs4
 import character_sheet
+import Googlify
 
 arrowLeft = chr(0x2B05)
 arrowRight = chr(0x27A1)
@@ -36,13 +37,16 @@ class DeityMessage:
 		names[self.index] = '**{}**'.format(names[self.index])
 		#content = '\n'.join(['{}: {}'.format(x+1, self.characterList[x]) for x in range(len(self.characterList))])
 		content = '\n'.join(names)
-		await self.Edit(content)
-	async def Edit(self, content=''):
+		await self.Edit(content, googlify=True)
+	async def Edit(self, content='', googlify=False):
 		with open('data.json') as json_data:
 			data = json.load(json_data)
 		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]])
 		self.embed.title = "{} - {}/{}: ".format(self.deity, self.index+1, len(self.characterList)) + self.embed.title
 		self.embed.description = content
+#		if(googlify):
+#			Googlify.Googlify(Googlify.ImageFromURL(data[self.characterList[self.index]]['image'])).save('tempGoogly.png')
+#			self.embed.set_thumbnail(url='attachment://tempGoogly.png')
 		await self.message.edit(embed=self.embed)
 		await self.SetReactions()
 	async def Send(self, channel):
