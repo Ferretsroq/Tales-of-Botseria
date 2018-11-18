@@ -1,64 +1,68 @@
 import requests, bs4, string, json, discord
+import asyncio, aiohttp
+import time
 
-def repopulate():
-
+async def repopulate():
+    startTime = time.clock()
+    
     charList = {}
+    async with aiohttp.ClientSession() as session:
+        async with session.get('https://heavensfall.jcink.net/index.php') as response:
+            soups = bs4.BeautifulSoup(await response.text(), "lxml")
+            newest = int(soups.find(id="newest_member").find('a').get('href').split("showuser=",1)[1])
+            print('newest: {}'.format(newest))
+            for x in range(0, newest):
+                print('x: {}'.format(x))
+                async with session.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)) as res:
+                    #res = requests.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1))
+                    soup = bs4.BeautifulSoup(await res.text(), "lxml")
+                    print('Fetching url {}'.format('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)))
+                    try:
+                        name = soup.select('[id="profilename"]')[0].text.lower()
+                        print(name)
+                    except:
+                        print('No name')
+                        continue
+                
 
-    req = requests.get('https://heavensfall.jcink.net/index.php')
-    soups = bs4.BeautifulSoup(req.text, "lxml")
-    newest = int(soups.find(id="newest_member").find('a').get('href').split("showuser=",1)[1])
-    print('newest: {}'.format(newest))
-    for x in range(0, newest):
-        print('x: {}'.format(x))
-        res = requests.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1))
-        soup = bs4.BeautifulSoup(res.text, "lxml")
-        print('Fetching url {}'.format('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)))
-        try:
-            name = soup.select('[id="profilename"]')[0].text.lower()
-            print(name)
-        except:
-            print('No name')
-            continue
+                    group =  soup.find("div",{"class":"site_profile"})['id']
+                    print(group)
+                    if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members'):
+                        print('bad group')
+                        continue
+                    else:
+                        deity = group
+                
+                    print('Populating {}'.format(name))
+                    image = soup.find('object', attrs={'id' : '100x100_image'})['data']
+                    if(image == '<i>No Information</i>'):
+                        image = ''
+                    age = soup.select('[id="age"]')[0].text
+                    series = soup.select('[id="series"]')[0].text
+                    pronouns = soup.select('[id="pronouns"]')[0].text
+                    app = soup.find("a",{"id":"application"})['href']
+                    plot = soup.find("a",{"id":"plotter"})['href']
+                    ooc = soup.select('[id="ooc_name"]')[0].text
             
+                    charList[name] = {
+                        'group': group,
+                        'image': image,
+                        'deity': deity,
+                        'age': age,
+                        'series': series,
+                        'pronouns': pronouns,
+                        'app': app,
+                        'plot': plot,
+                        'ooc': ooc
+                        }
+                    for key in charList[name].keys():
+                        if(charList[name][key] == ''):
+                            charList[name][key] = ' '
 
-        group =  soup.find("div",{"class":"site_profile"})['id']
-        print(group)
-        if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members'):
-            print('bad group')
-            continue
-        else:
-            deity = group
-            
-        #image = soup.select('[id="100x100_image"]')[0].text
-        print('Populating {}'.format(name))
-        image = soup.find('object', attrs={'id' : '100x100_image'})['data']
-        if(image == '<i>No Information</i>'):
-            image = ''
-        #deity = soup.select('[id="deity"]')[0].text
-        age = soup.select('[id="age"]')[0].text
-        series = soup.select('[id="series"]')[0].text
-        pronouns = soup.select('[id="pronouns"]')[0].text
-        app = soup.find("a",{"id":"application"})['href']
-        plot = soup.find("a",{"id":"plotter"})['href']
-        ooc = soup.select('[id="ooc_name"]')[0].text
-        
-        charList[name] = {
-                'group': group,
-                'image': image,
-                'deity': deity,
-                'age': age,
-                'series': series,
-                'pronouns': pronouns,
-                'app': app,
-                'plot': plot,
-                'ooc': ooc
-            }
-        for key in charList[name].keys():
-            if(charList[name][key] == ''):
-                charList[name][key] = ' '
+            with open('data.json', 'w') as outfile:
+                json.dump(charList, outfile)
+    print("Time: {}".format(time.clock() - startTime))
 
-    with open('data.json', 'w') as outfile:
-        json.dump(charList, outfile)
 
 def MakeEmbed(name, characterData):
     #print('MakeEmbed!')

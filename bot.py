@@ -50,7 +50,7 @@ class MyClient(discord.Client):
 
         # Repopulate the character list, saves to file
         elif(message.content.startswith('>repopulate') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == 379374543237545985)):
-            character_sheet.repopulate()
+            await character_sheet.repopulate()
             await message.channel.send('Repopulated character list!')
 
 
