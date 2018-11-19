@@ -17,13 +17,13 @@ def Googlify(inputImage):
     imageY = image.size[1]
     radius = int((((imageX + imageY)/2)/4) - 1)
     # The eyes have static x positions but random y positions
-    center1 = (imageX/4, random.randint(((imageY/2)-radius),((imageY/2)+radius)))
-    center2 = (3*imageX/4, random.randint(((imageY/2)-radius),((imageY/2)+radius)))
+    center1 = (int(imageX/4), random.randint(int(((imageY/2)-radius)),int(((imageY/2)+radius))))
+    center2 = (int(3*imageX/4), random.randint(int(((imageY/2)-radius)),int(((imageY/2)+radius))))
     pupilRadius = int(((imageX + imageY)/2)/10)
     # The pupils of the googly eyes can be anywhere within the eye but can't go outside of the eye
-    pupilDistance1 = random.randint(0, radius-pupilRadius)
+    pupilDistance1 = random.randint(0, int(radius-pupilRadius))
     pupilAngle1 = random.randint(0, 359)*np.pi/180.0
-    pupilDistance2 = random.randint(0, radius-pupilRadius)
+    pupilDistance2 = random.randint(0, int(radius-pupilRadius))
     pupilAngle2 = random.randint(0, 359)*np.pi/180.0
     # Determine pupil centers based on distance and angle
     pupilCenter1 = (center1[0] + pupilDistance1*np.cos(pupilAngle1), center1[1]+pupilDistance1*np.sin(pupilAngle1))
