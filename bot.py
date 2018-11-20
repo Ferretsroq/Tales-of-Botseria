@@ -192,7 +192,7 @@ class MyClient(discord.Client):
             if(message.content == '>googlify'):
                 Googlify.Googlify(Googlify.ImageFromURL(message.author.avatar_url)).save('tempGoogly.png')
                 await message.channel.send(file=discord.File('tempGoogly.png'))
-            elif(len(message.content.split(' ',1)) > 1):
+            elif(len(message.content.split(' ',1)) > 1 and len(message.mentions)==0):
                 with open('data.json') as json_data:
                     data = json.load(json_data)
                 if(message.content.split(' ',1)[1].lower() in data.keys()):
@@ -200,6 +200,10 @@ class MyClient(discord.Client):
                     await message.channel.send(file=discord.File('tempGoogly.png'))
                 else:
                     await message.channel.send("Character not found:```{}```".format(message.content.split(' ',1)[1].lower()))
+            elif(len(message.content.split(' ',1)) > 1 and len(message.mentions) > 0):
+                Googlify.Googlify(Googlify.ImageFromURL(message.mentions[0].avatar_url)).save('tempGoogly.png')
+                await message.channel.send(file=discord.File('tempGoogly.png'))
+
 
         # Rock-Paper-Scissors
         elif(message.content.startswith('>rps') and len(message.mentions) > 0):
