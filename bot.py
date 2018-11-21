@@ -41,7 +41,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\ntemplates\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname]\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\ntemplates\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname OR @user]\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -50,7 +50,7 @@ class MyClient(discord.Client):
 
         # Repopulate the character list, saves to file
         elif(message.content.startswith('>repopulate') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == 379374543237545985)):
-            await character_sheet.repopulate()
+            await character_sheet.repopulate(message.channel)
             await message.channel.send('Repopulated character list!')
 
 

@@ -2,9 +2,9 @@ import requests, bs4, string, json, discord
 import asyncio, aiohttp
 import time
 
-async def repopulate():
+async def repopulate(channel):
     startTime = time.clock()
-    
+    message = await channel.send("Repopulating...")
     charList = {}
     async with aiohttp.ClientSession() as session:
         async with session.get('https://heavensfall.jcink.net/index.php') as response:
@@ -14,6 +14,8 @@ async def repopulate():
             for x in range(0, newest):
                 print('x: {}'.format(x))
                 async with session.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)) as res:
+                    if(x in range(0,newest,int(newest/4))):
+                        await message.edit(content="Repopulating... {}/{}".format(x+1, newest))
                     #res = requests.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1))
                     soup = bs4.BeautifulSoup(await res.text(), "lxml")
                     print('Fetching url {}'.format('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)))
@@ -61,6 +63,7 @@ async def repopulate():
 
             with open('data.json', 'w') as outfile:
                 json.dump(charList, outfile)
+    await message.delete()
     print("Time: {}".format(time.clock() - startTime))
 
 
