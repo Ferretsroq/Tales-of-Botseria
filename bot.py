@@ -153,6 +153,25 @@ class MyClient(discord.Client):
         elif(message.content.startswith('>iam') and not message.content.startswith('>iamnot')):
             if(message.content == '>iam'):
                 await message.channel.send('I need to know what role you want, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
+            # Kat is a weeb
+            elif(message.content.lower() == '>iam the bone of my sword'):
+                await message.channel.send('Steel is my Body and Fire is my Blood.')
+                await asyncio.sleep(2)
+                await message.channel.send('I have created over a Thousand Blades,')
+                await asyncio.sleep(2)
+                await message.channel.send('Unknown to Death,')
+                await asyncio.sleep(2)
+                await message.channel.send('Nor known to Life.')
+                await asyncio.sleep(2)
+                await message.channel.send('Have withstood Pain to create many Weapons')
+                await asyncio.sleep(2)
+                await message.channel.send('Yet those Hands will never hold Anything.')
+                await asyncio.sleep(2)
+                await message.channel.send('So, as I Pray-')
+                await asyncio.sleep(2)
+                await message.channel.send('**UNLIMITED BLADE WORKS**')
+                await asyncio.sleep(1)
+                await message.channel.send(':crossed_swords:'*125)
             else:
                 desiredRole = message.content.split(">iam ",1)[1].lower()
                 if(desiredRole in ROLES.keys()):

@@ -3,7 +3,7 @@ import asyncio, aiohttp
 import time
 
 async def repopulate(channel):
-    startTime = time.clock()
+    startTime = time.perf_counter()
     message = await channel.send("Repopulating...")
     charList = {}
     async with aiohttp.ClientSession() as session:
@@ -64,7 +64,7 @@ async def repopulate(channel):
             with open('data.json', 'w') as outfile:
                 json.dump(charList, outfile)
     await message.delete()
-    print("Time: {}".format(time.clock() - startTime))
+    print("Time: {}".format(time.perf_counter() - startTime))
 
 
 def MakeEmbed(name, characterData):
