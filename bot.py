@@ -95,7 +95,7 @@ class MyClient(discord.Client):
                                         factionMessage.index = number-1
                                         await factionMessage.Edit()
                     # Canon character lists
-                    elif(len(message.content.split(maxsplit=1)) == 2 and message.content.split(maxsplit=1)[1].lower() in CanonList.CanonList()):
+                    elif(len(message.content.split(maxsplit=1)) == 2 and message.content.split(maxsplit=1)[1].lower() in [canon[0] for canon in CanonList.CanonList()]):
                         canon = message.content.split(maxsplit=1)[1].lower()
                         self.canonMessages[canon] = CanonList.CanonMessage(canon, message.author)
                         await self.canonMessages[canon].Send(message.channel)
@@ -136,7 +136,20 @@ class MyClient(discord.Client):
 
         elif(message.content == '>canonlist'):
             canonList = CanonList.CanonList()
-            await message.channel.send('Valid canons: ```{}``` >charlist [canon] to list characters for a canon'.format('\n'.join(['{:<30}: {} Characters'.format(element[0], element[1]) for element in CanonList.CanonList()])))
+            index = 0
+            sendString = 'Valid canons: ```'
+            while(index < len(canonList)):
+                while(len(sendString) < 1900):
+                    sendString += ('\n'+'{:<30}: {} characters'.format(canonList[index][0], canonList[index][1]))
+                    index += 1
+                    if(index >= len(canonList)):
+                        break
+                sendString += '```'
+                await message.channel.send(sendString)
+                sendString = '```'
+            await message.channel.send('>charlist [canon] to list characters for a canon')
+
+            #await message.channel.send('Valid canons: ```{}``` >charlist [canon] to list characters for a canon'.format('\n'.join(['{:<30}: {} Characters'.format(element[0], element[1]) for element in canonList])))#CanonList.CanonList()])))
 
         # Memes
         elif(message.content.startswith('>forward')):
