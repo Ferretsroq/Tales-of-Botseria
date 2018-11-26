@@ -35,6 +35,18 @@ def Googlify(inputImage):
     DrawEllipse(draw, pupilCenter2, pupilRadius, 'black', 'black')
     return image
 
+# Add a Santa hat and beard to an image
+def Santafy(inputImage):
+    base = inputImage.copy()
+    hat = Image.open('./Image Resources/santa-hat.png')
+    beard = Image.open('./Image Resources/santa-beard.png')
+    x,y = base.size
+    hat = hat.resize(base.size)
+    beard = beard.resize(base.size)
+    base.paste(hat, box=(0,-int(y/4)), mask=hat)
+    base.paste(beard, box=(0, int(y/2)),mask=beard)
+    return base
+
 def ImageFromURL(url):
     if(url == '' or url == ' '):
         return Image.new('RGBA', (100,100), (255,0,0,0))
