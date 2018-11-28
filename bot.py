@@ -252,6 +252,23 @@ class MyClient(discord.Client):
             elif(len(message.content.split(' ',1)) > 1 and len(message.mentions) > 0):
                 Googlify.Santafy(Googlify.ImageFromURL(message.mentions[0].avatar_url)).save('tempSanta.png')
                 await message.channel.send(file=discord.File('tempSanta.png'))
+        elif(message.content.startswith('>santafly')):
+            if(message.content == '>santafly'):
+                Googlify.Santafy(Googlify.ImageFromURL(message.author.avatar_url), rand=True).save('tempSanta.png')
+                await message.channel.send(file=discord.File('tempSanta.png'))
+            elif(len(message.content.split(' ',1)) > 1 and len(message.mentions)==0):
+                with open('data.json') as json_data:
+                    data = json.load(json_data)
+                if(message.content.split(' ',1)[1].lower() in data.keys()):
+                    Googlify.Santafy(Googlify.ImageFromURL(data[message.content.split(' ',1)[1].lower()]['image']), rand=True).save('tempSanta.png')
+                    await message.channel.send(file=discord.File('tempSanta.png'))
+                else:
+                    await message.channel.send("Character not found:```{}```".format(message.content.split(' ',1)[1].lower()))
+            elif(len(message.content.split(' ',1)) > 1 and len(message.mentions) > 0):
+                Googlify.Santafy(Googlify.ImageFromURL(message.mentions[0].avatar_url), rand=True).save('tempSanta.png')
+                await message.channel.send(file=discord.File('tempSanta.png'))
+
+
 
 
 

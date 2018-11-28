@@ -36,13 +36,19 @@ def Googlify(inputImage):
     return image
 
 # Add a Santa hat and beard to an image
-def Santafy(inputImage):
+def Santafy(inputImage, rand=False):
     base = inputImage.copy()
     hat = Image.open('./Image Resources/santa-hat.png')
     beard = Image.open('./Image Resources/santa-beard.png')
     x,y = base.size
     hat = hat.resize(base.size)
     beard = beard.resize(base.size)
+    if(rand):
+        data = np.array(hat)
+        r, g, b, a = data.T
+        red_areas = (r >= 100) & (g <= 220) & (b <= 200)
+        data[..., :-1][red_areas.T] = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
+        hat = Image.fromarray(data)
     base.paste(hat, box=(0,-int(y/4)), mask=hat)
     base.paste(beard, box=(0, int(y/2)),mask=beard)
     return base
