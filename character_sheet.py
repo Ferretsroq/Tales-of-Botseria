@@ -66,6 +66,52 @@ async def repopulate(channel):
     await message.delete()
     print("Time: {}".format(time.perf_counter() - startTime))
 
+async def Fetch(channel):
+    startTime = time.perf_counter()
+    message = await channel.send("Fetching Accounts...")
+    charList = []
+    async with aiohttp.ClientSession() as session:
+        async with session.get('https://heavensfall.jcink.net/index.php') as response:
+            soups = bs4.BeautifulSoup(await response.text(), "lxml")
+            newest = int(soups.find(id="newest_member").find('a').get('href').split("showuser=",1)[1])
+            print('newest: {}'.format(newest))
+            for x in range(0, newest):
+                print('x: {}'.format(x))
+                async with session.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)) as res:
+                    if(x in range(0,newest,int(newest/4))):
+                        await message.edit(content="Fetching Accounts... {}/{}".format(x+1, newest))
+                    #res = requests.get('https://heavensfall.jcink.net/index.php?showuser='+str(x+1))
+                    soup = bs4.BeautifulSoup(await res.text(), "lxml")
+                    print('Fetching url {}'.format('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)))
+                    try:
+                        name = soup.select('[id="profilename"]')[0].text.lower()
+                        group =  soup.find("div",{"class":"site_profile"})['id']
+                        if(group.lower() != 'admin'):
+                            charList.append(name)
+                        else:
+                            continue
+                    except:
+                        charList.append('NO NAME {}'.format('https://heavensfall.jcink.net/index.php?showuser='+str(x+1)))
+                        continue
+                
+
+    await message.delete()
+    charList.sort()
+    index = 0
+    sendString = 'Accounts: ```'
+    while(index < len(charList)):
+        while(len(sendString) < 1900):
+            sendString += ('\n'+'{}'.format(charList[index]))
+            index += 1
+            if(index >= len(charList)):
+                break
+        sendString += '```'
+        await message.channel.send(sendString)
+        sendString = '```'
+
+
+    print("Time: {}".format(time.perf_counter() - startTime))
+
 
 def MakeEmbed(name, characterData):
     #print('MakeEmbed!')

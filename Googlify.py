@@ -9,7 +9,7 @@ def DrawEllipse(drawObj, center, radius, fill, outline):
     drawObj.ellipse((center[0]-radius, center[1]-radius, center[0]+radius, center[1]+radius), fill, outline)
 
 # Add a set of googly eyes to an image in random positions
-def Googlify(inputImage):
+def Googlify(inputImage, static=False):
     image = inputImage.copy()
     draw = ImageDraw.Draw(image)
     # In case the image is not square, define x and y separately and take averages
@@ -17,14 +17,21 @@ def Googlify(inputImage):
     imageY = image.size[1]
     radius = int((((imageX + imageY)/2)/4) - 1)
     # The eyes have static x positions but random y positions
-    center1 = (int(imageX/4), random.randint(int(((imageY/2)-radius)),int(((imageY/2)+radius))))
-    center2 = (int(3*imageX/4), random.randint(int(((imageY/2)-radius)),int(((imageY/2)+radius))))
+    if(not static):
+        center1 = (int(imageX/4), random.randint(int(((imageY/2)-radius)),int(((imageY/2)+radius))))
+        center2 = (int(3*imageX/4), random.randint(int(((imageY/2)-radius)),int(((imageY/2)+radius))))
+    else:
+        center1 = (int(imageX/4), int(imageY/2))
+        center2 = (int(3*imageX/4), int(imageY/2))
     pupilRadius = int(((imageX + imageY)/2)/10)
     # The pupils of the googly eyes can be anywhere within the eye but can't go outside of the eye
     pupilDistance1 = random.randint(0, int(radius-pupilRadius))
     pupilAngle1 = random.randint(0, 359)*np.pi/180.0
     pupilDistance2 = random.randint(0, int(radius-pupilRadius))
     pupilAngle2 = random.randint(0, 359)*np.pi/180.0
+    if(static):
+        pupilDistance1 = int(radius-pupilRadius)
+        pupilDistance2 = int(radius-pupilRadius)
     # Determine pupil centers based on distance and angle
     pupilCenter1 = (center1[0] + pupilDistance1*np.cos(pupilAngle1), center1[1]+pupilDistance1*np.sin(pupilAngle1))
     pupilCenter2 = (center2[0] + pupilDistance2*np.cos(pupilAngle2), center2[1]+pupilDistance2*np.sin(pupilAngle2))
@@ -51,6 +58,19 @@ def Santafy(inputImage, rand=False):
         hat = Image.fromarray(data)
     base.paste(hat, box=(0,-int(y/4)), mask=hat)
     base.paste(beard, box=(0, int(y/2)),mask=beard)
+    return base
+
+# Add a Batman mask to an image
+def Batmanify(inputImage):
+    base = inputImage.copy()
+    mask = Image.open('./Image Resources/batman.png')
+    logo = Image.open('./Image Resources/batmanlogo.png')
+    logo = logo.resize(base.size)
+    logo = logo.rotate(angle=random.randint(0,359))
+    x,y = base.size
+    mask = mask.resize(base.size)
+    base.paste(mask, box=(0, -int(y/5)), mask=mask)
+    base.paste(logo, box=(random.randint(-int(0.5*x), int(0.5*x)), random.randint(-int(0.5*y), int(0.5*y))), mask=logo)
     return base
 
 def ImageFromURL(url):

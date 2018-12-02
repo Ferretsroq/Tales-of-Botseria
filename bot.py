@@ -41,7 +41,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\ntemplates\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname OR @user]\nsantafy [charname OR @user]\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nfetch ***STAFF ONLY***\ntemplates\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname OR @user]\nsantafy [charname OR @user]\nrps <@player2>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -52,6 +52,8 @@ class MyClient(discord.Client):
         elif(message.content.startswith('>repopulate') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == 379374543237545985)):
             await character_sheet.repopulate(message.channel)
             await message.channel.send('Repopulated character list!')
+        elif(message.content.lower().startswith('>fetch') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == 379374543237545985)):
+            await character_sheet.Fetch(message.channel)
 
 
         # Sends character info to discord embed
@@ -163,8 +165,8 @@ class MyClient(discord.Client):
             await message.channel.send('forward')
 
         # Role assignment
-        elif(message.content.startswith('>iam') and not message.content.startswith('>iamnot')):
-            if(message.content == '>iam'):
+        elif(message.content.lower().startswith('>iam') and not message.content.lower().startswith('>iamnot')):
+            if(message.content.lower() == '>iam'):
                 await message.channel.send('I need to know what role you want, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
             # Kat is a weeb
             elif(message.content.lower() == '>iam the bone of my sword'):
@@ -185,8 +187,11 @@ class MyClient(discord.Client):
                 await message.channel.send('**UNLIMITED BLADE WORKS**')
                 await asyncio.sleep(1)
                 await message.channel.send(':crossed_swords:'*125)
+            elif(message.content.lower() == '>iam the night'):
+                Googlify.Batmanify(Googlify.ImageFromURL(message.author.avatar_url)).save('tempBat.png')
+                await message.channel.send(file=discord.File('tempBat.png'))
             else:
-                desiredRole = message.content.split(">iam ",1)[1].lower()
+                desiredRole = message.content.lower().split(">iam ",1)[1].lower()
                 if(desiredRole in ROLES.keys()):
                     if(message.guild.get_role(ROLES[desiredRole]) in message.author.roles):
                         await message.channel.send('You already have role\n```{}```'.format(desiredRole))
@@ -196,8 +201,8 @@ class MyClient(discord.Client):
                 else:
                     await message.channel.send("Role `{}` not found.".format(desiredRole))
 
-        elif(message.content.startswith('>iamnot')):
-            if(message.content == '>iamnot'):
+        elif(message.content.lower().startswith('>iamnot')):
+            if(message.content.lower() == '>iamnot'):
                 await message.channel.send('I need to know what role you aren\'t, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
             else:
                 desiredRole = message.content.split(">iamnot ",1)[1].lower()
@@ -209,7 +214,7 @@ class MyClient(discord.Client):
                         await message.channel.send("You do not have role\n```{}```".format(desiredRole))
                 else:
                     await message.channel.send("Role `{}` not found.".format(desiredRole))
-        elif(message.content.startswith('>faction')):
+        elif(message.content.lower().startswith('>faction')):
             faction = random.choice(FACTIONS)
             text = ['Uplander! Uplander, make lookings! Swooshy spellycastings is sayings....um....is sayings {} is good choosymakes!'.format(faction),
                         'According to the position of the stars, the placement of your bedroom, and the ripeness of this pickle - {} is the best deity for you!'.format(faction),
@@ -217,10 +222,10 @@ class MyClient(discord.Client):
             await message.channel.send(random.choice(text))
             #await message.channel.send('The fates have chosen, oh indecisive one - {} is the deity that you may call as your home!'.format(faction))
 
-        elif(message.content == '>templates'):
+        elif(message.content.lower() == '>templates'):
             await message.channel.send('You can find Magician\'s templates here!\nhttp://heavensfall.jcink.net/index.php?showtopic=22')
         # Eyes
-        elif(message.content.startswith('>googlify')):
+        elif(message.content.lower().startswith('>googlify')):
             if(message.content == '>googlify'):
                 Googlify.Googlify(Googlify.ImageFromURL(message.author.avatar_url)).save('tempGoogly.png')
                 await message.channel.send(file=discord.File('tempGoogly.png'))
