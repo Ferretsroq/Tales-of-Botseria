@@ -1,6 +1,6 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
-import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, fmk
 import random
 import re
 
@@ -25,7 +25,10 @@ class MyClient(discord.Client):
         print(client.user.name)
         print(client.user.id)
         print('------')
-        self.rockPaperScissorsGame = RockPaperScissors.Game()
+        self.fmkGames = []
+        self.rpsGames = []
+        #self.rockPaperScissorsGame = RockPaperScissors.Game()
+        self.fmkGame = fmk.Game()
         self.factionMessages = {'solara': None,
                                 'tiamat': None,
                                 'mistral': None,
@@ -279,12 +282,28 @@ class MyClient(discord.Client):
 
         # Rock-Paper-Scissors
         elif(message.content.startswith('>rps') and len(message.mentions) > 0):
+            # Purge completed games
+            self.rpsGames.sort(key=lambda x: x.valid, reverse=True)
+            while(False in [game.valid for game in self.rpsGames]):
+                self.rpsGames.pop()
+
             if(message.mentions[0].dm_channel == None):
                 await message.mentions[0].create_dm()
             if(message.author.dm_channel == None):
                 await message.author.create_dm()
-            self.rockPaperScissorsGame = RockPaperScissors.Game(message, message.author, message.mentions[0])
-            await self.rockPaperScissorsGame.Send()
+            self.rpsGames.append(RockPaperScissors.Game(message, message.author, message.mentions[0]))
+            await self.rpsGames[-1].Send()
+            #self.rockPaperScissorsGame = RockPaperScissors.Game(message, message.author, message.mentions[0])
+            #await self.rockPaperScissorsGame.Send()
+        # Fuck-Marry-Kill
+        elif(message.content.lower().startswith('>fmk') and len(message.mentions) > 0):
+            # Purge completed games
+            self.fmkGames.sort(key=lambda x: x.valid, reverse=True)
+            while(False in [game.valid for game in self.fmkGames]):
+                self.fmkGames.pop()
+            print(self.fmkGames)
+            self.fmkGames.append(fmk.Game(message, message.author, message.mentions[0]))
+            await self.fmkGames[-1].Send()
 
         # Boons
         elif(message.content.startswith('>boons') and message.guild.get_role(STAFFROLE) in message.author.roles):
@@ -303,38 +322,53 @@ class MyClient(discord.Client):
                 await message.channel.send(embed=embed)
 
     async def on_reaction_add(self, reaction, user):
-        if(self.rockPaperScissorsGame.valid):
-            if(reaction.message.id == self.rockPaperScissorsGame.challengerMessage.id and user == self.rockPaperScissorsGame.challenger):
-                await self.rockPaperScissorsGame.UpdateChallengerResponse(reaction)
-            elif(reaction.message.id == self.rockPaperScissorsGame.targetMessage.id and user == self.rockPaperScissorsGame.target):
-                await self.rockPaperScissorsGame.UpdateTargetResponse(reaction)
-        for deity in self.factionMessages:
-            if(self.factionMessages[deity] != None):
-                if(self.factionMessages[deity].message.id == reaction.message.id and self.factionMessages[deity].user == user):
-                    if(str(reaction) == str(DeityMessage.arrowLeft)):
-                        await self.factionMessages[deity].Back()
-                    elif(str(reaction) == str(DeityMessage.arrowRight)):
-                        await self.factionMessages[deity].Advance()
-                    elif(str(reaction) == str(DeityMessage.listEmoji)):
-                        await self.factionMessages[deity].ListNames()
-        for canon in self.canonMessages:
-            if(self.canonMessages[canon] != None):
-                if(self.canonMessages[canon].message.id == reaction.message.id and self.canonMessages[canon].user == user):
-                    if(str(reaction) == str(CanonList.arrowLeft)):
-                        await self.canonMessages[canon].Back()
-                    elif(str(reaction) == str(CanonList.arrowRight)):
-                        await self.canonMessages[canon].Advance()
-                    elif(str(reaction) == str(CanonList.listEmoji)):
-                        await self.canonMessages[canon].ListNames()
-        for ooc in self.oocMessages:
-            if(self.oocMessages[ooc] != None):
-                if(self.oocMessages[ooc].message.id == reaction.message.id and self.oocMessages[ooc].user == user):
-                    if(str(reaction) == str(OocMessage.arrowLeft)):
-                        await self.oocMessages[ooc].Back()
-                    elif(str(reaction) == str(OocMessage.arrowRight)):
-                        await self.oocMessages[ooc].Advance()
-                    elif(str(reaction) == str(OocMessage.listEmoji)):
-                        await self.oocMessages[ooc].ListNames()
+        if(user != client.user):
+            for rpsGame in self.rpsGames:
+                if(rpsGame.valid):
+                    if(reaction.message.id == rpsGame.challengerMessage.id and user == rpsGame.challenger):
+                        await rpsGame.UpdateChallengerResponse(reaction)
+                    elif(reaction.message.id == rpsGame.targetMessage.id and user == rpsGame.target):
+                        await rpsGame.UpdateTargetResponse(reaction)
+            for fmkGame in self.fmkGames:
+                if(fmkGame.valid):
+                    #print(reaction.message.id)
+                    #print(fmkGame.targetMessage.id)
+                    if(reaction.message.id == fmkGame.targetMessage.id and user == fmkGame.target):
+                        if(str(reaction) == str(fmk.arrowLeft)):
+                            await fmkGame.Back()
+                        elif(str(reaction) == str(fmk.arrowRight)):
+                            await fmkGame.Advance()
+                        elif(str(reaction) == str(fmk.listEmoji)):
+                            await fmkGame.ListNames()
+                        else:
+                            await fmkGame.RegisterAnswer(reaction.emoji)
+            for deity in self.factionMessages:
+                if(self.factionMessages[deity] != None):
+                    if(self.factionMessages[deity].message.id == reaction.message.id and self.factionMessages[deity].user == user):
+                        if(str(reaction) == str(DeityMessage.arrowLeft)):
+                            await self.factionMessages[deity].Back()
+                        elif(str(reaction) == str(DeityMessage.arrowRight)):
+                            await self.factionMessages[deity].Advance()
+                        elif(str(reaction) == str(DeityMessage.listEmoji)):
+                            await self.factionMessages[deity].ListNames()
+            for canon in self.canonMessages:
+                if(self.canonMessages[canon] != None):
+                    if(self.canonMessages[canon].message.id == reaction.message.id and self.canonMessages[canon].user == user):
+                        if(str(reaction) == str(CanonList.arrowLeft)):
+                            await self.canonMessages[canon].Back()
+                        elif(str(reaction) == str(CanonList.arrowRight)):
+                            await self.canonMessages[canon].Advance()
+                        elif(str(reaction) == str(CanonList.listEmoji)):
+                            await self.canonMessages[canon].ListNames()
+            for ooc in self.oocMessages:
+                if(self.oocMessages[ooc] != None):
+                    if(self.oocMessages[ooc].message.id == reaction.message.id and self.oocMessages[ooc].user == user):
+                        if(str(reaction) == str(OocMessage.arrowLeft)):
+                            await self.oocMessages[ooc].Back()
+                        elif(str(reaction) == str(OocMessage.arrowRight)):
+                            await self.oocMessages[ooc].Advance()
+                        elif(str(reaction) == str(OocMessage.listEmoji)):
+                            await self.oocMessages[ooc].ListNames()
 
 
 client = MyClient()
