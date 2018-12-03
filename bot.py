@@ -1,6 +1,6 @@
 #Work with Python 3.6
 import discord, character_sheet, json, asyncio
-import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, fmk
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk
 import random
 import re
 
@@ -18,6 +18,8 @@ ROLES = {
         }
 STAFFROLE = 503948857298780160
 FACTIONS = ["SOLARA", "TIAMAT", "MISTRAL", "PROSERPINA", "SKIRNIR", "LUCIFIEL"]
+BOTCHANNEL = 503997270841229346
+TESTCHANNEL = 379374543237545985
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -25,10 +27,8 @@ class MyClient(discord.Client):
         print(client.user.name)
         print(client.user.id)
         print('------')
-        self.fmkGames = []
+        self.hmkGames = []
         self.rpsGames = []
-        #self.rockPaperScissorsGame = RockPaperScissors.Game()
-        self.fmkGame = fmk.Game()
         self.factionMessages = {'solara': None,
                                 'tiamat': None,
                                 'mistral': None,
@@ -44,7 +44,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if(message.content.startswith('>help')):
-            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nfetch ***STAFF ONLY***\ntemplates\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname OR @user]\nsantafy [charname OR @user]\nrps <@player2>```")
+            await message.channel.send("Available commands:\n```hello\nrepopulate ***STAFF ONLY***\nfetch ***STAFF ONLY***\ntemplates\nchar [charname]\ncanonlist\ncharlist [deity OR canon OR ooc] [number]\niam <rolename>\niamnot <rolename>\nfaction\nboons <number> <min EX> <min S> **STAFF ONLY**\nforward\ngooglify [charname OR @user]\nsantafy [charname OR @user]\nrps <@player2>\nhmk <@player>```")
         # Test echo command
         if message.content.startswith('>hello'):
             msg = 'Hello {0.author.mention}'.format(message)
@@ -52,10 +52,10 @@ class MyClient(discord.Client):
             
 
         # Repopulate the character list, saves to file
-        elif(message.content.startswith('>repopulate') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == 379374543237545985)):
+        elif(message.content.startswith('>repopulate') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == TESTCHANNEL)):
             await character_sheet.repopulate(message.channel)
             await message.channel.send('Repopulated character list!')
-        elif(message.content.lower().startswith('>fetch') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == 379374543237545985)):
+        elif(message.content.lower().startswith('>fetch') and (message.guild.get_role(STAFFROLE) in message.author.roles or message.channel.id == TESTCHANNEL)):
             await character_sheet.Fetch(message.channel)
 
 
@@ -281,7 +281,7 @@ class MyClient(discord.Client):
 
 
         # Rock-Paper-Scissors
-        elif(message.content.startswith('>rps') and len(message.mentions) > 0):
+        elif(message.content.startswith('>rps') and len(message.mentions) > 0 and message.channel.id in [BOTCHANNEL, TESTCHANNEL]):
             # Purge completed games
             self.rpsGames.sort(key=lambda x: x.valid, reverse=True)
             while(False in [game.valid for game in self.rpsGames]):
@@ -296,14 +296,13 @@ class MyClient(discord.Client):
             #self.rockPaperScissorsGame = RockPaperScissors.Game(message, message.author, message.mentions[0])
             #await self.rockPaperScissorsGame.Send()
         # Fuck-Marry-Kill
-        elif(message.content.lower().startswith('>fmk') and len(message.mentions) > 0):
+        elif(message.content.lower().startswith('>hmk') and len(message.mentions) > 0 and message.channel.id in [BOTCHANNEL, TESTCHANNEL]):
             # Purge completed games
-            self.fmkGames.sort(key=lambda x: x.valid, reverse=True)
-            while(False in [game.valid for game in self.fmkGames]):
-                self.fmkGames.pop()
-            print(self.fmkGames)
-            self.fmkGames.append(fmk.Game(message, message.author, message.mentions[0]))
-            await self.fmkGames[-1].Send()
+            self.hmkGames.sort(key=lambda x: x.valid, reverse=True)
+            while(False in [game.valid for game in self.hmkGames]):
+                self.hmkGames.pop()
+            self.hmkGames.append(hmk.Game(message, message.author, message.mentions[0]))
+            await self.hmkGames[-1].Send()
 
         # Boons
         elif(message.content.startswith('>boons') and message.guild.get_role(STAFFROLE) in message.author.roles):
@@ -329,19 +328,19 @@ class MyClient(discord.Client):
                         await rpsGame.UpdateChallengerResponse(reaction)
                     elif(reaction.message.id == rpsGame.targetMessage.id and user == rpsGame.target):
                         await rpsGame.UpdateTargetResponse(reaction)
-            for fmkGame in self.fmkGames:
-                if(fmkGame.valid):
+            for hmkGame in self.hmkGames:
+                if(hmkGame.valid):
                     #print(reaction.message.id)
                     #print(fmkGame.targetMessage.id)
-                    if(reaction.message.id == fmkGame.targetMessage.id and user == fmkGame.target):
-                        if(str(reaction) == str(fmk.arrowLeft)):
-                            await fmkGame.Back()
-                        elif(str(reaction) == str(fmk.arrowRight)):
-                            await fmkGame.Advance()
-                        elif(str(reaction) == str(fmk.listEmoji)):
-                            await fmkGame.ListNames()
+                    if(reaction.message.id == hmkGame.targetMessage.id and user == hmkGame.target):
+                        if(str(reaction) == str(hmk.arrowLeft)):
+                            await hmkGame.Back()
+                        elif(str(reaction) == str(hmk.arrowRight)):
+                            await hmkGame.Advance()
+                        elif(str(reaction) == str(hmk.listEmoji)):
+                            await hmkGame.ListNames()
                         else:
-                            await fmkGame.RegisterAnswer(reaction.emoji)
+                            await hmkGame.RegisterAnswer(reaction.emoji)
             for deity in self.factionMessages:
                 if(self.factionMessages[deity] != None):
                     if(self.factionMessages[deity].message.id == reaction.message.id and self.factionMessages[deity].user == user):

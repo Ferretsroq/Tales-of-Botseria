@@ -4,8 +4,9 @@ import asyncio
 import json
 import random
 import character_sheet
+import numpy as np
 
-fEmoji = chr(0x1F1EB)
+hEmoji = chr(0x1F1ED)
 mEmoji = chr(0x1F1F2)
 kEmoji = chr(0x1F1F0)
 arrowLeft = chr(0x2B05)
@@ -14,7 +15,7 @@ listEmoji = chr(0x1f4dc)
 emojiQuestion = '\u2754'
 
 class Answer(Enum):
-    fuck = fEmoji
+    hug = hEmoji
     marry = mEmoji
     kill = kEmoji
 
@@ -27,7 +28,7 @@ class Game:
 			self.initialMessage = initialMessage
 			self.challenger = challenger
 			self.target = target
-			self.targetContent = 'You have been challenged by {} to a rousing game of fuck-marry-kill!\nYour options:'.format(challenger.display_name)
+			self.targetContent = 'You have been challenged by {} to a rousing game of hug-marry-kill!\nYour options:'.format(challenger.display_name)
 			self.characterMessage = CharacterMessage(target, self.targetContent)
 			self.targetEmbed = self.characterMessage.embed
 			self.targetMessage = None
@@ -66,10 +67,16 @@ class Game:
 			gameWinner = self.challenger.display_name
 		await self.initialMessage.channel.send('Winner: {}'.format(gameWinner))
 		'''
-		if(self.characterMessage.responses.count(str(fEmoji)) == 1 and 
-			self.characterMessage.responses.count(str(mEmoji)) == 1 and
-			self.characterMessage.responses.count(str(kEmoji)) == 1):
-			await self.initialMessage.channel.send('{} says....\nFUCK - {}\nMARRY - {}\nKILL - {}'.format(self.target.name, self.characterMessage.fuck, self.characterMessage.marry, self.characterMessage.kill))
+		#if(self.characterMessage.responses.count(str(hEmoji)) == 1 and 
+	#		self.characterMessage.responses.count(str(mEmoji)) == 1 and
+#			self.characterMessage.responses.count(str(kEmoji)) == 1):
+		if(len(list(set([self.characterMessage.hug, self.characterMessage.marry, self.characterMessage.kill]))) == 3 and
+			None not in [self.characterMessage.hug, self.characterMessage.marry, self.characterMessage.kill]):
+			if(self.target.nick == None):
+				name = self.target.name
+			else:
+				name = self.target.nick
+			await self.initialMessage.channel.send('{} says....\nHUG - {}\nMARRY - {}\nKILL - {}'.format(name, self.characterMessage.hug, self.characterMessage.marry, self.characterMessage.kill))
 			self.Reset()
 		#print(self.characterMessage.responses)
 	# Set the challenger's response based on their reaction
@@ -121,14 +128,14 @@ class CharacterMessage:
 		with open('data.json') as json_data:
 			data = json.load(json_data)
 		self.user = user
-		self.characterList = random.choices(list(data.keys()), k=3)
+		self.characterList = list(np.random.choice(list(data.keys()), size=3, replace=False))
 		self.responses = [None, None, None]
 		#self.characterList = [character for character in data if character.lower() in validCharacters]
 		self.index = 0
 		self.message = None
 		self.targetContent = targetContent
-		self.embed = discord.Embed(title="FUCK MARRY KILL", description=self.targetContent)
-		self.fuck = None
+		self.embed = discord.Embed(title="HUG MARRY KILL", description=self.targetContent)
+		self.hug = None
 		self.marry = None
 		self.kill = None
 	async def Advance(self):
@@ -141,7 +148,7 @@ class CharacterMessage:
 		if(self.index < 0):
 			self.index = len(self.characterList)-1
 		await self.Edit()
-	async def ListNames(self):
+	def ListNames(self):
 		names = ['{}: {}'.format(x+1, self.characterList[x]) for x in range(len(self.characterList))]
 		for name in range(len(names)):
 			if(self.responses[name] in [answer.value for answer in Answer]):
@@ -155,8 +162,8 @@ class CharacterMessage:
 		with open('data.json') as json_data:
 			data = json.load(json_data)
 		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]])
-		self.embed.title = "FUCK MARRY KILL - {}".format(self.characterList[self.index])
-		self.embed.description = await self.ListNames()
+		self.embed.title = "HUG MARRY KILL - {}".format(self.characterList[self.index])
+		self.embed.description = self.ListNames()
 		await self.message.edit(embed=self.embed)
 		#content = await self.ListNames()
 		await self.SetReactions()
@@ -169,13 +176,13 @@ class CharacterMessage:
 		await self.message.add_reaction(arrowLeft)
 		await self.message.add_reaction(arrowRight)
 		#await self.message.add_reaction(listEmoji)
-		await self.message.add_reaction(fEmoji)
+		await self.message.add_reaction(hEmoji)
 		await self.message.add_reaction(mEmoji)
 		await self.message.add_reaction(kEmoji)
 	async def RegisterAnswer(self, response):
 		self.responses[self.index] = str(response)
-		if(str(response) == str(fEmoji)):
-			self.fuck = self.characterList[self.index]
+		if(str(response) == str(hEmoji)):
+			self.hug = self.characterList[self.index]
 		elif(str(response) == str(mEmoji)):
 			self.marry = self.characterList[self.index]
 		elif(str(response) == str(kEmoji)):
