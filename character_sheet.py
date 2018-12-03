@@ -29,7 +29,7 @@ async def repopulate(channel):
 
                     group =  soup.find("div",{"class":"site_profile"})['id']
                     print(group)
-                    if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members'):
+                    if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members', 'archived'):
                         print('bad group')
                         continue
                     else:
