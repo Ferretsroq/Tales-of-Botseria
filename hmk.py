@@ -56,20 +56,6 @@ class Game:
 		pass
 	# Determine the winner and clear the game
 	async def winner(self):
-		'''
-		result = (Answer[self.targetResponse].value - Answer[self.challengerResponse].value)%3
-		gameWinner = ''
-		if(result == 1):
-			gameWinner = self.target.display_name
-		elif(result == 0):
-			gameWinner = 'It\'s a draw!'
-		elif(result == 2):
-			gameWinner = self.challenger.display_name
-		await self.initialMessage.channel.send('Winner: {}'.format(gameWinner))
-		'''
-		#if(self.characterMessage.responses.count(str(hEmoji)) == 1 and 
-	#		self.characterMessage.responses.count(str(mEmoji)) == 1 and
-#			self.characterMessage.responses.count(str(kEmoji)) == 1):
 		if(len(list(set([self.characterMessage.hug, self.characterMessage.marry, self.characterMessage.kill]))) == 3 and
 			None not in [self.characterMessage.hug, self.characterMessage.marry, self.characterMessage.kill]):
 			if(self.target.nick == None):
@@ -78,23 +64,9 @@ class Game:
 				name = self.target.nick
 			await self.initialMessage.channel.send('{} says....\nHUG - {}\nMARRY - {}\nKILL - {}'.format(name, self.characterMessage.hug, self.characterMessage.marry, self.characterMessage.kill))
 			self.Reset()
-		#print(self.characterMessage.responses)
-	# Set the challenger's response based on their reaction
-	'''
-	async def UpdateChallengerResponse(self, reaction):
-		if(str(reaction) == str(rock)):
-			self.challengerResponse = 'rock'
-		elif(str(reaction) == str(paper)):
-			self.challengerResponse = 'paper'
-		elif(str(reaction) == str(scissors)):
-			self.challengerResponse = 'scissors'
-		if(self.challengerResponse != None):
-			self.challengerEmbed = discord.Embed(title="ROCK PAPER SCISSORS", description=self.challengerContent+'\nYou have chosen {}!'.format(self.challengerResponse))
-			await self.challengerMessage.edit(embed=self.challengerEmbed)
-		# If both players have answered, end the game
-		if(self.challengerResponse!= None and self.targetResponse != None):
-			await self.winner()
-	'''
+		elif(self.characterMessage.responses[0] == self.characterMessage.responses[1] == self.characterMessage.responses[2] and None not in self.characterMessage.responses):
+			await self.initialMessage.channel.send("Hey there {} could you do me a real solid and not be such a SOGGY MARSHMALLOW who picks the same answers that'd be great! Thanks! xoxo".format(self.target.mention))
+			self.Reset()
 	# Set the target's response based on their reaction
 	async def UpdateTargetResponse(self, reaction):
 		self.characterMessage.RegisterAnswer(reaction)
