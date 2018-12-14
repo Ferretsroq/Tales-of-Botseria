@@ -35,6 +35,8 @@ class DeityMessage:
 	async def ListNames(self):
 		names = ['{}: {}'.format(x+1, self.characterList[x]) for x in range(len(self.characterList))]
 		names[self.index] = '**{}**'.format(names[self.index])
+		# Shorten names so that we don't go over discord character limit, 100 names is fine
+		names = names[max(0,self.index-50):min(self.index+50, len(names))]
 		#content = '\n'.join(['{}: {}'.format(x+1, self.characterList[x]) for x in range(len(self.characterList))])
 		content = '\n'.join(names)
 		await self.Edit(content, googlify=True)
