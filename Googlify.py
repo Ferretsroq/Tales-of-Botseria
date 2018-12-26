@@ -73,6 +73,16 @@ def Batmanify(inputImage):
     base.paste(logo, box=(random.randint(-int(0.5*x), int(0.5*x)), random.randint(-int(0.5*y), int(0.5*y))), mask=logo)
     return base
 
+# Add 2019 glasses to an image
+def Happy2019(inputImage):
+    base = inputImage.copy()
+    glassesNum = random.randint(0,8)
+    glasses = Image.open('./Image Resources/2019/2019_{}.png'.format(glassesNum))
+    x,y = base.size
+    glasses = glasses.resize(base.size)
+    base.paste(glasses, (0, random.randint(int(-0.5*y), 0)), mask=glasses)
+    return base
+    
 def ImageFromURL(url):
     if(url == '' or url == ' '):
         return Image.new('RGBA', (100,100), (255,0,0,0))
