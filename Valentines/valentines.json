@@ -1,0 +1,80 @@
+{
+	"card0": 
+	{
+		"line0": "Thanks for not being",
+		"line1": "A weirdo on the internet"
+	},
+	"card1":
+	{
+		"line0": "r u a sharpie",
+		"line1": "bc u r ultra fine",
+		"image": "ultrafinesharpietest"
+	},
+	"card2":
+	{
+		"line0": "This may be cheesy,",
+		"line1": "but we'd be gouda together",
+		"image": "gouda"
+	},
+	"card3":
+	{
+		"line0": "Let's stay home",
+		"line1": "and watch Netflix"
+	},
+	"card4":
+	{
+		"line0": "I'm not sick of you",
+		"line1": "Yet."
+	},
+	"card5":
+	{
+		"line0": "I'm so glad",
+		"line1": "you settled for me"
+	},
+	"card6":
+	{
+		"line0": "You are the lorem",
+		"line1": "To my ipsum"
+	},
+	"card7":
+	{
+		"line0": "I'd let you see",
+		"line1": "my browser history"
+	},
+	"card8":
+	{
+		"line0": "If you were a fruit",
+		"line1": "You'd be a fineapple",
+		"image": "pineapple"
+	},
+	"card9":
+	{
+		"line0": "u r the highlight",
+		"line1": "of my life",
+		"image": "highlighter"
+	},
+	"card10":
+	{
+		"line0": "let's take things",
+		"line1": "slow",
+		"image": "internetexplorer"
+	},
+	"card11":
+	{
+		"line0": "i dig",
+		"line1": "u",
+		"image": "shovel"
+	},
+	"card12":
+	{
+		"line0": "u sweep me off",
+		"line1": "my feet",
+		"image": "broom"
+	}, 
+	"card13":
+	{
+		"line0": "u",
+		"line1": "rock",
+		"image": "rock"
+	}
+}

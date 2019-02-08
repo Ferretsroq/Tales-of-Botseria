@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import character_sheet, json, asyncio
 import random
-import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator
 import re, time
 
 TOKEN = open('token.token').read()
@@ -46,10 +46,13 @@ def check_if_staff_or_test(ctx):
 	return ctx.guild.get_role(STAFFROLE) in ctx.author.roles or check_if_test_channel(ctx)
 
 def check_if_december(ctx):
-	return (time.localtime().tm_mon == 12) or (check_if_test_channel(ctx))
+	return (time.localtime().tm_mon == 12) or (check_if_staff_or_test(ctx))
+
+def check_if_february(ctx):
+	return (time.localtime().tm_mon == 2) or (check_if_staff_or_test(ctx))
 
 def check_if_bot_spam(ctx):
-	return ctx.channel.id == BOTCHANNEL or check_if_test_channel(ctx)
+	return (ctx.channel.id == BOTCHANNEL or check_if_staff_or_test(ctx))
 
 
 
@@ -327,6 +330,25 @@ async def Happy2019(ctx, *, arg=''):
 			await ctx.send(file=discord.File('temp2019.png'))
 		else:
 			await ctx.send('Character not found:```{}```'.format(arg.lower()))
+
+@bot.command()
+@commands.check(check_if_february)
+async def valentines(ctx, fromChar='', toChar=''):
+	"""Character names need to be enclosed in "quotation marks" """
+	if(fromChar == '' or toChar == ''):
+		ctx.send("I need to know who's sending a valentines to whom, silly!")
+	else:
+		with open('data.json') as json_data:
+			data = json.load(json_data)
+		if(fromChar.lower() not in data.keys()):
+			await ctx.send('Character not found:```{}```'.format(fromChar.lower()))
+		elif(toChar.lower() not in data.keys()):
+			await ctx.send('Character not found:```{}```'.format(toChar.lower()))
+		else:
+			fromImage = Googlify.ImageFromURL(data[fromChar.lower()]['image'])
+			toImage = Googlify.ImageFromURL(data[toChar.lower()]['image'])
+			valentine_generator.MakeImage(fromImage, toImage).save('tempValentine.png')
+			await ctx.send(file=discord.File('tempValentine.png'))
 
 @bot.command()
 @commands.check(check_if_bot_spam)
