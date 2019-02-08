@@ -28,6 +28,7 @@ def MakeImage(toImage, fromImage):
     im.paste(toImage.resize((100,100)), (560, 150))
     im.paste(fromImage.resize((100,100)), (610, 300))
     im.paste(jokeImage, (100,200), mask=jokeImage)
+    im = im.convert('RGB')
     im.save('tempValentine.jpg', quality=10)
     jpgim = Image.open('tempValentine.jpg')
     return jpgim
