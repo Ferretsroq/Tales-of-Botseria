@@ -31,11 +31,10 @@ def BoonBatch(number=1, minEX=0, minS=0):
         batch.append(Boon(boon, boons[boon], rank))
     return batch
 
-def BoonEmbed(boon):
-	embed = discord.Embed(title="{} - {}".format(boon.name, boon.rank), color=ChooseColor(boon.rank))
-	embed.add_field(name='Form Factor:', value=boon.formFactor)
-	embed.add_field(name='Effect:', value=boon.effect)
-	return embed
+def BoonEmbed(boon, name=''):
+    embed = discord.Embed(title="{}".format(name), color=ChooseColor(boon.rank))
+    embed.description = "<p>@[{}]<br>\n<b>Boon:</b> {}<br>\n<b>Rank:</b> {}<br>\n<b>Form Factor:</b> {}<br>\n<b>Effect:</b> {}</p>".format(name, boon.name, boon.rank, boon.formFactor, boon.effect)
+    return embed
 
 
 def ChooseColor(rank):

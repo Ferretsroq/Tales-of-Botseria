@@ -376,14 +376,49 @@ async def hugmarrykill(ctx):
 		await bot.hmkGames[-1].Send()
 
 
+#@bot.command(name='boons')
+#@commands.check(check_if_staff_or_test)
+#async def boonslist(ctx, number=10, minEX=1, minS=1):
+#async def boonslist(ctx, *args):
+#	if(len(args) > 0):
+#		number= args[0]
+#	minEX = 1
+#	minS = 1
+#	if(len(args) > 1):
+#		names = args[1:]
+#	batch = boons.BoonBatch(number, minEX, minS)
+#	embeds = []
+#	for boon in range(len(batch)):
+#		if(boon < len(names)):
+#			embeds.append(boons.BoonEmbed(batch[boon], names[boon]))
+#		else:
+#			embeds.append(boons.BoonEmbed(batch[boon]))
+#	#embeds = [boons.BoonEmbed(batch[boon], names[boon]) for boon in range(len(batch))]
+#	for embed in embeds:
+#		await ctx.send(embed=embed)
+
 @bot.command(name='boons')
-@commands.check(check_if_staff_or_test)
-async def boonslist(ctx, number=10, minEX=1, minS=1):
+async def boonslist(ctx, *, arg=''):
+	args = arg.split('\n')
+	if(len(args) > 0):
+		number = len(args)
+	else:
+		number = 10
+	minEX = 1
+	minS = 1
+	if(len(args) > 0):
+		names = args
+	else:
+		names = []
 	batch = boons.BoonBatch(number, minEX, minS)
-	embeds = [boons.BoonEmbed(boon) for boon in batch]
+	embeds = []
+	for boon in range(len(batch)):
+		if(boon < len(names)):
+			embeds.append(boons.BoonEmbed(batch[boon], names[boon]))
+		else:
+			embeds.append(boons.BoonEmbed(batch[boon]))
 	for embed in embeds:
 		await ctx.send(embed=embed)
-
 
 @bot.event
 async def on_reaction_add(reaction, user):
