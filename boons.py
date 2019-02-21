@@ -33,7 +33,7 @@ def BoonBatch(number=1, minEX=0, minS=0):
 
 def BoonEmbed(boon, name=''):
     embed = discord.Embed(title="{}".format(name), color=ChooseColor(boon.rank))
-    embed.description = "<p>@[{}]<br>\n<b>Boon:</b> {}<br>\n<b>Rank:</b> {}<br>\n<b>Form Factor:</b> {}<br>\n<b>Effect:</b> {}</p>".format(name, boon.name, boon.rank, boon.formFactor, boon.effect)
+    embed.description = "<p>@[{}]<br><b>Boon:</b> {}<br><b>Rank:</b> {}<br><b>Form Factor:</b> {}<br><b>Effect:</b> {}</p>".format(name, boon.name, boon.rank, boon.formFactor, boon.effect)
     return embed
 
 
