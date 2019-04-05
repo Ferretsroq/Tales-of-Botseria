@@ -256,6 +256,15 @@ async def faction(ctx):
 	await ctx.send(random.choice(text))
 
 @bot.command()
+async def hitme(ctx):
+	with open('data.json') as json_data:
+		data = json.load(json_data)
+	character = random.choice(list(data.keys()))
+	characterInfo = data[character]
+	output = character_sheet.MakeEmbed(character.title(), characterInfo)
+	await ctx.send(embed=output)
+
+@bot.command()
 async def templates(ctx):
 	await ctx.send('You can find Magician\'s templates here!\nhttp://heavensfall.jcink.net/index.php?showtopic=22')
 

@@ -59,4 +59,3 @@ class DeityMessage:
 		await self.message.add_reaction(arrowLeft)
 		await self.message.add_reaction(arrowRight)
 		await self.message.add_reaction(listEmoji)
-
