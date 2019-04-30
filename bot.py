@@ -3,12 +3,14 @@ from discord.ext import commands
 import character_sheet, json, asyncio
 import random
 import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator
-import re, time
+import re, time, os
+import BotseriaServers
 
 TOKEN = open('token.token').read()
 
 bot = commands.Bot(command_prefix='>', case_insensitive=True)
-
+servers = BotseriaServers.PopulateServers()
+'''
 ROLES = {
 		"solara": 503993134037073932,
 		"tiamat": 503993293378420746,
@@ -38,12 +40,28 @@ bot.factionMessages = {'solara': None,
 							'all': None}
 bot.canonMessages = {}
 bot.oocMessages = {}
+'''
+bot.hmkGames = []
+bot.rpsGames = []
+bot.factionMessages = BotseriaServers.PopulateFactionMessages(servers)
+bot.canonMessages = {}
+bot.oocMessages = {}
 
 def check_if_test_channel(ctx):
-	return ctx.channel.id == TESTCHANNEL
+	#return ctx.channel.id == TESTCHANNEL
+	if(str(ctx.guild.id) in servers):
+		testchannels = [servers[guild]['testchannel'] for guild in servers]
+		return ctx.channel.id in testchannels
+	return False
 
 def check_if_staff_or_test(ctx):
-	return ctx.guild.get_role(STAFFROLE) in ctx.author.roles or check_if_test_channel(ctx)
+	#return ctx.guild.get_role(STAFFROLE) in ctx.author.roles or check_if_test_channel(ctx)
+	if(str(ctx.guild.id) in servers):
+		staffrole = servers[str(ctx.guild.id)]['staff']
+		#print([servers[guild].keys() for guild in servers])
+		#staffrole = [servers[guild]['staff'] for guild in servers if ctx.guild.get_role(int(servers[guild]['staff'])) != None][0]
+		return ctx.guild.get_role(int(staffrole)) in ctx.author.roles or check_if_test_channel(ctx)
+	return False
 
 def check_if_december(ctx):
 	return (time.localtime().tm_mon == 12) or (check_if_staff_or_test(ctx))
@@ -52,7 +70,11 @@ def check_if_february(ctx):
 	return (time.localtime().tm_mon == 2) or (check_if_staff_or_test(ctx))
 
 def check_if_bot_spam(ctx):
-	return (ctx.channel.id == BOTCHANNEL or check_if_staff_or_test(ctx))
+	if(str(ctx.guild.id) in servers):
+		botchannel = int(servers[str(ctx.guild.id)]['botchannel'])
+		return (ctx.channel.id == botchannel or check_if_staff_or_test(ctx))
+	return False
+
 
 
 
@@ -73,27 +95,28 @@ async def logout(ctx):
 @commands.check(check_if_staff_or_test)
 async def repopulate(ctx):
 	'''***STAFF ONLY***'''
-	await character_sheet.repopulate(ctx.channel)
+	await character_sheet.repopulate(ctx, servers)
 	await ctx.send('Repopulated character list!')
 
 @bot.command()
 @commands.check(check_if_staff_or_test)
 async def fetch(ctx):
 	'''***STAFF ONLY***'''
-	await character_sheet.Fetch(ctx.channel)
+	await character_sheet.Fetch(ctx.channel, ctx, servers)
 
 @bot.command()
 async def char(ctx, *, arg):
 	name = arg.lower()
-	with open('data.json') as json_data:
-		data = json.load(json_data)
-	if(name in data.keys()):
-		characterInfo = data[name]
-		output = character_sheet.MakeEmbed(name.title(), characterInfo)
-		await ctx.send(embed=output)
-	else:
-		output = 'Invalid character!\n```{}```'.format(name)
-		await ctx.send(output)
+	if(str(ctx.guild.id) in servers):
+		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
+			data = json.load(json_data)
+		if(name in data.keys()):
+			characterInfo = data[name]
+			output = character_sheet.MakeEmbed(name.title(), characterInfo, servers[str(ctx.guild.id)])
+			await ctx.send(embed=output)
+		else:
+			output = 'Invalid character!\n```{}```'.format(name)
+			await ctx.send(output)
 
 @bot.command()
 async def charlist(ctx, *, arg=''):
@@ -111,7 +134,7 @@ async def charlist(ctx, *, arg=''):
 	if(command == ''):
 		# List all characters on Heavensfall
 		if(number == None):
-			bot.factionMessages['all'] = DeityMessage.DeityMessage('all', ctx.author)
+			bot.factionMessages['all'] = DeityMessage.DeityMessage('all', ctx.author, ctx, servers)
 			await bot.factionMessages['all'].Send(ctx.channel)
 			await bot.factionMessages['all'].ListNames()
 		# Skip to a specific number of an existing message
@@ -126,7 +149,7 @@ async def charlist(ctx, *, arg=''):
 		deity = command.lower()
 		# List all characters of that deity
 		if(number == None):
-			bot.factionMessages[deity] = DeityMessage.DeityMessage(deity, ctx.author)
+			bot.factionMessages[deity] = DeityMessage.DeityMessage(deity, ctx.author, ctx, servers)
 			await bot.factionMessages[deity.lower()].Send(ctx.channel)
 			await bot.factionMessages[deity].ListNames()
 		# Skip to a specific number of an existing message
@@ -137,11 +160,11 @@ async def charlist(ctx, *, arg=''):
 					factionMessage.index = number-1
 					await factionMessage.Edit()
 	# Canon character lists
-	elif(command in [canon[0] for canon in CanonList.CanonList()]):
+	elif(command in [canon[0] for canon in CanonList.CanonList(servers[str(ctx.guild.id)])]):
 		canon = command
 		# List all characters of that canon
 		if(number == None):
-			bot.canonMessages[canon] = CanonList.CanonMessage(canon, ctx.author)
+			bot.canonMessages[canon] = CanonList.CanonMessage(canon, ctx.author, ctx, servers)
 			await bot.canonMessages[canon].Send(ctx.channel)
 			await bot.canonMessages[canon].ListNames()
 		# Skip to a specific number of an existing message
@@ -153,11 +176,11 @@ async def charlist(ctx, *, arg=''):
 						canonMessage.index = number - 1
 						await canonMessage.Edit()
 	# OOC character lists
-	elif(command in OocMessage.OocList()):
+	elif(command in OocMessage.OocList(ctx)):
 		oocName = command
 		# List all characters of that OOC
 		if(number == None):
-			bot.oocMessages[oocName] = OocMessage.OocMessage(ctx.author, oocName)
+			bot.oocMessages[oocName] = OocMessage.OocMessage(ctx.author, oocName, ctx, servers)
 			await bot.oocMessages[oocName].Send(ctx.channel)
 			await bot.oocMessages[oocName].ListNames()
 		# Skip to a specific number of an existing message
@@ -170,7 +193,7 @@ async def charlist(ctx, *, arg=''):
 
 @bot.command()
 async def canonlist(ctx):
-	canonList = CanonList.CanonList()
+	canonList = CanonList.CanonList(servers[str(ctx.guild.id)])
 	index = 0
 	sendString = 'Valid canons: ```'
 	while(index < len(canonList)):
@@ -198,7 +221,9 @@ async def forward(ctx):
 @bot.command()
 async def iam(ctx, *, arg=''):
 	if(arg == ''):
-		await ctx.send('I need to know what role you want, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
+		validRoles = servers[str(ctx.guild.id)]["roles"]
+		#await ctx.send('I need to know what role you want, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))
+		await ctx.send('I need to know what role you want, silly! Valid roles:\n```{}```'.format('\n'.join(list(validRoles.keys()))))
 	elif(arg.lower() == 'the bone of my sword'):
 		# Kat is a weeb
 		await ctx.send('Steel is my Body and Fire is my Blood.')
@@ -223,11 +248,15 @@ async def iam(ctx, *, arg=''):
 		await ctx.send(file=discord.File('tempBat.png'))
 	else:
 		desiredRole = arg.lower()
-		if(desiredRole in ROLES.keys()):
-			if(ctx.guild.get_role(ROLES[desiredRole]) in ctx.author.roles):
+		validRoles = servers[str(ctx.guild.id)]["roles"]
+		#if(desiredRole in ROLES.keys()):
+		if(desiredRole in validRoles.keys()):
+			#if(ctx.guild.get_role(ROLES[desiredRole]) in ctx.author.roles):
+			if(ctx.guild.get_role(validRoles[desiredRole]) in ctx.author.roles):
 				await ctx.send('You already have role\n```{}```'.format(desiredRole))
 			else:
-				await ctx.author.add_roles(ctx.guild.get_role(ROLES[desiredRole]))
+				#await ctx.author.add_roles(ctx.guild.get_role(ROLES[desiredRole]))
+				await ctx.author.add_roles(ctx.guild.get_role(validRoles[desiredRole]))
 				await ctx.send('Role `{}` assigned!'.format(desiredRole))
 		else:
 			await ctx.send('Role `{}` not found.'.format(desiredRole))
@@ -235,12 +264,17 @@ async def iam(ctx, *, arg=''):
 @bot.command()
 async def iamnot(ctx, *, arg=''):
 	if(arg == ''):
-		await ctx.send('I need to know what role you aren\'t, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))	
+		validRoles = servers[str(ctx.guild.id)]["roles"]
+		#await ctx.send('I need to know what role you aren\'t, silly! Valid roles:\n```{}```'.format('\n'.join(list(ROLES.keys()))))	
+		await ctx.send('I need to know what role you aren\'t, silly! Valid roles:\n```{}```'.format('\n'.join(list(validRoles.keys()))))	
 	else:
+		validRoles = servers[str(ctx.guild.id)]["roles"]
 		desiredRole = arg.lower()
-		if(desiredRole in ROLES.keys()):
-			if(ctx.guild.get_role(ROLES[desiredRole]) in ctx.author.roles):
-				await ctx.author.remove_roles(ctx.guild.get_role(ROLES[desiredRole]))
+		if(desiredRole in validRoles.keys()):
+			#if(ctx.guild.get_role(ROLES[desiredRole]) in ctx.author.roles):
+			if(ctx.guild.get_role(validRoles[desiredRole]) in ctx.author.roles):
+				#await ctx.author.remove_roles(ctx.guild.get_role(ROLES[desiredRole]))
+				await ctx.author.remove_roles(ctx.guild.get_role(validRoles[desiredRole]))
 				await ctx.send('Removed role\n```{}```'.format(desiredRole))
 			else:
 				await ctx.send('You do not have role\n```{}```'.format(desiredRole))
@@ -249,7 +283,9 @@ async def iamnot(ctx, *, arg=''):
 
 @bot.command()
 async def faction(ctx):
-	faction = random.choice(FACTIONS)
+	#faction = random.choice(FACTIONS)
+	factions = servers[str(ctx.guild.id)]['factions']
+	faction = random.choice(factions)
 	text = ['Uplander! Uplander, make lookings! Swooshy spellycastings is sayings....um....is sayings {} is good choosymakes!'.format(faction),
 			'According to the position of the stars, the placement of your bedroom, and the ripeness of this pickle - {} is the best deity for you!'.format(faction),
 			'The fates have chosen, oh indecisive one - {} has found you worthy to fight in their name!'.format(faction)]
@@ -257,18 +293,19 @@ async def faction(ctx):
 
 @bot.command()
 async def hitme(ctx):
-	with open('data.json') as json_data:
+	with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
 		data = json.load(json_data)
 	character = random.choice(list(data.keys()))
 	characterInfo = data[character]
-	output = character_sheet.MakeEmbed(character.title(), characterInfo)
+	output = character_sheet.MakeEmbed(character.title(), characterInfo, servers[str(ctx.guild.id)])
 	await ctx.send(embed=output)
 
 @bot.command()
 async def templates(ctx):
-	await ctx.send('You can find Magician\'s templates here!\nhttp://heavensfall.jcink.net/index.php?showtopic=22')
+	await ctx.send('You can find Magician\'s templates here!\n{}'.format(servers[str(ctx.guild.id)]["templates"]))
 
 @bot.command()
+@commands.check(check_if_bot_spam)
 async def googlify(ctx, *, arg=''):
 	if(arg == ''):
 		Googlify.Googlify(Googlify.ImageFromURL(ctx.author.avatar_url)).save('tempGoogly.png')
@@ -277,7 +314,7 @@ async def googlify(ctx, *, arg=''):
 		Googlify.Googlify(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url)).save('tempGoogly.png')
 		await ctx.send(file=discord.File('tempGoogly.png'))
 	else:
-		with open('data.json') as json_data:
+		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
 			data = json.load(json_data)
 		if(arg.lower() in data.keys()):
 			Googlify.Googlify(Googlify.ImageFromURL(data[arg.lower()]['image'])).save('tempGoogly.png')
@@ -296,7 +333,7 @@ async def santafy(ctx, *, arg=''):
 		Googlify.Santafy(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url)).save('tempSanta.png')
 		await ctx.send(file=discord.File('tempSanta.png'))
 	else:
-		with open('data.json') as json_data:
+		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
 			data = json.load(json_data)
 		if(arg.lower() in data.keys()):
 			Googlify.Santafy(Googlify.ImageFromURL(data[arg.lower()]['image'])).save('tempSanta.png')
@@ -314,7 +351,7 @@ async def santafly(ctx, *, arg=''):
 		Googlify.Santafy(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url), rand=True).save('tempSanta.png')
 		await ctx.send(file=discord.File('tempSanta.png'))
 	else:
-		with open('data.json') as json_data:
+		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
 			data = json.load(json_data)
 		if(arg.lower() in data.keys()):
 			Googlify.Santafy(Googlify.ImageFromURL(data[arg.lower()]['image']), rand=True).save('tempSanta.png')
@@ -332,7 +369,7 @@ async def Happy2019(ctx, *, arg=''):
 		Googlify.Happy2019(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url)).save('temp2019.png')
 		await ctx.send(file=discord.File('temp2019.png'))
 	else:
-		with open('data.json') as json_data:
+		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
 			data = json.load(json_data)
 		if(arg.lower() in data.keys()):
 			Googlify.Happy2019(Googlify.ImageFromURL(data[arg.lower()]['image'])).save('temp2019.png')
@@ -347,7 +384,7 @@ async def valentines(ctx, fromChar='', toChar=''):
 	if(fromChar == '' or toChar == ''):
 		ctx.send("I need to know who's sending a valentines to whom, silly!")
 	else:
-		with open('data.json') as json_data:
+		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
 			data = json.load(json_data)
 		if(fromChar.lower() not in data.keys()):
 			await ctx.send('Character not found:```{}```'.format(fromChar.lower()))
@@ -381,7 +418,7 @@ async def hugmarrykill(ctx):
 		bot.hmkGames.sort(key = lambda x: x.valid, reverse=True)
 		while(False in [game.valid for game in bot.hmkGames]):
 			bot.hmkGames.pop()
-		bot.hmkGames.append(hmk.Game(ctx.message, ctx.author, ctx.message.mentions[0]))
+		bot.hmkGames.append(hmk.Game(ctx.message, ctx.author, ctx.message.mentions[0], ctx.guild.id, servers[str(ctx.guild.id)]))
 		await bot.hmkGames[-1].Send()
 
 

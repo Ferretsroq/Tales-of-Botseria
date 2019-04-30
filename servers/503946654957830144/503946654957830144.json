@@ -1,0 +1,34 @@
+{
+	"roles": {
+				"solara": 503993134037073932,
+				"tiamat": 503993293378420746,
+				"mistral": 503993326672806119,
+				"proserpina": 503993351876378644,
+				"skirnir": 503993370302218241,
+				"lucifiel": 503993386588700672,
+				"open": 503994473655697408,
+				"closed": 503994494690131969,
+				"hiatus": 503994516148191242,
+				"he/him": 522482243004923914,
+				"she/her": 522482193067671561,
+				"they/them": 522482276798431232
+			},
+	"staff": 503948857298780160,
+	"botchannel": 503997270841229346,
+	"testchannel": 379374543237545985,
+	"factions": ["SOLARA", "TIAMAT", "MISTRAL", "PROSERPINA", "SKIRNIR", "LUCIFIEL"],
+	"url": "https://heavensfall.jcink.net/index.php",
+	"canonurl": "https://heavensfall.jcink.net/index.php?showtopic=20",
+	"templates": "http://heavensfall.jcink.net/index.php?showtopic=22",
+	"faction": "deity",
+	"admin": "admin",
+	"colors": {
+		"admin": "0xe52161",
+		"solara": "0xe44c3f",
+		"tiamat": "0x276791",
+		"mistral": "0x2d8951",
+		"proserpina": "0xa4563c",
+		"skirnir": "0xc27c0e",
+		"lucifiel": "0x9b59b6"
+	}
+}	

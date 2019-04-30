@@ -1,0 +1,20 @@
+{
+	"roles": {
+			},
+	"staff": 569667897312411659,
+	"botchannel": 379374543237545985,
+	"testchannel": 379374543237545985,
+	"factions": ["SOLARA", "TIAMAT", "MISTRAL", "PROSERPINA", "SKIRNIR", "LUCIFIEL"],
+	"url": "https://heavensfall.jcink.net/index.php",
+	"canonurl": "https://heavensfall.jcink.net/index.php?showtopic=20",
+	"templates": "http://heavensfall.jcink.net/index.php?showtopic=22",
+	"colors": {
+		"admin": "0xe52161",
+		"solara": "0xe44c3f",
+		"tiamat": "0x276791",
+		"mistral": "0x2d8951",
+		"proserpina": "0xa4563c",
+		"skirnir": "0xc27c0e",
+		"lucifiel": "0x9b59b6"
+	}
+}	

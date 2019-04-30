@@ -1,0 +1,26 @@
+{
+	"roles": { "she/her": 565640889293209623,
+				"he/him": 565640921002016927,
+				"they/them": 565640939490639902,
+				"hiatus": 565640295945994240,
+				"open": 565640490926604400,
+				"closed": 565640433409982484
+			},
+	"staff": 565639456946913290,
+	"botchannel": 565645574003621888,
+	"testchannel": 565641898966908928,
+	"factions": ["WAR", "CREATION", "PEACE", "TRADE", "KNOWLEDGE"],
+	"url": "https://regenesis.jcink.net/index.php",
+	"canonurl": "http://regenesis.jcink.net/index.php?showtopic=17",
+	"templates": "http://regenesis.jcink.net/index.php?showtopic=19",
+	"faction": "Discipline",
+	"admin": "management",
+	"colors": {
+		"management": "0xf74780",
+		"war": "0xdb4344",
+		"creation": "0xe37c30",
+		"peace": "0x2d8951",
+		"trade": "0x276791",
+		"knowledge": "0x9b59b6"
+	}
+}	

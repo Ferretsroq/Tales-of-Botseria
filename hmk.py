@@ -21,7 +21,9 @@ class Answer(Enum):
 
 class Game:
 	'''Object to hold fmk game data'''
-	def __init__(self, initialMessage=None, challenger=None, target=None):
+	def __init__(self, initialMessage=None, challenger=None, target=None, serverID=0, server={}):
+		self.server = server
+		self.serverID = serverID
 		# Populate data
 		if(challenger != None and target != None):
 			self.valid = True
@@ -29,7 +31,7 @@ class Game:
 			self.challenger = challenger
 			self.target = target
 			self.targetContent = 'You have been challenged by {} to a rousing game of hug-marry-kill!\nYour options:'.format(challenger.display_name)
-			self.characterMessage = CharacterMessage(target, self.targetContent)
+			self.characterMessage = CharacterMessage(target, self.targetContent, self.serverID, self.server)
 			self.targetEmbed = self.characterMessage.embed
 			self.targetMessage = None
 			self.targetResponse = None
@@ -96,8 +98,12 @@ class Game:
 		await self.winner()
 
 class CharacterMessage:
-	def __init__(self, user, targetContent):
-		with open('data.json') as json_data:
+	def __init__(self, user, targetContent, serverID=0, server={}):
+		#with open('data.json') as json_data:
+	#		data = json.load(json_data)
+		self.serverID = serverID
+		self.server = server
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
 		self.user = user
 		self.characterList = list(np.random.choice(list(data.keys()), size=3, replace=False))
@@ -131,9 +137,11 @@ class CharacterMessage:
 		return content
 		#await self.Edit(content)
 	async def Edit(self, content=''):
-		with open('data.json') as json_data:
+		#with open('data.json') as json_data:
+		#	data = json.load(json_data)
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
-		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]])
+		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]], self.server)
 		self.embed.title = "HUG MARRY KILL - {}".format(self.characterList[self.index])
 		self.embed.description = self.ListNames()
 		await self.message.edit(embed=self.embed)

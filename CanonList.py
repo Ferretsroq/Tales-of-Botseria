@@ -8,12 +8,16 @@ arrowLeft = chr(0x2B05)
 arrowRight = chr(0x27A1)
 listEmoji = chr(0x1f4dc)
 
-def CharCanon(canon):
-    url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
+def CharCanon(canon, server):
+    #url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
+    url = server["canonurl"]
     res = requests.get(url)
     soup = bs4.BeautifulSoup(res.text, "lxml")
     print('Fetching url {}'.format(url))
-    canons = soup.select('h2')
+    if(soup.select('[id="canon-list"]') != []):
+    	canons = soup.select('[id="canon-list"]')[0].select('h2')
+    else:
+    	canons = soup.select('h2')
     if(canon.lower() in [tag.getText().lower() for tag in canons]):
         index = [tag.getText().lower() for tag in canons].index(canon.lower())
         characters = [character.getText().lower() for character in canons[index].find_next('ul').find_all('li')]
@@ -22,12 +26,17 @@ def CharCanon(canon):
         print('Canon {} not found.'.format(canon.lower()))
         return []
 
-def CanonList():
-    url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
+def CanonList(server):
+    #url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
+    url = server["canonurl"]
     res = requests.get(url)
     soup = bs4.BeautifulSoup(res.text, "lxml")
-    canons = [tag.getText().lower() for tag in soup.select('h2')]
-    headings = soup.select('h2')
+    if(soup.select('[id="canon-list"]') != []):
+    	canons = [tag.getText().lower() for tag in soup.select('[id="canon-list"]')[0].select('h2')]
+    	headings = soup.select('[id="canon-list"]')[0].select('h2')
+    else:
+    	canons = [tag.getText().lower() for tag in soup.select('h2')]
+    	headings = soup.select('h2')
     counts = []
     for index in range(len(headings)):
     	count = len(headings[index].find_next('ul').find_all('li'))
@@ -36,12 +45,14 @@ def CanonList():
     return list(zip(canons, counts))
 
 class CanonMessage:
-	def __init__(self, canon, user):
-		with open('data.json') as json_data:
+	def __init__(self, canon, user, ctx, servers):
+		self.serverID = ctx.guild.id
+		self.server = servers[str(self.serverID)]
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
 		self.canon = canon
 		self.user = user
-		validCharacters = CharCanon(canon)
+		validCharacters = CharCanon(canon, self.server)
 		self.characterList = [character for character in data if character.lower() in validCharacters]
 		self.index = 0
 		self.message = None
@@ -63,9 +74,9 @@ class CanonMessage:
 		content = '\n'.join(names)
 		await self.Edit(content)
 	async def Edit(self, content=''):
-		with open('data.json') as json_data:
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
-		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]])
+		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]], self.server)
 		self.embed.title = "{} - {}/{}: ".format(self.canon, self.index+1, len(self.characterList)) + self.embed.title
 		self.embed.description = content
 		await self.message.edit(embed=self.embed)

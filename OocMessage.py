@@ -9,8 +9,8 @@ arrowLeft = chr(0x2B05)
 arrowRight = chr(0x27A1)
 listEmoji = chr(0x1f4dc)
 
-def OocList():
-	with open('data.json') as json_data:
+def OocList(ctx):
+	with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
 		data = json.load(json_data)
 	oocList = []
 	for character in data:
@@ -19,8 +19,10 @@ def OocList():
 	return oocList
 
 class OocMessage:
-	def __init__(self, user, ooc):
-		with open('data.json') as json_data:
+	def __init__(self, user, ooc, ctx, servers):
+		self.serverID = ctx.guild.id
+		self.server = servers[str(self.serverID)]
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
 		self.ooc = ooc
 		self.user = user
@@ -45,9 +47,11 @@ class OocMessage:
 		content = '\n'.join(names)
 		await self.Edit(content, googlify=True)
 	async def Edit(self, content='', googlify=False):
-		with open('data.json') as json_data:
+		#with open('data.json') as json_data:
+		#	data = json.load(json_data)
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
-		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]])
+		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]], self.server)
 		self.embed.title = "{} - {}/{}: ".format(self.ooc, self.index+1, len(self.characterList)) + self.embed.title
 		self.embed.description = content
 		#if(googlify):
