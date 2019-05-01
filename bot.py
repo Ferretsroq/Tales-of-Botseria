@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import character_sheet, json, asyncio
 import random
-import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator, roll
 import re, time, os
 import BotseriaServers
 
@@ -465,6 +465,10 @@ async def boonslist(ctx, *, arg=''):
 			embeds.append(boons.BoonEmbed(batch[boon]))
 	for embed in embeds:
 		await ctx.send(embed=embed)
+
+@bot.command(name='roll')
+async def rolldie(ctx, *, arg=''):
+	await ctx.send(roll.roll(arg))
 
 @bot.event
 async def on_reaction_add(reaction, user):
