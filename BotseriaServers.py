@@ -8,7 +8,7 @@ def PopulateServers():
 	directory = './servers/'
 	for server in os.listdir(directory):
 		for jsonfilename in os.listdir(directory+'{}/'.format(server)):
-			if(jsonfilename.endswith('.json') and not jsonfilename.startswith('data')):
+			if(jsonfilename.endswith('.json') and jsonfilename.split('.')[0].isdigit()):
 				jsonfile = open(directory+'{}/'.format(server)+jsonfilename)
 				returnDict[jsonfilename.replace('.json', '')] = json.load(jsonfile)
 				jsonfile.close()

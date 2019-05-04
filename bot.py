@@ -46,6 +46,7 @@ bot.rpsGames = []
 bot.factionMessages = BotseriaServers.PopulateFactionMessages(servers)
 bot.canonMessages = {}
 bot.oocMessages = {}
+bot.hmkScoreMessages = {}
 
 def check_if_test_channel(ctx):
 	#return ctx.channel.id == TESTCHANNEL
@@ -420,6 +421,16 @@ async def hugmarrykill(ctx):
 			bot.hmkGames.pop()
 		bot.hmkGames.append(hmk.Game(ctx.message, ctx.author, ctx.message.mentions[0], ctx.guild.id, servers[str(ctx.guild.id)]))
 		await bot.hmkGames[-1].Send()
+	else:
+		scoreFile = open('./servers/{}/hmk_scores.json'.format(ctx.guild.id))
+		scores = json.load(scoreFile)
+		scoreFile.close()
+		embed = discord.Embed(title='Hug-Marry-Kill Scorecard')
+		content = ''
+		for character in scores:
+			content += '**{}** | Hug: {} | Marry: {} | Kill: {}\n'.format(character, scores[character]['hug'], scores[character]['marry'], scores[character]['kill'])
+		embed.description = content
+		await ctx.send(embed=embed)
 
 
 #@bot.command(name='boons')

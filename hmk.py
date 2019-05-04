@@ -66,9 +66,32 @@ class Game:
 				name = self.target.nick
 			await self.initialMessage.channel.send('{} says....\nHUG - {}\nMARRY - {}\nKILL - {}'.format(name, self.characterMessage.hug, self.characterMessage.marry, self.characterMessage.kill))
 			self.Reset()
+			self.UpdateScores()
 		elif(self.characterMessage.responses[0] == self.characterMessage.responses[1] == self.characterMessage.responses[2] and None not in self.characterMessage.responses):
 			await self.initialMessage.channel.send("Hey there {} could you do me a real solid and not be such a SOGGY MARSHMALLOW who picks the same answers that'd be great! Thanks! xoxo".format(self.target.mention))
 			self.Reset()
+			self.UpdateScores()
+
+	def UpdateScores(self):
+		scoreFile = open('./servers/{}/hmk_scores.json'.format(self.serverID))
+		scores = json.load(scoreFile)
+		scoreFile.close()
+		# Initialize character score if not present
+		if(self.characterMessage.hug.lower() not in scores):
+			scores[self.characterMessage.hug.lower()] = {'hug': 0, 'marry': 0, 'kill': 0}
+		if(self.characterMessage.marry.lower() not in scores):
+			scores[self.characterMessage.marry.lower()] = {'hug': 0, 'marry': 0, 'kill': 0}
+		if(self.characterMessage.kill.lower() not in scores):
+			scores[self.characterMessage.kill.lower()] = {'hug': 0, 'marry': 0, 'kill': 0}
+		# Update scores
+		scores[self.characterMessage.hug.lower()]['hug'] += 1
+		scores[self.characterMessage.marry.lower()]['marry'] += 1
+		scores[self.characterMessage.kill.lower()]['kill'] += 1
+		scoreFile = open('./servers/{}/hmk_scores.json'.format(self.serverID), 'w')
+		json.dump(scores, scoreFile)
+		scoreFile.close()
+
+
 	# Set the target's response based on their reaction
 	async def UpdateTargetResponse(self, reaction):
 		self.characterMessage.RegisterAnswer(reaction)
