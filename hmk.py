@@ -122,8 +122,6 @@ class Game:
 
 class CharacterMessage:
 	def __init__(self, user, targetContent, serverID=0, server={}):
-		#with open('data.json') as json_data:
-	#		data = json.load(json_data)
 		self.serverID = serverID
 		self.server = server
 		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
@@ -131,7 +129,6 @@ class CharacterMessage:
 		self.user = user
 		self.characterList = list(np.random.choice(list(data.keys()), size=3, replace=False))
 		self.responses = [None, None, None]
-		#self.characterList = [character for character in data if character.lower() in validCharacters]
 		self.index = 0
 		self.message = None
 		self.targetContent = targetContent
@@ -154,21 +151,15 @@ class CharacterMessage:
 		for name in range(len(names)):
 			if(self.responses[name] in [answer.value for answer in Answer]):
 				names[name] += ' - **{}**'.format(Answer(self.responses[name]).name)
-		#names[self.index] = '**{}**'.format(names[self.index])
-		#content = '\n'.join(['{}: {}'.format(x+1, self.characterList[x]) for x in range(len(self.characterList))])
 		content = '\n'.join(names)
 		return content
-		#await self.Edit(content)
 	async def Edit(self, content=''):
-		#with open('data.json') as json_data:
-		#	data = json.load(json_data)
 		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
 		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]], self.server)
 		self.embed.title = "HUG MARRY KILL - {}".format(self.characterList[self.index])
 		self.embed.description = self.ListNames()
 		await self.message.edit(embed=self.embed)
-		#content = await self.ListNames()
 		await self.SetReactions()
 	async def Send(self, channel):
 		self.message = await channel.send(embed=self.embed)
@@ -178,7 +169,6 @@ class CharacterMessage:
 		await self.message.clear_reactions()
 		await self.message.add_reaction(arrowLeft)
 		await self.message.add_reaction(arrowRight)
-		#await self.message.add_reaction(listEmoji)
 		await self.message.add_reaction(hEmoji)
 		await self.message.add_reaction(mEmoji)
 		await self.message.add_reaction(kEmoji)
@@ -191,3 +181,88 @@ class CharacterMessage:
 		elif(str(response) == str(kEmoji)):
 			self.kill = self.characterList[self.index]
 		await self.Edit()
+
+class ScoreMessage:
+	def __init__(self, user, ctx, servers):
+		self.serverID = ctx.guild.id
+		self.server = servers[str(self.serverID)]
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
+			data = json.load(json_data)
+		self.user = user
+		self.characterList = [character for character in data]
+		self.index = 0
+		self.message = None
+		self.embed = discord.Embed()
+	async def Advance(self):
+		self.index += 1
+		if(self.index+1 > len(self.characterList)):
+			self.index = 0
+		await self.Edit()
+	async def Back(self):
+		self.index -= 1
+		if(self.index < 0):
+			self.index = len(self.characterList)-1
+		await self.Edit()
+	async def ListNames(self):
+		names = ['{}: {}'.format(x+1, self.characterList[x]) for x in range(len(self.characterList))]
+		names[self.index] = '**{}**'.format(names[self.index])
+		content = '\n'.join(names)
+		await self.Edit(content, googlify=True)
+	async def Edit(self, content='', googlify=False):
+		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
+			data = json.load(json_data)
+		with open('servers/{}/hmk_scores.json'.format(self.serverID)) as json_data:
+			hmkdata = json.load(json_data)
+		if(self.characterList[self.index] in hmkdata):
+			self.embed = HMKEmbed(self.characterList[self.index], data[self.characterList[self.index]], hmkdata[self.characterList[self.index]], self.server)
+		else:
+			self.embed = HMKEmbed(self.characterList[self.index], data[self.characterList[self.index]], {'hug': 0, 'marry': 0, 'kill': 0}, self.server)
+		self.embed.title = "HUG-MARRY-KILL SCORECARD - {}/{}: ".format(self.index+1, len(self.characterList)) + self.embed.title
+		self.embed.description = content
+		await self.message.edit(embed=self.embed)
+		await self.SetReactions()
+	async def Send(self, channel):
+		self.message = await channel.send(embed=self.embed)
+		await self.Edit()
+	async def SetReactions(self):
+		await self.message.clear_reactions()
+		await self.message.add_reaction(arrowLeft)
+		await self.message.add_reaction(arrowRight)
+		await self.message.add_reaction(listEmoji)
+		await self.message.add_reaction(hEmoji)
+		await self.message.add_reaction(mEmoji)
+		await self.message.add_reaction(kEmoji)
+	async def Sort(self, sortBy=str(hEmoji)):
+		self.characterList.sort(key=lambda x: HMKSort(sortBy, self.serverID, x), reverse=True)
+		self.index = 0
+		await self.Edit()
+
+
+def HMKEmbed(name, characterData, hmkData, server={}):
+    embed=discord.Embed(title=name, color=character_sheet.ChooseColor(characterData['deity'], server))
+    embed.set_thumbnail(url=characterData['image'])
+    embed.add_field(name='Hug:', value=hmkData['hug'])
+    embed.add_field(name='Marry:', value=hmkData['marry'])
+    embed.add_field(name='Kill:', value=hmkData['kill'])
+    embed.add_field(name='Series:', value=characterData['series'], inline=True)
+    embed.add_field(name='{}:'.format(server['faction']), value=characterData['deity'], inline=True)
+    embed.add_field(name='App Link:', value=characterData['app'], inline=False)
+    embed.add_field(name='Plot Link:', value=characterData['plot'], inline=False)
+    embed.set_footer(text="Played by {}".format(characterData['ooc']))
+    return embed
+
+def HMKSort(inputKey=str(hEmoji), serverID=0, name=''):
+	with open('servers/{}/hmk_scores.json'.format(serverID)) as json_data:
+		hmkData = json.load(json_data)
+	if(inputKey == str(hEmoji)):
+		key = 'hug'
+	elif(inputKey == str(mEmoji)):
+		key = 'marry'
+	elif(inputKey == str(kEmoji)):
+		key = 'kill'
+	else:
+		key = 'hug'
+	if(name not in hmkData):
+		return 0
+	else:
+		return hmkData[name][key]

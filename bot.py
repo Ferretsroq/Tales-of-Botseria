@@ -422,7 +422,7 @@ async def hugmarrykill(ctx):
 		bot.hmkGames.append(hmk.Game(ctx.message, ctx.author, ctx.message.mentions[0], ctx.guild.id, servers[str(ctx.guild.id)]))
 		await bot.hmkGames[-1].Send()
 	else:
-		scoreFile = open('./servers/{}/hmk_scores.json'.format(ctx.guild.id))
+		'''scoreFile = open('./servers/{}/hmk_scores.json'.format(ctx.guild.id))
 		scores = json.load(scoreFile)
 		scoreFile.close()
 		embed = discord.Embed(title='Hug-Marry-Kill Scorecard')
@@ -430,7 +430,11 @@ async def hugmarrykill(ctx):
 		for character in scores:
 			content += '**{}** | Hug: {} | Marry: {} | Kill: {}\n'.format(character, scores[character]['hug'], scores[character]['marry'], scores[character]['kill'])
 		embed.description = content
-		await ctx.send(embed=embed)
+		await ctx.send(embed=embed)'''
+		bot.hmkScoreMessages[ctx.author] = hmk.ScoreMessage(ctx.author, ctx, servers)
+		await bot.hmkScoreMessages[ctx.author].Send(ctx.channel)
+		await bot.hmkScoreMessages[ctx.author].ListNames()
+
 
 
 #@bot.command(name='boons')
@@ -528,6 +532,21 @@ async def on_reaction_add(reaction, user):
 						await bot.oocMessages[ooc].Advance()
 					elif(str(reaction) == str(OocMessage.listEmoji)):
 						await bot.oocMessages[ooc].ListNames()
+		for hmkScore in bot.hmkScoreMessages:
+			if(bot.hmkScoreMessages[hmkScore] != None):
+				if(bot.hmkScoreMessages[hmkScore].message.id == reaction.message.id and bot.hmkScoreMessages[hmkScore].user == user):
+					if(str(reaction) == str(hmk.arrowLeft)):
+						await bot.hmkScoreMessages[hmkScore].Back()
+					if(str(reaction) == str(hmk.arrowRight)):
+						await bot.hmkScoreMessages[hmkScore].Advance()
+					if(str(reaction) == str(hmk.listEmoji)):
+						await bot.hmkScoreMessages[hmkScore].ListNames()
+					if(str(reaction) == str(hmk.hEmoji)):
+						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
+					if(str(reaction) == str(hmk.mEmoji)):
+						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
+					if(str(reaction) == str(hmk.kEmoji)):
+						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
 
 
 if(__name__ == '__main__'):
