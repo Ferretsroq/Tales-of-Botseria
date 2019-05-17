@@ -414,23 +414,46 @@ async def rps(ctx):
 
 @bot.command(name='hmk')
 @commands.check(check_if_bot_spam)
-async def hugmarrykill(ctx):
+async def hugmarrykill(ctx, *, arg=''):
+	'''Mention someone with @<username> to begin a hug-marry-kill game.
+	   Use >hmk with no arguments to show the scores for all characters.
+	   Use >hmk <charname> to show the scores for a particular character.'''
+	# Start a game if someone is mentioned
 	if(len(ctx.message.mentions) > 0):
+		# Sort games by validity, so invalid games are at the end of the list
 		bot.hmkGames.sort(key = lambda x: x.valid, reverse=True)
+		# Remove all invalid games. Games are invalid if they failed to start or ended.
 		while(False in [game.valid for game in bot.hmkGames]):
 			bot.hmkGames.pop()
+		# Initialize a new game
 		bot.hmkGames.append(hmk.Game(ctx.message, ctx.author, ctx.message.mentions[0], ctx.guild.id, servers[str(ctx.guild.id)]))
 		await bot.hmkGames[-1].Send()
+	# Search for the scores of a character
+	elif(arg != ''):
+		name = arg.lower()
+		# Check if the server is valid
+		if(str(ctx.guild.id) in servers):
+			# Fetch character data
+			with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
+				data = json.load(json_data)
+			# Fetch hmk score data
+			with open('servers/{}/hmk_scores.json'.format(ctx.guild.id)) as json_data:
+				hmkdata = json.load(json_data)
+			# Check if the character is valid
+			if(name in data.keys()):
+				characterInfo = data[name]
+				# Check if the character has scores. If so, send their scores.
+				if(name in hmkdata.keys()):
+					output = hmk.HMKEmbed(name.title(), characterInfo, hmkdata[name], servers[str(ctx.guild.id)])
+				# If the character has no hmk scores, give them 0 in each category.
+				else:
+					output = hmk.HMKEmbed(name.title(), characterInfo, {'hug': 0, 'marry': 0, 'kill': 0}, servers[str(ctx.guild.id)])
+				await ctx.send(embed=output)
+			else:
+				output = 'Invalid character!\n```{}```'.format(name)
+				await ctx.send(output)
+	# Show all scores with an interactable embed.
 	else:
-		'''scoreFile = open('./servers/{}/hmk_scores.json'.format(ctx.guild.id))
-		scores = json.load(scoreFile)
-		scoreFile.close()
-		embed = discord.Embed(title='Hug-Marry-Kill Scorecard')
-		content = ''
-		for character in scores:
-			content += '**{}** | Hug: {} | Marry: {} | Kill: {}\n'.format(character, scores[character]['hug'], scores[character]['marry'], scores[character]['kill'])
-		embed.description = content
-		await ctx.send(embed=embed)'''
 		bot.hmkScoreMessages[ctx.author] = hmk.ScoreMessage(ctx.author, ctx, servers)
 		await bot.hmkScoreMessages[ctx.author].Send(ctx.channel)
 		await bot.hmkScoreMessages[ctx.author].ListNames()
