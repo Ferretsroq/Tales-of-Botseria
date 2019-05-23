@@ -381,7 +381,8 @@ async def Happy2019(ctx, *, arg=''):
 @bot.command()
 @commands.check(check_if_february)
 async def valentines(ctx, fromChar='', toChar=''):
-	"""Character names need to be enclosed in "quotation marks" """
+	""">valentines "character 1" "character 2" for a cheesy MS Paint Valentine's card.
+	   Character names need to be enclosed in "quotation marks" """
 	if(fromChar == '' or toChar == ''):
 		ctx.send("I need to know who's sending a valentines to whom, silly!")
 	else:
@@ -400,6 +401,8 @@ async def valentines(ctx, fromChar='', toChar=''):
 @bot.command()
 @commands.check(check_if_bot_spam)
 async def rps(ctx):
+	'''Mention someone with @<username> to challenge them to a rousing bout of rock-paper-scissors.
+	   Check your DMs and respond with an emoji to play the game. The winner will be announced publicly.'''
 	if(len(ctx.message.mentions) > 0):
 		bot.rpsGames.sort(key=lambda x: x.valid, reverse=True)
 		while(False in [game.valid for game in bot.rpsGames]):

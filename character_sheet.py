@@ -3,6 +3,15 @@ from discord.ext import commands
 import asyncio, aiohttp
 import time
 
+
+htmlCodes = {
+                '&quot;': '"',
+                '&amp;': '&',
+                '&apos;': "'",
+                '&lt;': '<',
+                '&gt;': '>'
+            }
+
 async def repopulate(ctx, servers):
     channel = ctx.channel
     startTime = time.perf_counter()
@@ -29,6 +38,8 @@ async def repopulate(ctx, servers):
                     print('Fetching url {}'.format('{}?showuser='.format(siteURL)+str(x+1)))
                     try:
                         name = soup.select('[id="profilename"]')[0].text.lower()
+                        for code in htmlCodes.keys():
+                            name = name.replace(code, htmlCodes[code])
                         print(name)
                     except:
                         print('No name')
