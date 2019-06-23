@@ -129,6 +129,8 @@ async def Fetch(channel, ctx, servers):
                     print('Fetching url {}'.format('{}?showuser='.format(siteURL)+str(x+1)))
                     try:
                         name = soup.select('[id="profilename"]')[0].text.lower()
+                        for code in htmlCodes.keys():
+                            name = name.replace(code, htmlCodes[code])
                         if(soup.find("div", {"class":"site_profile"}) != None):
                             group =  soup.find("div",{"class":"site_profile"})['id']
                         else:
