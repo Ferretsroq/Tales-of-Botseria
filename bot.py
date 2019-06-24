@@ -461,7 +461,13 @@ async def hugmarrykill(ctx, *, arg=''):
 		await bot.hmkScoreMessages[ctx.author].Send(ctx.channel)
 		await bot.hmkScoreMessages[ctx.author].ListNames()
 
-
+@bot.command()
+@commands.check(check_if_bot_spam)
+async def pet(ctx):
+	'''Pet the bot. It is a good bot.
+	Shoutouts to my friend Haruka for implementing this in a different bot, which I stole it from.'''
+	responses = ['woof', 'bwoof', 'bark', 'bork']
+	await ctx.send(random.choice(responses))
 
 #@bot.command(name='boons')
 #@commands.check(check_if_staff_or_test)
