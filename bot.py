@@ -2,51 +2,27 @@ import discord
 from discord.ext import commands
 import character_sheet, json, asyncio
 import random
-import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator, roll
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator, roll, RoleAssignment, TrickOrTreat
 import re, time, os
 import BotseriaServers
 
+intents = discord.Intents.default()
+intents.dm_reactions = True
+intents.members = True
+
 TOKEN = open('token.token').read()
 
-bot = commands.Bot(command_prefix='>', case_insensitive=True)
+bot = commands.Bot(command_prefix='>', case_insensitive=True, intents=intents)
 servers = BotseriaServers.PopulateServers()
-'''
-ROLES = {
-		"solara": 503993134037073932,
-		"tiamat": 503993293378420746,
-		"mistral": 503993326672806119,
-		"proserpina": 503993351876378644,
-		"skirnir": 503993370302218241,
-		"lucifiel": 503993386588700672,
-		"open": 503994473655697408,
-		"closed": 503994494690131969,
-		"hiatus": 503994516148191242,
-		"he/him": 522482243004923914,
-		"she/her": 522482193067671561,
-		"they/them": 522482276798431232
-		}
-STAFFROLE = 503948857298780160
-FACTIONS = ["SOLARA", "TIAMAT", "MISTRAL", "PROSERPINA", "SKIRNIR", "LUCIFIEL"]
-BOTCHANNEL = 503997270841229346
-TESTCHANNEL = 379374543237545985
+
 bot.hmkGames = []
 bot.rpsGames = []
-bot.factionMessages = {'solara': None,
-							'tiamat': None,
-							'mistral': None,
-							'proserpina': None,
-							'skirnir': None,
-							'lucifiel': None,
-							'all': None}
-bot.canonMessages = {}
-bot.oocMessages = {}
-'''
-bot.hmkGames = []
-bot.rpsGames = []
+bot.totGames = []
 bot.factionMessages = BotseriaServers.PopulateFactionMessages(servers)
 bot.canonMessages = {}
 bot.oocMessages = {}
 bot.hmkScoreMessages = {}
+bot.roleMessages = {}
 
 def check_if_test_channel(ctx):
 	#return ctx.channel.id == TESTCHANNEL
@@ -220,6 +196,19 @@ async def forward(ctx):
 	await ctx.send('forward')
 
 @bot.command()
+async def rolemessage(ctx):
+	#await ctx.send('Test',view=RoleAssignment.RoleAssignment())
+	#embed = discord.Embed()
+	#embed.description = "React to add role:\n👩 she/her\n👨 he/him\n👤 they/them"
+	#bot.roleMessages[ctx.guild.id] = await ctx.send(embed=embed)
+	#await bot.roleMessages[ctx.guild.id].add_reaction('👩')
+	#await bot.roleMessages[ctx.guild.id].add_reaction('👨')
+	#await bot.roleMessages[ctx.guild.id].add_reaction('👤')
+	bot.roleMessages[ctx.guild.id] = RoleAssignment.RoleMessage(ctx)
+	print(ctx.guild.id)
+	await bot.roleMessages[ctx.guild.id].Send(ctx)
+
+@bot.command()
 async def iam(ctx, *, arg=''):
 	if(arg == ''):
 		validRoles = servers[str(ctx.guild.id)]["roles"]
@@ -245,7 +234,7 @@ async def iam(ctx, *, arg=''):
 		await asyncio.sleep(1)
 		await ctx.send(':crossed_swords:'*125)
 	elif(arg.lower() == 'the night'):
-		Googlify.Batmanify(Googlify.ImageFromURL(ctx.author.avatar_url)).save('tempBat.png')
+		Googlify.Batmanify(Googlify.ImageFromURL(str(ctx.author.avatar))).save('tempBat.png')
 		await ctx.send(file=discord.File('tempBat.png'))
 	else:
 		desiredRole = arg.lower()
@@ -308,11 +297,12 @@ async def templates(ctx):
 @bot.command()
 @commands.check(check_if_bot_spam)
 async def googlify(ctx, *, arg=''):
+	#print(type(ctx.author.avatar))
 	if(arg == ''):
-		Googlify.Googlify(Googlify.ImageFromURL(ctx.author.avatar_url)).save('tempGoogly.png')
+		Googlify.Googlify(Googlify.ImageFromURL(str(ctx.author.avatar))).save('tempGoogly.png')
 		await ctx.send(file=discord.File('tempGoogly.png'))
 	elif(len(ctx.message.mentions) > 0):
-		Googlify.Googlify(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url)).save('tempGoogly.png')
+		Googlify.Googlify(Googlify.ImageFromURL(str(ctx.message.mentions[0].avatar))).save('tempGoogly.png')
 		await ctx.send(file=discord.File('tempGoogly.png'))
 	else:
 		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
@@ -328,10 +318,10 @@ async def googlify(ctx, *, arg=''):
 @commands.check(check_if_december)
 async def santafy(ctx, *, arg=''):
 	if(arg == ''):
-		Googlify.Santafy(Googlify.ImageFromURL(ctx.author.avatar_url)).save('tempSanta.png')
+		Googlify.Santafy(Googlify.ImageFromURL(str(ctx.author.avatar))).save('tempSanta.png')
 		await ctx.send(file=discord.File('tempSanta.png'))
 	elif(len(ctx.message.mentions) > 0):
-		Googlify.Santafy(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url)).save('tempSanta.png')
+		Googlify.Santafy(Googlify.ImageFromURL(str(ctx.message.mentions[0].avatar))).save('tempSanta.png')
 		await ctx.send(file=discord.File('tempSanta.png'))
 	else:
 		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
@@ -343,13 +333,30 @@ async def santafy(ctx, *, arg=''):
 			await ctx.send('Character not found:```{}```'.format(arg.lower()))
 
 @bot.command()
+async def spookify(ctx, *, arg=''):
+	if(arg == ''):
+		Googlify.Spookify(Googlify.ImageFromURL(str(ctx.author.avatar))).save('tempSpooky.png')
+		await ctx.send(file=discord.File('tempSpooky.png'))
+	elif(len(ctx.message.mentions) > 0):
+		Googlify.Spookify(Googlify.ImageFromURL(str(ctx.message.mentions[0].avatar))).save('tempSpooky.png')
+		await ctx.send(file=discord.File('tempSpooky.png'))
+	else:
+		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
+			data = json.load(json_data)
+		if(arg.lower() in data.keys()):
+			Googlify.Spookify(Googlify.ImageFromURL(data[arg.lower()]['image'])).save('tempSpooky.png')
+			await ctx.send(file=discord.File('tempSpooky.png'))
+		else:
+			await ctx.send('Character not found:```{}```'.format(arg.lower()))
+
+@bot.command()
 @commands.check(check_if_december)
 async def santafly(ctx, *, arg=''):
 	if(arg == ''):
-		Googlify.Santafy(Googlify.ImageFromURL(ctx.author.avatar_url), rand=True).save('tempSanta.png')
+		Googlify.Santafy(Googlify.ImageFromURL(str(ctx.author.avatar)), rand=True).save('tempSanta.png')
 		await ctx.send(file=discord.File('tempSanta.png'))
 	elif(len(ctx.message.mentions) > 0):
-		Googlify.Santafy(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url), rand=True).save('tempSanta.png')
+		Googlify.Santafy(Googlify.ImageFromURL(str(ctx.message.mentions[0].avatar)), rand=True).save('tempSanta.png')
 		await ctx.send(file=discord.File('tempSanta.png'))
 	else:
 		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
@@ -364,10 +371,10 @@ async def santafly(ctx, *, arg=''):
 @commands.check(check_if_december)
 async def Happy2019(ctx, *, arg=''):
 	if(arg == ''):
-		Googlify.Happy2019(Googlify.ImageFromURL(ctx.author.avatar_url)).save('temp2019.png')
+		Googlify.Happy2019(Googlify.ImageFromURL(str(ctx.author.avatar))).save('temp2019.png')
 		await ctx.send(file=discord.File('temp2019.png'))
 	elif(len(ctx.message.mentions) > 0):
-		Googlify.Happy2019(Googlify.ImageFromURL(ctx.message.mentions[0].avatar_url)).save('temp2019.png')
+		Googlify.Happy2019(Googlify.ImageFromURL(str(ctx.message.mentions[0].avatar))).save('temp2019.png')
 		await ctx.send(file=discord.File('temp2019.png'))
 	else:
 		with open('servers/{}/data.json'.format(ctx.guild.id)) as json_data:
@@ -414,6 +421,22 @@ async def rps(ctx):
 			await ctx.author.create_dm()
 		bot.rpsGames.append(RockPaperScissors.Game(ctx.message, ctx.author, ctx.message.mentions[0]))
 		await bot.rpsGames[-1].Send()
+
+@bot.command()
+@commands.check(check_if_bot_spam)
+async def tot(ctx):
+	'''Mention someone with @<username> to challenge them to a rousing bout of trick or treat.
+	   Check your DMs and respond with an emoji. The result will be announced publicly.'''
+	if(len(ctx.message.mentions) > 0):
+		bot.totGames.sort(key=lambda x: x.valid, reverse=True)
+		while(False in [game.valid for game in bot.rpsGames]):
+			bot.rpsGames.pop()
+		if(ctx.message.mentions[0].dm_channel == None):
+			await ctx.message.mentions[0].create_dm()
+		if(ctx.author.dm_channel == None):
+			await ctx.author.create_dm()
+		bot.totGames.append(TrickOrTreat.Game(ctx.message, ctx.author, ctx.message.mentions[0]))
+		await bot.totGames[-1].Send()
 
 @bot.command(name='hmk')
 @commands.check(check_if_bot_spam)
@@ -466,7 +489,7 @@ async def hugmarrykill(ctx, *, arg=''):
 async def pet(ctx):
 	'''Pet the bot. It is a good bot.
 	Shoutouts to my friend Haruka for implementing this in a different bot, which I stole it from.'''
-	responses = ['woof', 'bwoof', 'bark', 'bork']
+	responses = ['woof', 'bwoof', 'bark', 'bork', 'arf']
 	await ctx.send(random.choice(responses))
 
 #@bot.command(name='boons')
@@ -526,6 +549,10 @@ async def on_reaction_add(reaction, user):
 					await rpsGame.UpdateChallengerResponse(reaction)
 				elif(reaction.message.id == rpsGame.targetMessage.id and user == rpsGame.target):
 					await rpsGame.UpdateTargetResponse(reaction)
+		for totGame in bot.totGames:
+			if(totGame.valid):
+				if(reaction.message.id == totGame.targetMessage.id and user == totGame.target):
+					await totGame.UpdateTargetResponse(reaction)
 		for hmkGame in bot.hmkGames:
 			if(hmkGame.valid):
 				if(reaction.message.id == hmkGame.targetMessage.id and user == hmkGame.target):
@@ -579,6 +606,9 @@ async def on_reaction_add(reaction, user):
 						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
 					if(str(reaction) == str(hmk.kEmoji)):
 						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
+		for roleMsg in bot.roleMessages:
+			if(bot.roleMessages[roleMsg].message.id == reaction.message.id):
+				await bot.roleMessages[roleMsg].SetRole(str(reaction), user)
 
 
 if(__name__ == '__main__'):

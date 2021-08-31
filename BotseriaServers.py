@@ -2,6 +2,7 @@ import os
 import json
 import discord
 from discord.ext import commands
+import RoleAssignment
 
 def PopulateServers():
 	returnDict = {}
@@ -21,3 +22,11 @@ def PopulateFactionMessages(servers):
 		for faction in servers[server]["factions"]:
 			factionMessages[faction.lower()] = None
 	return factionMessages
+
+def PopulateRoleMessages(servers):
+	roleMessages = {}
+	for server in servers:
+		if("roleMessage" in servers[server]):
+			roleMessages[server] = servers[server]["roleMessage"]
+	print(roleMessages)
+	return roleMessages

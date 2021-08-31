@@ -60,6 +60,14 @@ def Santafy(inputImage, rand=False):
     base.paste(beard, box=(0, int(y/2)),mask=beard)
     return base
 
+# Add an image to the head of a spooky skeleton
+def Spookify(inputImage):
+    base = inputImage.copy()
+    skeleton = Image.open('./Image Resources/skeleton.png')
+    base = base.resize((300,300))
+    skeleton.paste(base, box=(100,30), mask=base)
+    return skeleton
+
 # Add a Batman mask to an image
 def Batmanify(inputImage):
     base = inputImage.copy()

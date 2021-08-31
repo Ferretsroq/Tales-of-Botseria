@@ -1,0 +1,31 @@
+{
+	"roles": { "she/her": 881582099847585792,
+				"he/him": 881582147440373791,
+				"they/them": 881582183339409450,
+				"hiatus": 881582221503389776,
+				"open": 881582261181481010,
+				"closed": 881582296459780158,
+				"proxima centauri": 880965946943086614,
+				"greyhawk": 880966124718669844,
+				"camelot": 880966223079280701,
+				"yushan": 880966308206882816,
+				"itinerants": 880966402486460457
+			},
+	"staff": 881582982111047751,
+	"botchannel": 880561729308868608,
+	"testchannel": 880561729308868608,
+	"factions": ["Proxima Centauri", "Greyhawk", "Camelot", "Yushan", "Itinerants"],
+	"url": "https://regenesis.jcink.net/index.php",
+	"canonurl": "http://regenesis.jcink.net/index.php?showtopic=17",
+	"templates": "http://regenesis.jcink.net/index.php?showtopic=19",
+	"faction": "Discipline",
+	"admin": "staff",
+	"colors": {
+		"staff": "0xf74780",
+		"Proxima Centauri": "0x9b59b6",
+		"Greyhawk": "0x2d8951",
+		"Camelot": "0x276791",
+		"Yushan": "0xdb4344",
+		"Itinerants": "0xe37c30"
+	}
+}	
