@@ -3,7 +3,8 @@ from enum import Enum
 import asyncio
 
 # Shoutouts to Haruka-Sama, a v v v good /r/pokemon mod who understands emoji wizardry
-rock = chr(0x1f315)
+#rock = chr(0x1f315)
+rock = chr(0x1FAA8)
 paper = chr(0x1f4dc)
 scissors = '\u2702'
 

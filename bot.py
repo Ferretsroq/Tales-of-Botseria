@@ -1,5 +1,6 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
+import datetime
 import character_sheet, json, asyncio
 import random
 import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator, roll, RoleAssignment, TrickOrTreat
@@ -23,6 +24,7 @@ bot.canonMessages = {}
 bot.oocMessages = {}
 bot.hmkScoreMessages = {}
 bot.roleMessages = {}
+bot.petCounter = 0
 
 def check_if_test_channel(ctx):
 	#return ctx.channel.id == TESTCHANNEL
@@ -490,7 +492,8 @@ async def pet(ctx):
 	'''Pet the bot. It is a good bot.
 	Shoutouts to my friend Haruka for implementing this in a different bot, which I stole it from.'''
 	responses = ['woof', 'bwoof', 'bark', 'bork', 'arf']
-	await ctx.send(random.choice(responses))
+	bot.petCounter += 1
+	await ctx.send('{}\n*I have been pet {} times today.*'.format(random.choice(responses), bot.petCounter))
 
 #@bot.command(name='boons')
 #@commands.check(check_if_staff_or_test)
@@ -539,6 +542,21 @@ async def boonslist(ctx, *, arg=''):
 @bot.command(name='roll')
 async def rolldie(ctx, *, arg=''):
 	await ctx.send(roll.roll(arg))
+
+@tasks.loop(hours=24)
+async def ResetPetCounter():
+	print('I reset pet counter!')
+	bot.petCounter = 0
+
+@ResetPetCounter.before_loop
+async def before_ResetPetCounter():
+	now = datetime.datetime.utcnow()
+	print(now)
+	later = now.replace(hour=4,minute=0,seconds=0,microseconds=0)
+	print(later)
+	if(later < now):
+		later += datetime.timedelta(days=1)
+	await asyncio.sleep_until(later)
 
 @bot.event
 async def on_reaction_add(reaction, user):
@@ -612,4 +630,6 @@ async def on_reaction_add(reaction, user):
 
 
 if(__name__ == '__main__'):
+	ResetPetCounter.start()
 	bot.run(TOKEN)
+	

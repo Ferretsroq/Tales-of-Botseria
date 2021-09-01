@@ -62,11 +62,26 @@ def Santafy(inputImage, rand=False):
 
 # Add an image to the head of a spooky skeleton
 def Spookify(inputImage):
-    base = inputImage.copy()
-    skeleton = Image.open('./Image Resources/skeleton.png')
-    base = base.resize((300,300))
-    skeleton.paste(base, box=(100,30), mask=base)
-    return skeleton
+    options = ["skeleton", "witch", "cat"]
+    choice = random.choice(options)
+    if(choice == 'skeleton'):
+        base = inputImage.copy().convert('RGBA')
+        skeleton = Image.open('./Image Resources/skeleton.png')
+        base = base.resize((300,300))
+        skeleton.paste(base, box=(100,30), mask=base)
+        return skeleton
+    elif(choice == 'witch'):
+        base = inputImage.copy().convert('RGBA')
+        witch = Image.open('./Image Resources/witch.png')
+        base = base.resize((100,100))
+        witch.paste(base, box=(40,80), mask=base)
+        return witch
+    elif(choice == 'cat'):
+        base = inputImage.copy().convert('RGBA')
+        cat = Image.open('./Image Resources/blackcat.png')
+        base = base.resize((150,150))
+        cat.paste(base, box=(410,230), mask=base)
+        return cat
 
 # Add a Batman mask to an image
 def Batmanify(inputImage):
