@@ -13,7 +13,7 @@ intents.members = True
 
 TOKEN = open('token.token').read()
 
-bot = commands.Bot(command_prefix='>', case_insensitive=True, intents=intents)
+bot = commands.Bot(command_prefix='>', case_insensitive=True, intents=intents, activity=discord.Game('with 0 pets today.'))
 servers = BotseriaServers.PopulateServers()
 
 bot.hmkGames = []
@@ -493,7 +493,8 @@ async def pet(ctx):
 	Shoutouts to my friend Haruka for implementing this in a different bot, which I stole it from.'''
 	responses = ['woof', 'bwoof', 'bark', 'bork', 'arf']
 	bot.petCounter += 1
-	await ctx.send('{}\n*I have been pet {} times today.*'.format(random.choice(responses), bot.petCounter))
+	await bot.change_presence(activity=discord.Game("with {} pets today.".format(bot.petCounter)))
+	await ctx.send('{}'.format(random.choice(responses)))
 
 #@bot.command(name='boons')
 #@commands.check(check_if_staff_or_test)
@@ -545,18 +546,17 @@ async def rolldie(ctx, *, arg=''):
 
 @tasks.loop(hours=24)
 async def ResetPetCounter():
-	print('I reset pet counter!')
 	bot.petCounter = 0
+	await bot.change_presence(activity=discord.Game("with {} pets today.".format(bot.petCounter)))
 
 @ResetPetCounter.before_loop
 async def before_ResetPetCounter():
 	now = datetime.datetime.utcnow()
-	print(now)
-	later = now.replace(hour=4,minute=0,seconds=0,microseconds=0)
-	print(later)
+	later = now.replace(hour=4,minute=0,second=0)
 	if(later < now):
 		later += datetime.timedelta(days=1)
-	await asyncio.sleep_until(later)
+	#await asyncio.sleep_until(later)
+	await discord.utils.sleep_until(later)
 
 @bot.event
 async def on_reaction_add(reaction, user):
