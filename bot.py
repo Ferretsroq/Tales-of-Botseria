@@ -495,7 +495,13 @@ async def pet(ctx):
 	bot.petCounter += 1
 	await bot.change_presence(activity=discord.Game("with {} pets today.".format(bot.petCounter)))
 	await ctx.send('{}'.format(random.choice(responses)))
-
+@bot.command()
+@commands.check(check_if_bot_spam)
+async def bulba(ctx):
+	'''Show a v good bulba'''
+	bulbaDirectory = './Bulbas/'
+	bulbaFile = random.choice(os.listdir(bulbaDirectory))
+	await ctx.send(file=discord.File(bulbaDirectory+bulbaFile))
 #@bot.command(name='boons')
 #@commands.check(check_if_staff_or_test)
 #async def boonslist(ctx, number=10, minEX=1, minS=1):
