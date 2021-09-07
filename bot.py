@@ -3,7 +3,7 @@ from discord.ext import commands, tasks
 import datetime
 import character_sheet, json, asyncio
 import random
-import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator, roll, RoleAssignment, TrickOrTreat
+import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator, roll, RoleAssignment, TrickOrTreat, FishingGame
 import re, time, os
 import BotseriaServers
 
@@ -25,6 +25,7 @@ bot.oocMessages = {}
 bot.hmkScoreMessages = {}
 bot.roleMessages = {}
 bot.petCounter = 0
+bot.fishingGame = None
 
 def check_if_test_channel(ctx):
 	#return ctx.channel.id == TESTCHANNEL
@@ -47,6 +48,9 @@ def check_if_december(ctx):
 
 def check_if_february(ctx):
 	return (time.localtime().tm_mon == 2) or (check_if_staff_or_test(ctx))
+
+def check_if_october(ctx):
+	return (time.localtime().tm_mon == 10) or (check_if_staff_or_test(ctx))
 
 def check_if_bot_spam(ctx):
 	if(str(ctx.guild.id) in servers):
@@ -211,6 +215,18 @@ async def rolemessage(ctx):
 	await bot.roleMessages[ctx.guild.id].Send(ctx)
 
 @bot.command()
+@commands.check(check_if_staff_or_test)
+async def fish(ctx):
+	bot.fishingGame = FishingGame.FishingGame(ctx)
+	await ctx.send("Reel in when a fish bites!", view=bot.fishingGame)
+	await asyncio.sleep(5)
+	await bot.fishingGame.ChangeStatus('Bite')
+	if(bot.fishingGame.finished == False):
+		await ctx.send("Oh! A bite!")
+	await asyncio.sleep(5)
+	await bot.fishingGame.ChangeStatus('Got Away')
+
+@bot.command()
 async def iam(ctx, *, arg=''):
 	if(arg == ''):
 		validRoles = servers[str(ctx.guild.id)]["roles"]
@@ -335,6 +351,7 @@ async def santafy(ctx, *, arg=''):
 			await ctx.send('Character not found:```{}```'.format(arg.lower()))
 
 @bot.command()
+@commands.check(check_if_october)
 async def spookify(ctx, *, arg=''):
 	if(arg == ''):
 		Googlify.Spookify(Googlify.ImageFromURL(str(ctx.author.avatar))).save('tempSpooky.png')
@@ -425,7 +442,7 @@ async def rps(ctx):
 		await bot.rpsGames[-1].Send()
 
 @bot.command()
-@commands.check(check_if_bot_spam)
+@commands.check(check_if_october)
 async def tot(ctx):
 	'''Mention someone with @<username> to challenge them to a rousing bout of trick or treat.
 	   Check your DMs and respond with an emoji. The result will be announced publicly.'''
