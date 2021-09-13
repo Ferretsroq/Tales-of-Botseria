@@ -215,7 +215,7 @@ async def rolemessage(ctx):
 	await bot.roleMessages[ctx.guild.id].Send(ctx)
 
 @bot.command()
-@commands.check(check_if_staff_or_test)
+@commands.check(check_if_bot_spam)
 async def fish(ctx):
 	bot.fishingGame = FishingGame.FishingGame(ctx)
 	await ctx.send("Reel in when a fish bites!", view=bot.fishingGame)
