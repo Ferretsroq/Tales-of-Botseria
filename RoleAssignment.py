@@ -8,9 +8,9 @@ emojiDict = {
 	'greyhawk' : '<:greyhawk:881256750941085736>',
 	'yushan': '<:yushan:881256768838197248>',
 	'itinerant': '<:itinerant:881256694364139651>',
-	'she/her': '👩',
-	'he/him': '👨',
-	'they/them': '👤'
+	'she/her': '🔷',
+	'he/him': '🟩',
+	'they/them': '🟣'
 }
 emojiDictTransposed = {
 	'<:proxima:881256641876615198>' : 'proxima',
@@ -18,9 +18,9 @@ emojiDictTransposed = {
 	'<:greyhawk:881256750941085736>' : 'greyhawk',
 	'<:yushan:881256768838197248>': 'yushan',
 	'<:itinerant:881256694364139651>': 'itinerant',
-	'👩': 'she/her',
-	'👨': 'he/him',
-	'👤': 'they/them'
+	'🔷': 'she/her',
+	'🟩': 'he/him',
+	'🟣': 'they/them'
 }
 roleDict = {
 	'proxima':   880965946943086614, 
