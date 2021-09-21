@@ -6,6 +6,7 @@ import random
 import Googlify, RockPaperScissors, boons, DeityMessage, CanonList, OocMessage, hmk, valentine_generator, roll, RoleAssignment, TrickOrTreat, FishingGame
 import re, time, os
 import BotseriaServers
+import aioscheduler
 
 intents = discord.Intents.default()
 intents.dm_reactions = True
@@ -26,6 +27,7 @@ bot.hmkScoreMessages = {}
 bot.roleMessages = {}
 bot.petCounter = 0
 bot.fishingGame = None
+bot.monthCheck = False
 
 def check_if_test_channel(ctx):
 	#return ctx.channel.id == TESTCHANNEL
@@ -567,6 +569,26 @@ async def boonslist(ctx, *, arg=''):
 async def rolldie(ctx, *, arg=''):
 	await ctx.send(roll.roll(arg))
 
+
+@bot.command()
+async def remind(ctx, *, arg=''):
+	starting_time = datetime.datetime.utcnow()
+	scheduler = aioscheduler.TimedScheduler()
+	scheduler.start()
+	scheduler.schedule(ctx.send('{}: {}'.format(ctx.author.mention, ctx.message.jump_url)), starting_time+datetime.timedelta(days=int(arg)))
+
+@tasks.loop(hours=1)
+async def RemindStartOfMonth():
+	channel = bot.get_channel(880561729308868608)
+	if(channel and datetime.datetime.now().day == 1 and not bot.monthCheck):
+		await channel.send('{} do monthly stuff!'.format(bot.get_guild(880560673304768582).get_role(880560940905533460).mention))
+		#await channel.send('do monthly stuff!')
+		bot.monthCheck = True
+	elif(datetime.datetime.now().day != 1):
+		bot.monthCheck = False
+
+
+
 @tasks.loop(hours=24)
 async def ResetPetCounter():
 	bot.petCounter = 0
@@ -654,5 +676,6 @@ async def on_reaction_add(reaction, user):
 
 if(__name__ == '__main__'):
 	ResetPetCounter.start()
+	RemindStartOfMonth.start()
 	bot.run(TOKEN)
 	

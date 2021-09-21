@@ -16,9 +16,9 @@
 	"testchannel": 880561729308868608,
 	"roleMessage": 881942212915630170,
 	"factions": ["Proxima Centauri", "Greyhawk", "Camelot", "Yushan", "Itinerants"],
-	"url": "https://regenesis.jcink.net/index.php",
-	"canonurl": "http://regenesis.jcink.net/index.php?showtopic=17",
-	"templates": "http://regenesis.jcink.net/index.php?showtopic=19",
+	"url": "https://projectark.jcink.net/index.php",
+	"canonurl": "http://projectark.jcink.net/index.php?showtopic=17",
+	"templates": "http://projectark.jcink.net/index.php?showtopic=19",
 	"faction": "Discipline",
 	"admin": "staff",
 	"colors": {
