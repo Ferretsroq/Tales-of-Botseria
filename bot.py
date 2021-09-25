@@ -315,7 +315,7 @@ async def templates(ctx):
 	await ctx.send('You can find Magician\'s templates here!\n{}'.format(servers[str(ctx.guild.id)]["templates"]))
 
 @bot.command()
-@commands.check(check_if_bot_spam)
+#@commands.check(check_if_bot_spam)
 async def googlify(ctx, *, arg=''):
 	#print(type(ctx.author.avatar))
 	if(arg == ''):
@@ -427,7 +427,7 @@ async def valentines(ctx, fromChar='', toChar=''):
 			await ctx.send(file=discord.File('tempValentine.png'))
 
 @bot.command()
-@commands.check(check_if_bot_spam)
+#@commands.check(check_if_bot_spam)
 async def rps(ctx):
 	'''Mention someone with @<username> to challenge them to a rousing bout of rock-paper-scissors.
 	   Check your DMs and respond with an emoji to play the game. The winner will be announced publicly.'''
@@ -460,7 +460,7 @@ async def tot(ctx):
 		await bot.totGames[-1].Send()
 
 @bot.command(name='hmk')
-@commands.check(check_if_bot_spam)
+#@commands.check(check_if_bot_spam)
 async def hugmarrykill(ctx, *, arg=''):
 	'''Mention someone with @<username> to begin a hug-marry-kill game.
 	   Use >hmk with no arguments to show the scores for all characters.
@@ -506,7 +506,7 @@ async def hugmarrykill(ctx, *, arg=''):
 		await bot.hmkScoreMessages[ctx.author].ListNames()
 
 @bot.command()
-@commands.check(check_if_bot_spam)
+#@commands.check(check_if_bot_spam)
 async def pet(ctx):
 	'''Pet the bot. It is a good bot.
 	Shoutouts to my friend Haruka for implementing this in a different bot, which I stole it from.'''
@@ -515,7 +515,7 @@ async def pet(ctx):
 	await bot.change_presence(activity=discord.Game("with {} pets today.".format(bot.petCounter)))
 	await ctx.send('{}'.format(random.choice(responses)))
 @bot.command()
-@commands.check(check_if_bot_spam)
+#@commands.check(check_if_bot_spam)
 async def bulba(ctx):
 	'''Show a v good bulba'''
 	bulbaDirectory = './Bulbas/'
