@@ -217,7 +217,7 @@ async def rolemessage(ctx):
 	await bot.roleMessages[ctx.guild.id].Send(ctx)
 
 @bot.command()
-@commands.check(check_if_bot_spam)
+#@commands.check(check_if_bot_spam)
 async def fish(ctx):
 	bot.fishingGame = FishingGame.FishingGame(ctx)
 	await ctx.send("Reel in when a fish bites!", view=bot.fishingGame)
@@ -606,6 +606,7 @@ async def before_ResetPetCounter():
 @bot.event
 async def on_reaction_add(reaction, user):
 	if(user != bot.user):
+		print('I got a reaction!')
 		for rpsGame in bot.rpsGames:
 			if(rpsGame.valid):
 				if(reaction.message.id == rpsGame.challengerMessage.id and user == rpsGame.challenger):
@@ -670,9 +671,11 @@ async def on_reaction_add(reaction, user):
 					if(str(reaction) == str(hmk.kEmoji)):
 						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
 		for roleMsg in bot.roleMessages:
+			print('bot.roleMessages: {}'.format(bot.roleMessages))
 			if(bot.roleMessages[roleMsg].message.id == reaction.message.id):
 				await bot.roleMessages[roleMsg].SetRole(str(reaction), user)
-
+				print(reaction)
+				print('This was on the role message!')
 
 if(__name__ == '__main__'):
 	ResetPetCounter.start()
