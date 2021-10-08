@@ -172,7 +172,7 @@ def MakeEmbed(name, characterData, server={}):
     embed.add_field(name='{}:'.format(server['faction']), value=characterData['deity'], inline=True)
     embed.add_field(name='App Link:', value=characterData['app'], inline=False)
     embed.add_field(name='Plot Link:', value=characterData['plot'], inline=False)
-    #embed.set_footer(text="Played by {}".format(characterData['ooc']))
+    embed.set_footer(text="Played by {}".format(characterData['ooc']))
     #print('Returning Embed!')
     return embed
 
