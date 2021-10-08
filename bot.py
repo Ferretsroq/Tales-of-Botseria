@@ -183,7 +183,7 @@ async def canonlist(ctx):
 	sendString = 'Valid canons: ```'
 	while(index < len(canonList)):
 		while(len(sendString) < 1900):
-			sendString += ('\n' + '{:<30}: {} characters'.format(canonList[index][0], canonList[index][1]))
+			sendString += ('\n' + '{:<30}: {}'.format(canonList[index][0], canonList[index][1]))
 			index += 1
 			if(index >= len(canonList)):
 				break
@@ -292,12 +292,12 @@ async def iamnot(ctx, *, arg=''):
 			await ctx.send('Role `{}` not found.'.format(desiredRole))
 
 @bot.command()
-async def faction(ctx):
+async def sector(ctx):
 	#faction = random.choice(FACTIONS)
 	factions = servers[str(ctx.guild.id)]['factions']
 	faction = random.choice(factions)
 	text = ['Uplander! Uplander, make lookings! Swooshy spellycastings is sayings....um....is sayings {} is good choosymakes!'.format(faction),
-			'According to the position of the stars, the placement of your bedroom, and the ripeness of this pickle - {} is the best deity for you!'.format(faction),
+			'According to the position of the stars, the placement of your bedroom, and the ripeness of this pickle - {} is the best sector for you!'.format(faction),
 			'The fates have chosen, oh indecisive one - {} has found you worthy to fight in their name!'.format(faction)]
 	await ctx.send(random.choice(text))
 
