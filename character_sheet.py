@@ -52,7 +52,7 @@ async def repopulate(ctx, servers):
                     else:
                         group = soup.select('[id="membergroup"]')[0].text
                     print(group)
-                    if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members', 'archived', 'management'):
+                    if group.lower() in ('admin', 'banned', 'validating', 'guest', 'members', 'archived', 'management', 'overseer'):
                         print('bad group')
                         continue
                     else:
@@ -65,7 +65,8 @@ async def repopulate(ctx, servers):
                         if('data' in image[0].attrs):
                             image = image[0].attrs['data']
                         else:
-                            image = image[0].text
+                            #image = image[0].text
+                            image = image[0].contents[0].attrs['src']
                     else:
                         image = ''
                     if('No Information' in image):#image == '<i>No Information</i>'):
@@ -171,7 +172,7 @@ def MakeEmbed(name, characterData, server={}):
     embed.add_field(name='{}:'.format(server['faction']), value=characterData['deity'], inline=True)
     embed.add_field(name='App Link:', value=characterData['app'], inline=False)
     embed.add_field(name='Plot Link:', value=characterData['plot'], inline=False)
-    embed.set_footer(text="Played by {}".format(characterData['ooc']))
+    #embed.set_footer(text="Played by {}".format(characterData['ooc']))
     #print('Returning Embed!')
     return embed
 

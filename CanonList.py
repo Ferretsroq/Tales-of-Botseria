@@ -10,39 +10,52 @@ listEmoji = chr(0x1f4dc)
 
 def CharCanon(canon, server):
     #url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
-    url = server["canonurl"]
-    res = requests.get(url)
-    soup = bs4.BeautifulSoup(res.text, "lxml")
-    print('Fetching url {}'.format(url))
-    if(soup.select('[id="canon-list"]') != []):
-    	canons = soup.select('[id="canon-list"]')[0].select('h2')
-    else:
-    	canons = soup.select('h2')
-    if(canon.lower() in [tag.getText().lower() for tag in canons]):
-        index = [tag.getText().lower() for tag in canons].index(canon.lower())
-        characters = [character.getText().lower() for character in canons[index].find_next('ul').find_all('li')]
-        return(characters)
-    else:
-        print('Canon {} not found.'.format(canon.lower()))
-        return []
+    #url = server["canonurl"]
+    #res = requests.get(url)
+    #soup = bs4.BeautifulSoup(res.text, "lxml")
+    #print('Fetching url {}'.format(url))
+    #if(soup.select('[id="canon-list"]') != []):
+    #	canons = soup.select('[id="canon-list"]')[0].select('h2')
+    #else:
+    #	canons = soup.select('h2')
+    #if(canon.lower() in [tag.getText().lower() for tag in canons]):
+    #    index = [tag.getText().lower() for tag in canons].index(canon.lower())
+    #    characters = [character.getText().lower() for character in canons[index].find_next('ul').find_all('li')]
+    #    return(characters)
+    #else:
+    #    print('Canon {} not found.'.format(canon.lower()))
+    #   return []
+    with open('servers/{}/data.json'.format(server['server'])) as json_data:
+    	data = json.load(json_data)
+    characters = [character for character in data if data[character]['series'].lower() == canon.lower()]
+    return characters
 
 def CanonList(server):
     #url = 'https://heavensfall.jcink.net/index.php?showtopic=20'
-    url = server["canonurl"]
-    res = requests.get(url)
-    soup = bs4.BeautifulSoup(res.text, "lxml")
-    if(soup.select('[id="canon-list"]') != []):
-    	canons = [tag.getText().lower() for tag in soup.select('[id="canon-list"]')[0].select('h2')]
-    	headings = soup.select('[id="canon-list"]')[0].select('h2')
-    else:
-    	canons = [tag.getText().lower() for tag in soup.select('h2')]
-    	headings = soup.select('h2')
-    counts = []
-    for index in range(len(headings)):
-    	count = len(headings[index].find_next('ul').find_all('li'))
-    	counts.append(count)
+    #url = server["canonurl"]
+    #res = requests.get(url)
+    #soup = bs4.BeautifulSoup(res.text, "lxml")
+    #if(soup.select('[id="canon-list"]') != []):
+    #	canons = [tag.getText().lower() for tag in soup.select('[id="canon-list"]')[0].select('h3')]
+    #	headings = soup.select('[id="canon-list"]')[0].select('h3')
+    #else:
+    #	canons = [tag.getText().lower() for tag in soup.select('h3')]
+    #	headings = soup.select('h3')
+    #counts = []
+    #for index in range(len(headings)):
+    #	count = len(headings[index].find_next('ul').find_all('li'))
+    #	counts.append(count)
+    #return list(zip(canons, counts))
 
-    return list(zip(canons, counts))
+    with open('servers/{}/data.json'.format(server['server'])) as json_data:
+    	data = json.load(json_data)
+    canons = {}
+    for canon in list(map(lambda x: data[x]['series'].lower(), data)):
+    	if(canon in canons):
+    		canons[canon] += 1
+    	else:
+    		canons[canon] = 1
+    return list(zip(canons.keys(), canons.values()))
 
 class CanonMessage:
 	def __init__(self, canon, user, ctx, servers):
@@ -56,7 +69,7 @@ class CanonMessage:
 		self.characterList = [character for character in data if character.lower() in validCharacters]
 		self.index = 0
 		self.message = None
-		self.embed = discord.Embed()
+		self.embed = discord.Embed(description='test')
 	async def Advance(self):
 		self.index += 1
 		if(self.index+1 > len(self.characterList)):
@@ -76,6 +89,8 @@ class CanonMessage:
 	async def Edit(self, content=''):
 		with open('servers/{}/data.json'.format(self.serverID)) as json_data:
 			data = json.load(json_data)
+		print(self.characterList)
+		print(self.index)
 		self.embed = character_sheet.MakeEmbed(self.characterList[self.index], data[self.characterList[self.index]], self.server)
 		self.embed.title = "{} - {}/{}: ".format(self.canon, self.index+1, len(self.characterList)) + self.embed.title
 		self.embed.description = content

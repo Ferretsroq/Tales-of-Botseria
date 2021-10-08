@@ -11,22 +11,23 @@
 				"yushan": 880966308206882816,
 				"itinerants": 880966402486460457
 			},
+	"server": 880560673304768582,
 	"staff": 880560940905533460,
 	"botchannel": 887016718092886076,
 	"testchannel": 880561729308868608,
 	"roleMessage": 881942212915630170,
 	"factions": ["Proxima Centauri", "Greyhawk", "Camelot", "Yushan", "Itinerants"],
 	"url": "https://projectark.jcink.net/index.php",
-	"canonurl": "http://projectark.jcink.net/index.php?showtopic=17",
+	"canonurl": "https://projectark.jcink.net/index.php?showtopic=21",
 	"templates": "http://projectark.jcink.net/index.php?showtopic=19",
-	"faction": "Discipline",
-	"admin": "staff",
+	"faction": "Sector",
+	"admin": "Overseer",
 	"colors": {
-		"staff": "0xf74780",
-		"Proxima Centauri": "0x9b59b6",
-		"Greyhawk": "0x2d8951",
-		"Camelot": "0x276791",
-		"Yushan": "0xdb4344",
-		"Itinerants": "0xe37c30"
+		"overseer": "0xf74780",
+		"proxima centauri": "0x9b59b6",
+		"greyhawk": "0x2d8951",
+		"camelot city": "0x276791",
+		"yushan": "0xdb4344",
+		"itinerant": "0xe37c30"
 	}
 }	
