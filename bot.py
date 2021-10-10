@@ -204,6 +204,7 @@ async def forward(ctx):
 	await ctx.send('forward')
 
 @bot.command()
+@commands.check(check_if_staff_or_test)
 async def rolemessage(ctx):
 	#await ctx.send('Test',view=RoleAssignment.RoleAssignment())
 	#embed = discord.Embed()
