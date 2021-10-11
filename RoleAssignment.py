@@ -36,7 +36,7 @@ class RoleMessage:
 	def __init__(self, ctx):
 		self.ctx = ctx
 		self.embed = discord.Embed()
-		self.embed.description = "React to add role:\n{} she/her\n{} he/him\n{} they/them\n{} proxima\n{} camelot\n{} greyhawk\n{} yushan\n{} itinerant".format(emojiDict['she/her'],
+		self.embed.description = "React to add role:\n{} she/her\n{} he/him\n{} they/them\n{} proxima\n{} camelot\n{} greyhawk\n{} yushan\n{} itinerant\n---\nIf this message doesn't work, use `>iam <role>`\nIf your pronouns aren't here, DM Ari!".format(emojiDict['she/her'],
 			emojiDict['he/him'],
 			emojiDict['they/them'],
 			emojiDict['proxima'],
