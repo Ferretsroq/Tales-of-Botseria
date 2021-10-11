@@ -605,9 +605,14 @@ async def before_ResetPetCounter():
 	await discord.utils.sleep_until(later)
 
 @bot.event
+async def on_raw_reaction_add(payload):
+	if(payload.member != bot.user):
+		for roleMsg in bot.roleMessages:
+			if(bot.roleMessages[roleMsg].message.id == payload.message_id):
+				await bot.roleMessages[roleMsg].SetRole(str(payload.emoji), payload.member)
+@bot.event
 async def on_reaction_add(reaction, user):
 	if(user != bot.user):
-		print('I got a reaction!')
 		for rpsGame in bot.rpsGames:
 			if(rpsGame.valid):
 				if(reaction.message.id == rpsGame.challengerMessage.id and user == rpsGame.challenger):
@@ -671,12 +676,9 @@ async def on_reaction_add(reaction, user):
 						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
 					if(str(reaction) == str(hmk.kEmoji)):
 						await bot.hmkScoreMessages[hmkScore].Sort(str(reaction))
-		for roleMsg in bot.roleMessages:
-			print('bot.roleMessages: {}'.format(bot.roleMessages))
-			if(bot.roleMessages[roleMsg].message.id == reaction.message.id):
-				await bot.roleMessages[roleMsg].SetRole(str(reaction), user)
-				print(reaction)
-				print('This was on the role message!')
+		#for roleMsg in bot.roleMessages:
+		#	if(bot.roleMessages[roleMsg].message.id == reaction.message.id):
+		#		await bot.roleMessages[roleMsg].SetRole(str(reaction), user)
 
 if(__name__ == '__main__'):
 	ResetPetCounter.start()
