@@ -29,7 +29,7 @@ class OocMessage:
 		self.characterList = [character for character in data if data[character]['ooc'].lower()==ooc.lower()]
 		self.index = 0
 		self.message = None
-		self.embed = discord.Embed()
+		self.embed = discord.Embed(description='test')
 	async def Advance(self):
 		self.index += 1
 		if(self.index+1 > len(self.characterList)):
